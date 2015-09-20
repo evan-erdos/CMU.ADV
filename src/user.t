@@ -34,8 +34,8 @@ user : BagOfHolding, Mortal {
 		user.makePosture(lying);
 	}
 
-	engender(male,female) {
-		return (user.gender==male)?(male):(female);
+	engender(male_text,female_text) {
+		return (user.gender==male)?(male_text):(female_text);
 	}
 
 	setName() {

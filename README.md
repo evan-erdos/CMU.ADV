@@ -30,6 +30,11 @@ Above are the first few lines of cmu.adv, a file which probably still exists on 
 This is a repository for the soon-to-be coolest text adventure on campus! *CMU-ADV* is written in TADS3, and compiles to a *.t3 format, readable by the [frob](https://github.com/realnc/frobtads "FrobTADS") interpreter.
 
 ---
+You can play this online! Click the image below!
+[![cmu_adv](bescott.org/rsc/if/cmu-adv.png)][cmu-adv]
+
+[cmu-adv]: http://gs.tads.io/?storyfile=http://www.andrew.cmu.edu/user/bescott/cmu.adv/cmu_adv.t3
+---
 
 Todo:
 - ~~Add to map~~
@@ -49,7 +54,7 @@ Todo (Original):
    [ccg]
 
 - ~~add verbose-mode, brief-mode~~
-- ~~need verbs: read, run ~~
+- ~~need verbs: read, run~~
   - yell -> silly message?  maybe do something? echo from frat quad?
   - xyzzy -> ?
   - plugh -> ?
