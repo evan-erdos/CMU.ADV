@@ -48,29 +48,29 @@ Todo (Original):
    (mesg3 <string> <np> <string>) -- etc etc etc as needed
    [ccg]
 
-- ~~ add verbose-mode, brief-mode~~
-- ~~ need verbs: read, run ~~
+- ~~add verbose-mode, brief-mode~~
+- ~~need verbs: read, run ~~
   - yell -> silly message?  maybe do something? echo from frat quad?
   - xyzzy -> ?
   - plugh -> ?
-- ~~ need nouns: wearable, wear remove, other people~~
-- ~~ need "hidden" things that only appear after a search.~~
-- ~~ throw things into other rooms.~~
-- ~~ get/drop all~~
+- ~~need nouns: wearable, wear remove, other people~~
+- ~~need "hidden" things that only appear after a search.~~
+- ~~throw things into other rooms.~~
+- ~~get/drop all~~
 - weight/volume limits for things.
 - jolt cola (silly)
 
-- ~~ need read verb (property readable?)~~
+- ~~need read verb (property readable?)~~
 - fix map around ucc and warner
-- ~~ make go in action~~
-- ~~ Each building should have an `outside' and then you go in.~~
-- ~~ cop shouldn't wait so long.~~
+- ~~make go in action~~
+- ~~Each building should have an `outside' and then you go in.~~
+- ~~cop shouldn't wait so long.~~
 
 - phone # for pizza place. 687-1189  (who else?)
 - clock minutes messed up
 - can't read watch
 - have door in entropy supply only open every ten minutes to get clerk away.
-- ~~ How put things in each other?~~
+- ~~How put things in each other?~~
 - At dread.  Say, there is dread here, and pick it u?
 - buggy hazard on frew?
 - clawed crate in basement of maggie mo?
@@ -117,8 +117,8 @@ Todo (Original):
 - spring carnival?
 - badges instead of keys to get around?
 - find floppy disk- does it go in RT or PC? (or both?) (or neither?)
-- ~~ redo, again on command~~
-- ~~ if command ambiguous,  method to tell which one in next command~~
+- ~~redo, again on command~~
+- ~~if command ambiguous,  method to tell which one in next command~~
 
 - elevator in wean - use fedba1 chip to get to steam tunnels?  Or via HH?  Close - manhole on tunnel and get out somewhere else?
 
