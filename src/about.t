@@ -5,8 +5,8 @@
 #include "macros.h"
 
 versionInfo : GameID {
-	name = '; CMU.ADV';
-	tagline = '; an adventure...\n;'
+	name = 'CMU.ADV';
+	tagline = 'an adventure...\n;'
 	byline = 'by Ben Scott';
 	original_byline = 'by Galloway & Kuehner & Pawlinger';
 	authorEmail = 'bescott@andrew.cmu.edu';
@@ -16,10 +16,10 @@ versionInfo : GameID {
 	IFID = 'TADS3CMU-ADV3-77C6-042E-278CEDED4BDC';
 
 	showAbout() {
-		"\b<center><b><u><<versionInfo.name.toUpper()>></u></b>
-		\b<<versionInfo.tagline>>
+		"\b<center><b><u>; <<versionInfo.name.toUpper()>></u></b>
+		\n; <<versionInfo.tagline>>
+		\n; originally <<versionInfo.original_byline>>
 		\b<<versionInfo.byline>>, <<versionInfo.authorEmail>>
-		\boriginally <<original_byline>>
 		\nVersion <<versionInfo.version>>, <<versionInfo.firstPublished>>
 		\n<<versionInfo.genre>></center>\b";
 	} /* showAbout */

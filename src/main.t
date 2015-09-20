@@ -12,7 +12,6 @@ gameMain : GameMainDef { // impugn
 		intro.prolog();
 		startup(); cls();
 		user.init();
-		intro.awake();
 		runGame(true);
 	} /* newGame */
 

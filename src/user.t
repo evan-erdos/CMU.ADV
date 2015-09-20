@@ -10,7 +10,7 @@ user : BagOfHolding, Mortal {
 	lastname = 'Erdos';
 	gender = male;
 	vocabWords = 'me/self/<<name>>';
-	location = root;
+	location = the_cut;
 	issueCommandsSynchronously = true;
 	bulk = 10;
 	isCriminal = null;
@@ -22,12 +22,10 @@ user : BagOfHolding, Mortal {
 	}
 
 	init() {
-#ifndef SUDO
 		" "; user.setName();
 		" "; user.setGender();
-		//"\b\nName: <<user.name>>, <<user.printGender()>>";
+		"\b\nName: <<user.name>>, <<user.printGender()>>";
 		clear;
-#endif
 	}
 
 	setName() {

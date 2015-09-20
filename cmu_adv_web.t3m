@@ -12,8 +12,6 @@
 -source macros.h
 
 -source about
--source combat
--source dijkstra
 -source hints
 -source init
 -source items
@@ -21,6 +19,20 @@
 -source npcs
 -source rooms
 -source user
+
+# people
+-source officer
+
+# buildings & campus
+-source campus
+-source baker
+-source cfa
+-source doherty
+-source hammerschlag
+-source warner
+
+# utilities
+-source combat
+-source dijkstra
 -source util
 
--source hammerschlag

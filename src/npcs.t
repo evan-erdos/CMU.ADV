@@ -33,16 +33,7 @@ class NPCWorn : Wearable {
 	hideFromAll(action) { return true; }
 }
 
-
-
 class Group : Mortal { isPlural = true; isIt = true; }
-
-cmu_officer : Person 'man/police/officer' 'Cmu Campus Officer'  @south_cut
-"This cop is mean and ugly; he's the Clint Eastwood of the academic world. You'd better not mess with him." {
-	specialDesc = "A campus police officer is here, eyeing you suspiciously.";
-	readDesc = "The cop has <b>mean<\b> written all over him.";
-}
-
 
 emily_dickinson : Person 'Emily'
 "She sits quietly in a stiff wooden chair. She is deathly pale, and you know what color she's wearing." {
@@ -64,7 +55,8 @@ emily_dickinson : Person 'Emily'
 + NPCWorn 'white frock/white summer dress/housedress' 'white dress' "It\'s a very clean, very white housedress." {
 }
 
-paul_erdos : Person 'Paul' @south_cut
+paul_erdos : Person 'Paul Erdos' @root
 "He looks slightly thinner than he did the last time you saw him. His hair is all over. You know he gives it a perfunctory comb now and then, but not to the exclusion of his math. He's recently begun to roll his eyes at you when you ask him how many seconds have passed since you were born, but he still begrudgingly tells you. " {
 	vocabWords = 'paul/paul erdos/erdos';
+	isProperName = true;
 }

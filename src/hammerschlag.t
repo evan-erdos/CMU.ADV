@@ -37,5 +37,7 @@ currently out of order." {
 	east = hh_1_hall;
 }
 
+hh_2_lounge : FakeConnector "NOPE! " { }
 
+hh_plaza : FakeConnector " \"<b>Ah, jeez, Rick, you know, I'm looking around this place, a-and I'm beginning to work up some anxieties about this whole thing. </b>\" " { }
 
