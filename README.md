@@ -6,6 +6,7 @@ A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 [![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)
 
 ---
+
 ```lisp
 ;CMU.ADV
 ;An adventure...
@@ -16,9 +17,9 @@ A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 (define welcome
     "That was some party last night... you must have had about twenty
     beers.  Or was it thirty?  As you try to recall, the night becomes
-a giant blur, swimming around and around in your head.  It spins
-faster, and you feel dizzy.  Don't worry, though, you're lying down.
-On the ground...\n
+	a giant blur, swimming around and around in your head.  It spins
+	faster, and you feel dizzy.  Don't worry, though, you're lying down.
+	On the ground...\n
 \n
 <The CMU adventure, version 1.0>\n
 <by Galloway & Kuehner & Pawliger>\n\n")
@@ -35,6 +36,7 @@ Todo:
 - do literally anthing
 
 Todo (Original):
+
 -Need message printing routines that are smart about when messages
    should be printed.  This is to avoid messages like "<noun> taken"
    when non-adventurer actors do things.
@@ -70,7 +72,7 @@ Todo (Original):
 - Each building should have an `outside' and then you go in.
 - cop shouldn't wait so long.
 
-_ phone # for pizza place.
+- phone # for pizza place.
 		--- 687-1189  (who else?)
 - clock minutes messed up
 - can't read watch
