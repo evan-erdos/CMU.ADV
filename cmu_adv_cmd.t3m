@@ -1,0 +1,23 @@
+-DLANGUAGE=en_us
+-DMESSAGESTYLE=neu
+
+-nobanner
+-Fs src -Fy obj/cmd -Fo obj/cmd
+-o tgt/vividity_cmd.t3
+-lib system
+-lib adv3/adv3
+-source macros.h
+
+-source about
+-source combat
+-source dijkstra
+-source hints
+-source init
+-source items
+-source main
+-source npcs
+-source rooms
+-source user
+-source util
+
+-source hammerschlag

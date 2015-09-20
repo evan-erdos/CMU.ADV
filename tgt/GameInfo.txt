@@ -1,0 +1,11 @@
+IFID: TADS3851-6253-77C3-04EE-278CEDED48AC
+Name: Vividity
+Byline: by Ben Scott
+AuthorEmail: bescott@andrew.cmu.edu
+Version: 0.1
+ReleaseDate: 2015-06-30
+FirstPublished: 2015
+Language: en-US
+LicenseType: Freeware
+CopyingRules: Nominal cost only; compilations allowed
+PresentationProfile: Default

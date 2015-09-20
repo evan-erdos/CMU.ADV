@@ -8,7 +8,7 @@ A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 ---
 ```lisp
 ;CMU.ADV
-;An adventure... 
+;An adventure...
 ;
 
 (adventure cmu 1)
@@ -33,3 +33,100 @@ This is a repository for the soon-to-be coolest text adventure on campus! *CMU-A
 Todo:
 - Add to map
 - do literally anthing
+
+Todo (Original):
+-Need message printing routines that are smart about when messages
+   should be printed.  This is to avoid messages like "<noun> taken"
+   when non-adventurer actors do things.
+   There is already a 'complain' function; I want to add these:
+   (error <string>) -- print string and abort if %errmsg,
+		       else return nil
+   (mesg <string>) --  print message and return normally if %errmsg,
+                       else return nil
+   (mesg3 <string> <np> <string>) -- etc etc etc as needed
+   [ccg]
+
+- add verbose-mode, brief-mode
+- need verbs:
+    read -> readable objects?
+    run -> synonym for go?
+    yell -> silly message?  maybe do something? echo from frat quad?
+    xyzzy -> ?
+    plugh -> ?
+- need nouns:
+    (property wearable?) wear/remove verbs
+    other people?
+- need "hidden" things that only appear after a search.
+    Can probably be done by having the description initially be "",
+    then setting the property to be a description when found.
+- throw things into other rooms.
+- get/drop all
+- weight/volume limits for things.
+- jolt cola (silly)
+
+- need read verb (property readable?)
+- fix map around ucc and warner
+- make go in action
+- Each building should have an `outside' and then you go in.
+- cop shouldn't wait so long.
+
+_ phone # for pizza place.
+		--- 687-1189  (who else?)
+- clock minutes messed up
+- can't read watch
+- have door in entropy supply only open every ten minutes to get clerk away.
+- How put things in each other?
+- At dread.  Say, there is dread here, and pick it u?
+- buggy hazard on frew?
+- clawed crate in basement of maggie mo?
+- rotc marchers?
+- basement level z in HH, hacker room? need chip to get there from chip lab.
+- old wean cave?
+- sei people as paranoids.
+- dick cyert
+- financial aid people chasing
+- frat quad gazorching
+- mudslide in IM field
+- hideous sculpture behind warner holding a clue
+- pitt student
+- o's?
+- steam tunnels
+- clue in tower atop HH, hard to get to.
+- physical plant abuse - manure?
+- check `traditions' in freshman word.
+- Get paint thinner and strip fence - must be night - add timed events?  Each - entry loop
+- increments a timer? and find clue.
+	--I will implement timed events Real Soon Now [ccg]
+- get a tool from buggy builders in exchange for a midget?
+- go to cluster, log in and play this game recursively?
+
+- tartan food as weapon
+- Panther Hollow Diving Club sign
+- abuse Jay Libove? (not in release version)
+	--how about secret verb (like 'be wizard') for
+	--things like this? [ccg]
+
+- lookup any book in hunt library (on computer) but can't find it on shelf
+- most workstations say "Vice 1 through 53 are down"
+- workstation with teeny print.. unreadable
+- wean hall 9th floor.. get key from someone
+	----Access from Elevator on DH end of wean or, from DH roof. [SGW]
+- love of two oranges is alien pod/other weirdness
+- tar pits
+- doherty ceramic labs
+- glycol spray and explosions in ucc
+- banner letters useful
+- RAIN
+- stuff in CFA
+	--Working on Descriptions (sorry I couldn't get to it later)  [SGW]
+- spring carnival?
+- badges instead of keys to get around?
+- find floppy disk- does it go in RT or PC? (or both?) (or neither?)
+- redo, again on command
+- if command ambiguous,  method to tell which one in next command
+
+- elevator in wean - use fedba1 chip to get to steam tunnels?  Or via HH?  Close - manhole on tunnel and get out somewhere else?
+
+- ladder in ph closet - method climb passes move up to actor
+- Banner by skibo.  Tie to ladder, still can walk away.  Should confirm.
+- The banner is tied to the ladder.  Also, if banner dropped and say tie banner says don't know which banner

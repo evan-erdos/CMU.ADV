@@ -1,0 +1,26 @@
+-DLANGUAGE=en_us
+-DMESSAGESTYLE=neu
+
+-nobanner
+-D TADS_INCLUDE_NET
+-Fs src -Fy obj/web -Fo obj/web
+-o tgt/vividity_web.t3
+-lib system
+-lib adv3/adv3web
+-lib webui
+-source tadsnet
+-source macros.h
+
+-source about
+-source combat
+-source dijkstra
+-source hints
+-source init
+-source items
+-source main
+-source npcs
+-source rooms
+-source user
+-source util
+
+-source hammerschlag
