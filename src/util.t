@@ -4,6 +4,75 @@
 #include <en_us.h>
 #include "macros.h"
 
+/* begin mods */
+modify Goal goalState = OpenGoal;
+
+modify YellAction {
+	execAction() { mainReport('You bark as loud as you can. '); }
+}
+
+modify Thing {
+	dobjFor(BarkAt) {
+		verify() {
+			illogical('{The dobj/he} {is} not something you can bark at. '); }
+	}
+}
+
+modify Room {
+	specialDescListWith = [Fixture];
+}
+
+class Ambience : RandomFiringScript, ShuffledEventList {
+	eventPercent = 50;
+}
+
+Ambience template [eventList];
+
+/* end mods */
+
+
+/* begin events */
+Events : object {
+	sleep() { }
+
+	init() {
+		cmu_officer.addToAgenda(officer_agenda);
+	}
+
+	propertyset '*_limbo' {
+		daemon = null;
+		init() {
+			user.travelTo(limbo, into_limbo, into_limbo.connectorBack(
+				user.getTraveler(into_limbo), limbo));
+			if (daemon_limbo==null)
+				daemon_limbo = new Daemon(self,&play_limbo,2);
+		}
+
+		play() { list_limbo.doScript(); }
+
+		stop() {
+			if (daemon_limbo!=null) {
+				daemon_limbo.removeEvent;
+				daemon_limbo = null;
+			}
+		}
+	}
+
+	list_limbo : RandomFiringScript, ShuffledEventList {
+		firstEvents = ['You begin to run, as fast as you can, in some direction. You get nowhere. '];
+		eventList = ['The fog glowers at your plight. ',
+			'You think you noticed it get slightly brighter for a moment. ',
+			'The fog glowers at your plight. ',
+			{: say('<b>lo! but you are saved!</b>'), user.reset() }]
+		eventPercent = 80;
+	}
+}
+
+//combinedSpecialDesc : ListGroupSorted {
+//	compareGroupItems(a,b) { return (a.listOrder-b.listOrder);} }
+
+
+
 util : object {
 
 	capitalize(s) {
@@ -13,7 +82,7 @@ util : object {
 
 	censor : StringPreParser {
 		doParsing(str, which) {
-			if (rexMatch(util.obscenities,str)!=null) {
+			if (rexMatch(util.obscenities.toLower(),str)!=null) {
 				util.offenses+=1;
 				if (util.offenses>8) {
 					"Come back when you've classed it up a bit.";

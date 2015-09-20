@@ -14,10 +14,13 @@ root : Room 'dorm' 'your dorm room'
 	west asExit(out);
 }
 
++ root_bed : Heavy, Bed 'bed/bedding/cot/mattress' 'your bed'
+"It's your bed. Nice bed. It's so... mmmm... NO! Wait! THHERE WAHS THAT, THING YOU... did you alre.. NO! You didn't! It's probably due tomorrow! You can't sleep now. " { }
+
 + root_door_0 : AutoClosingDoor {
-	reportAutoClose { "You close the porthole behind you."; };
-	desc { "Your door leads out, and you can see it's bright outside through it's circular window. Curved rails carry it a few degrees around the inside of the dome. "; }
-	name = 'Quarters Porthole';
+	reportAutoClose { "You close the door behind you. "; };
+	desc { "Your door leads out. "; }
+	name = 'Dormitory Door';
 	vocabWords = 'door/doors/portal/porthole/exit';
 }
 
@@ -25,4 +28,11 @@ root : Room 'dorm' 'your dorm room'
 "You've been using this old-style drafting table as a desk for as long as you've needed a desk. It's edged with a dented but sturdy aluminum frame. It has a hefty steel pivot, its arc stretching 135° or more. Four triangularly trussed legs extend to spherical rubber feet which match perfectly your dented floor." {
 	vocabWords = 'desk/desks/table/surface';
 }
+
+limbo : Room 'limbo' 'Limbo'
+"You are in limbo.  There is nothing but foggy grey matter as far as the eye can see. Ghosts of ancient hackers wander around and through you. " {
+	specialDesc = "You can't seem to get out of here. ";
+}
+
+into_limbo : TravelMessage -> limbo "You are taken to... " { }
 

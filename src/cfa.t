@@ -10,7 +10,7 @@ cfa_lot : FakeConnector "You don't want to go to the CFA parking lot! " { }
 
 cfa_park : FakeConnector "You don't want to go to the CFA park! " { }
 
-cfa_field : OutdoorRoom 'field' 'CFA (Lawn)'
+cfa_field : OutdoorRoom 'CFA (Lawn)' 'the field'
 "This is the lawn in front of CFA. The grass here is well-groomed,  except for some strange indentaions in the ground.  The shrubs at the east end have been cleverly arranged to spell \"C-M-U,\" only someone seems to have ripped out the \"U\", leaving a big gap in the hedge." {
 	north = cut_south;
 	northeast = cfa_lot;

@@ -12,15 +12,12 @@ gameMain : GameMainDef { // impugn
 		intro.prolog();
 		startup(); cls();
 		user.init();
+		Events.init();
 		runGame(true);
 	} /* newGame */
 
 	startup() {
-		versionInfo.showAbout();
-		"<p>(Type <<aHref('about', 'ABOUT')>> for notes on
-            how to play, or <<aHref('restore', 'RESTORE')>> to restore
-            a saved position. To <<aHref('', 'begin the game')>>, just
-            press the Enter key.) </p>";
+		versionInfo.titleScreen();
 		for (;;) {
 			local cmd;
 			local kw;

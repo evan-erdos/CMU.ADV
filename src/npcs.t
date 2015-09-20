@@ -35,7 +35,7 @@ class NPCWorn : Wearable {
 
 class Group : Mortal { isPlural = true; isIt = true; }
 
-emily_dickinson : Person 'Emily'
+emily_dickinson : Person 'Emily' @cfa_field
 "She sits quietly in a stiff wooden chair. She is deathly pale, and you know what color she's wearing." {
 	isHer = true;
 	npcDesc {
@@ -52,10 +52,12 @@ emily_dickinson : Person 'Emily'
 	globalParamName = 'emily';
 }
 
-+ NPCWorn 'white frock/white summer dress/housedress' 'white dress' "It\'s a very clean, very white housedress." {
++ NPCWorn '(white|summer) frock/dress/housedress' 'dress'
+"It\'s a very clean, very white housedress." {
+	isListed = (isIn(emily));
 }
 
-paul_erdos : Person 'Paul Erdos' @root
+paul_erdos : Person 'Paul Erdos' @hh_entrance
 "He looks slightly thinner than he did the last time you saw him. His hair is all over. You know he gives it a perfunctory comb now and then, but not to the exclusion of his math. He's recently begun to roll his eyes at you when you ask him how many seconds have passed since you were born, but he still begrudgingly tells you. " {
 	vocabWords = 'paul/paul erdos/erdos';
 	isProperName = true;

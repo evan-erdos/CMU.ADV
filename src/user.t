@@ -28,18 +28,41 @@ user : BagOfHolding, Mortal {
 		clear;
 	}
 
+	reset() {
+		user.travelTo(root,root_door_1, root_door_0);
+		travelerTravelWithin(user,root_bed);
+		user.makePosture(lying);
+	}
+
+	engender(male,female) {
+		return (user.gender==male)?(male):(female);
+	}
+
 	setName() {
 		local cmd;
 		for (local i=0;true;i++) {
-			cmd = inputManager.getInputLine(null, {:"\b\nWho will you be?  &gt;" });
-			if (i>7) { "Ok, you're done here. Come back when you've gradutated from the 5th grade."; i/=0;
-			} else if (i>6) "You're really going for it, huh?";
+			cmd = inputManager.getInputLine(null,
+				{:"\b\nWho will you be?  &gt;" });
+			cls();
+			if (cmd=='') {
+				if (i<1) "Go ahead, pick a name for yourself. ";
+				else if (i<2) {
+					"No name, huh? You're a 'no-name' kind of guy, huh? Fine. You're the little mermaid now. ";
+					user.name = 'The Little Mermaid';
+					user.firstname = 'The Little';
+					user.lastname = 'Mermaid';
+					break;
+				}
+			}
+
+			if (i>7) { "Ok, you're done here. Come back when you've gradutated from the 5th grade."; i/=0; }
+			else if (i>6) "You're really going for it, huh?";
 			else if (i>5) "You're testing my patience.";
 			else if (cmd.length()<3) "You really should have a name.";
-			else if (rexSearch('%b(ada|adaline|adaline braun|genti|gentiana)%b',cmd.toLower())) "Be more original.";
+			else if (rexSearch('%b(ben|benjamin)%b',cmd.toLower())) "Be more original.";
 			else if (cmd.length()>24) "What are you, some kind of 16th century Spanish noble? Be reasonable, here.";
 			else if (rexSearch('%d',cmd)) "A real name please.";
-			else if (rexSearch(util.obscenities,cmd.toLower())) "So, common decency, too. Call me particular.";
+			else if (rexSearch(util.obscenities,cmd)) "So, common decency, too. Call me particular.";
 			else { formatName(cmd); break; }
 		}
 	}
@@ -61,15 +84,27 @@ user : BagOfHolding, Mortal {
 	setGender() {
 		local cmd;
 		for (local i=0;true;i++) {
-			cmd = inputManager.getInputLine(null, {:"\b\nMale or Female?  &gt;" });
-			if (i>5) {
-				"Have it your way."; i/=0;
-			} else if (i>4) "I will do something really nasty if you don't shape up.";
+			cmd = inputManager.getInputLine(null,
+				{:"\b\nMale or Female?  &gt;" });
+			cls();
+			if (cmd=='') {
+				if (i<1) {
+					"Go ahead, pick a gender for yourself. "; continue;
+				} else if (i<2) {
+					"What, no gender";
+					if (user.name=='The Little Mermaid')
+						" either? Fine. You're a woman now. ";
+					else "? I guess that's ok. Get ready to become a woman. ";
+					user.gender = female; break;
+				}
+			}
+			if (i>5) { "Have it your way."; i/=0; }
+			else if (i>4) "I will do something nasty if you don't shape up.";
 			else if (i>3) "Can we get to the point, here?";
 			else if (rexMatch('b|boy|m|male|man|masculine',cmd.toLower())) {
 				user.gender = male; break; }
 			else if (rexMatch('f|fe|female|feminine|g|girl|lady',cmd.toLower())) { user.gender = female; break; }
-			else "Gender isn't black and white, I get it, and there's nothing wrong with that, but if you had to choose...";
+			else "Gender isn't black and white, I get it, and there's nothing wrong with that, but just... like.. if you had to choose...";
 		}
 	}
 

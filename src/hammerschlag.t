@@ -4,7 +4,7 @@
 #include <en_us.h>
 #include "macros.h"
 
-hh_entrance : Room 'Hammerschlag Entrance'
+hh_entrance : Room 'Hammerschlag Entrance' 'Hammerschlag'
 "This is the entrance to Hammerschlag Hall, that tower
 of engineering power.  Before you is a corridor leading west to the
 stairway that winds its way up inside the former smokestack of the
@@ -14,7 +14,7 @@ and the double doors of the entrance are east." {
 	up = hh_2_lounge;
 }
 
-hh_1_hall : Room 'Hammerschlag Hall'
+hh_1_hall : Room 'Hammerschlag Hall' 'Hammerschlag'
 "You are in a short hall that leads east-west down
 the center of Hammerschlag.  Locked office doors line the hall to the north and south.
 There are bulletin boards between every two doors, it seems, crammed with
@@ -27,7 +27,7 @@ posters for IEEE meetings, ads for vacation trips to Europe, and class announcem
 "Leave it alone. It's not important." { }
 
 
-hh_1_stairs : Room 'stairs' 'First Floor Stairwell'
+hh_1_stairs : Room 'First Floor Stairwell' 'the first floor'
 "You are standing near the stairwell that leads up and down into the core of the building.  An ancient IBM clock is set into the wall.  Glass doors lead north and south into laboratory corridors, and the entrance hall goes east from here.
 The elevator is also here, but a sign hanging on the button announces that it is
 currently out of order." {

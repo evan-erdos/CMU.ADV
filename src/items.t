@@ -39,7 +39,8 @@ futuristic_leaflet : Thing '(small) note/email' 'futuristic leaflet' @root
 	initDesc = "It's just a note. You wonder why it hasn't blown away yet.";
 }
 
-newspaper : Readable, Thing 'tartan/newspaper' 'an issue of "The Tartan"'
+newspaper : Readable, Thing
+'tartan/newspaper' 'an issue of "The Tartan"' @dh_entrance
 "It's what passes for a newspaper at this school. " {
 	initSpecialDesc = "A newspaper lies discarded on the ground. ";
 	readDesc {
