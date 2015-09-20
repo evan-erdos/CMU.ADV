@@ -40,3 +40,4 @@ cmu_officer : Readable, Person 'police/officer/cop' 'Campus Officer'  @the_cut
 	'"Not <b>my</b> fault this is happening..."',' ',' ',' ',
 	'The cop is all worked up now. "Last chance to get outta here!"']
 	[{: say('<<user.engender('The cop hauls you up by the collar. "Okay, wise guy, beat it!"','The cop says "Sorry to have to do this, ma\'am." and then carries you off.')>> '), cmu_officer.harass(user), isDone = true }];
+
