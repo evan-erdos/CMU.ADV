@@ -1,10 +1,10 @@
-IFID: TADS3851-6253-77C3-04EE-278CEDED48AC
-Name: Vividity
+IFID: TADS3CMU-ADV3-77C6-042E-278CEDED4BDC
+Name: ; CMU.ADV
 Byline: by Ben Scott
 AuthorEmail: bescott@andrew.cmu.edu
-Version: 0.1
-ReleaseDate: 2015-06-30
-FirstPublished: 2015
+Version: v2.0.1
+ReleaseDate: 2015-09-19
+FirstPublished: 1986 (2015)
 Language: en-US
 LicenseType: Freeware
 CopyingRules: Nominal cost only; compilations allowed

@@ -28,7 +28,6 @@ user : BagOfHolding, Mortal {
 		//"\b\nName: <<user.name>>, <<user.printGender()>>";
 		clear;
 #endif
-		setKnowledge();
 	}
 
 	setName() {
@@ -77,11 +76,6 @@ user : BagOfHolding, Mortal {
 	}
 
 	printGender() { return (user.gender==male)?'Male':'Female'; }
-
-	setKnowledge() {
-		gSetKnown(adaline_braun);
-		gSetKnown(gentiana_teuta);
-	}
 
 	commitCrime(n) { /* n is severity of crime */
 		user.crimes+=n; // as it is, you can't ever repent

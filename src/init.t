@@ -9,7 +9,7 @@ intro : InitObject {
 #ifndef TADS_INCLUDE_NET
 		bannerClear(1);
 #endif
-"\b\nhat was some party last night... you must have had about twenty beers. Or was it thirty?  As you try to recall, the night becomes a giant blur, swimming around and around in your head. It spins faster, and you feel dizzy. Don't worry, though, you're lying down.
+"\b\nThat was some party last night... you must have had about twenty beers. Or was it thirty?  As you try to recall, the night becomes a giant blur, swimming around and around in your head. It spins faster, and you feel dizzy. Don't worry, though, you're lying down.
 
 On the ground...\b\n";
 		clear;

@@ -1,4 +1,4 @@
-/* Ben Scott * bescott@andrew.cmu.edu * 2015-05-14 * Vividity * rooms */
+/* Ben Scott - bescott@andrew.cmu.edu - 2015-09-19 - CMU.ADV - rooms */
 
 #include <adv3.h>
 #include <en_us.h>
@@ -8,8 +8,8 @@ RoomConnector template @room1 @room2 "desc"?;
 //Passage template -> masterObject 'vocabWords' 'name' @location? "desc"?
 //Door template 'name' @room1 @room2;
 
-root : Room 'Your Quarters' 'your quarters'
-"It's a standard-issue dwelling, designed for the unusually harsh conditions of the Terrace. It is made of many alloys of metal, and is joisted by slender titanium trusses. It's defining feature is the central, dome-shaped foyer from which the more traditional, rectangular rooms branch off." {
+root : Room 'dorm' 'your dorm room'
+"It's a standard-issue dwelling: there's random furniture crammed into all sorts of odd angles, and the effects of a roommate you haven't seen in months, not including his wallet, unfortunately. " {
 	out = root_door_0;
 	west asExit(out);
 }

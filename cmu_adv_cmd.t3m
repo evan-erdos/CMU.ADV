@@ -3,7 +3,7 @@
 
 -nobanner
 -Fs src -Fy obj/cmd -Fo obj/cmd
--o tgt/vividity_cmd.t3
+-o tgt/cmu_adv_cmd.t3
 -lib system
 -lib adv3/adv3
 -source macros.h

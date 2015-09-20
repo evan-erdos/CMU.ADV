@@ -4,7 +4,7 @@
 -nobanner
 -D TADS_INCLUDE_NET
 -Fs src -Fy obj/web -Fo obj/web
--o tgt/vividity_web.t3
+-o tgt/cmu_adv_web.t3
 -lib system
 -lib adv3/adv3web
 -lib webui

@@ -57,7 +57,7 @@ TopHintMenu 'Hints';
 
 + HintMenu 'On Campus';
 
-++ Goal -> (window_0.achievement) 'How do I anything?' [
+++ Goal -> (some.achievement) 'How do I anything?' [
 	'Try the door.',
 	'Try the knob, on the door.',
 	'Hmm... that didn\'t work. You can\'t reach?',
@@ -65,20 +65,19 @@ TopHintMenu 'Hints';
 	'Perhaps the chair, from the kitchen.',
 	'This is just temporary text.'];
 
-++ noise_goal : Goal -> (window_0.achievement)
+++ noise_goal : Goal -> (some.achievement)
 'What is that noise? It\'s driving me insane!' [
 	'Well, you can\'t easily go outside to invesigate, but perhaps you can still figure this out.',
 	'Perhaps you can see what\'s happening without going out.',
 	'You got up high enough to mess with the door by pushing the chair.',
 	'Try examining the window while on the chair.'];
-}
 
 + HintMenu 'Hammerschlag';
 
 ++ Goal 'Where did your grades go?' [
 	'Up the stairwell, to the north.', [fence_goal]];
 
-+++ fence_goal : Goal -> (picket_fence.achievement)
++++ fence_goal : Goal -> (some.achievement)
 'I can\'t use that gate! You saw how much trouble I had with that door!' [
 	'Yeah, that was pretty rough. Maybe a full-frontial assault isn\'t your best play, here.',
 	'Maybe there are other ways out.',
@@ -96,5 +95,7 @@ TopHintMenu 'Hints';
 	'examine window',
 	'sleep'];
 
-
+some : object {
+	achievement : Achievement { +3 "Well, I mean, you got in, didn't you?" };
+}
 
