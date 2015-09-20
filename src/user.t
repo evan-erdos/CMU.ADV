@@ -63,7 +63,7 @@ user : BagOfHolding, Mortal {
 			else if (cmd.length()>24) "What are you, some kind of 16th century Spanish noble? Be reasonable, here.";
 			else if (rexSearch('%d',cmd)) "A real name please.";
 			else if (rexSearch(util.obscenities,cmd)) "So, common decency, too. Call me particular.";
-			else { formatName(cmd); break; }
+			else { user.name = cmd; break; }// { formatName(cmd); break; }
 		}
 	}
 
@@ -71,21 +71,18 @@ user : BagOfHolding, Mortal {
 		user.name = cmd;
 		if (rexSearch('%w %w',cmd)) {
 			local s = cmd.split(' ');
-			if (s.length()<2) {
-				user.firstname = util.capitalize(cmd);
-				user.lastname = util.capitalize(cmd);
-			} else {
+			if (s!=null && s.length()>=2) {
 				user.firstname = util.capitalize(s[0]);
 				user.lastname = util.capitalize(s[1]);
 			}
-		}
+		}"FUCKFUCK";
 	}
 
 	setGender() {
 		local cmd;
 		for (local i=0;true;i++) {
 			cmd = inputManager.getInputLine(null,
-				{:"\b\nMale or Female?  &gt;" });
+				{:"\b\nMale or Female?  &gt; " });
 			cls();
 			if (cmd=='') {
 				if (i<1) {
@@ -98,8 +95,9 @@ user : BagOfHolding, Mortal {
 					user.gender = female; break;
 				}
 			}
-			if (i>5) { "Have it your way."; i/=0; }
-			else if (i>4) "I will do something nasty if you don't shape up.";
+			if (i>5) { "Have it your way.";
+				finishGameMsg('You have missed the point entirely.',null);
+			} else if (i>4) "I will do something nasty if you don't shape up.";
 			else if (i>3) "Can we get to the point, here?";
 			else if (rexMatch('b|boy|m|male|man|masculine',cmd.toLower())) {
 				user.gender = male; break; }

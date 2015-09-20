@@ -18,10 +18,6 @@ modify Thing {
 	}
 }
 
-modify Room {
-	specialDescListWith = [Fixture];
-}
-
 class Ambience : RandomFiringScript, ShuffledEventList {
 	eventPercent = 50;
 }
@@ -76,8 +72,8 @@ Events : object {
 util : object {
 
 	capitalize(s) {
-		//if (s.length()<1) return s.toUpper();
-		return s.splice(0,1,s[0].toUpper());
+		if (s.length()<1) return s.toUpper();
+		return s[0].toUpper()+s.substr(1);
 	}
 
 	censor : StringPreParser {
