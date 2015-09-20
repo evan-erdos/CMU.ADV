@@ -54,7 +54,7 @@ emily_dickinson : Person 'Emily' @cfa_field
 
 + NPCWorn '(white|summer) frock/dress/housedress' 'dress'
 "It\'s a very clean, very white housedress." {
-	isListed = (isIn(emily));
+	isListed = (isIn(emily_dickinson));
 }
 
 paul_erdos : Person 'Paul Erdos' @hh_entrance

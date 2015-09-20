@@ -6,7 +6,16 @@
 
 gameMain : GameMainDef { // impugn
 	initialPlayerChar = user;
-	maxScore = 128;
+	scoreRankTable = [
+		[0, 'a dumb freshman'],
+		[10, 'a basic sophomore'],
+		[15, 'a dumb corgi (this is a holdover from a different game, don\'t mind this, just get some more points, you\'ll stop being a dog)'],
+		[20, 'such a good boy, yes you *ARE*! (yeah, no, just one more)'],
+		[32, 'a silly senior'],
+		[63, 'a bachelor of something or, uh, sure why not, ahdunno.'],
+		[82, 'a PH.D, you\'z got that fancy title now, dockta. '],
+		[99, 'a coked-out professor']];
+	maxScore = null;
 
 	newGame() {
 		intro.prolog();

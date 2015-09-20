@@ -6,10 +6,7 @@
 
 //RoomConnector template @room1 @room2 "desc"?;
 
-class CampusOutdoorRoom : OutdoorRoom {
-	atmosphereList = campus_atmosphere;
-}
-
+class CampusOutdoorRoom : OutdoorRoom { atmosphereList = campus_atmosphere; }
 
 fence : MultiLoc, Fixture, Readable 'The Fence' 'the Fence'
 "The fence can be seen from here. It has recently been painted. " {
@@ -122,13 +119,45 @@ cut_walkway_3 : CampusOutdoorRoom 'Walkway (Near Baker)' 'the walkway'
 	west = bh_entrance;
 }
 
-+ root_door_1 : AutoClosingDoor ->root_door_0 {
++ root_door_1 : AutoClosingDoor -> root_door_0 {
 	reportAutoClose { "You close the door behind you, and suddenly you're near Baker Hall... "; };
 	desc { "The door to your dormitory shimmers like a vision before you. "; }
 	vocabWords = 'door/doors/portal/porthole/exit';
 }
 
-cut_hill : FakeConnector "It's a long way down the hill... maybe you'd better stay here. " {  }
+pausch_bridge_entrance : CampusOutdoorRoom
+'The Pausch Bridge (near Purnell)' 'the Pausch Bridge'
+"You're in the shelter of the Purnell Center rotunda. " {
+	southeast = cut_south;
+	northeast = cut_walkway_1;
+	west = pausch_bridge_0;
+}
+
+pausch_bridge_0 : OutdoorRoom
+'The Pausch Bridge (Beginning)' 'the Pausch Bridge'
+"You're at the start of the Pausch Bridge. It's like nothing you've ever seen. It's 1986, remember? Jeez, is this guy even paying attention right now?" {
+	west = pausch_bridge_1;
+	east = pausch_bridge_entrance;
+}
+
+pausch_bridge_1 : OutdoorRoom
+'The Pausch Bridge (Middle)' 'the Pausch Bridge'
+"You're in the middle of the Pausch Bridge. To the west is the part of the bridge that goes to the campus. To the east is the part of the bridge that goes to the Gates Hillman Center. At some point, you'd think some of this would sink in." {
+	west = pausch_bridge_2;
+	east = pausch_bridge_0;
+}
+
+pausch_bridge_2 : OutdoorRoom
+'The Pausch Bridge (End)' 'the Pausch Bridge'
+"You're at the other end of the Pausch Bridge. " {
+	in = ghc_5_entrance;
+	west asExit(in);
+	east = pausch_bridge_1;
+}
+
+//DangerousVerifyResult.showMessage
+cut_hill : TravelMessage -> pausch_bridge_entrance
+"It's a long way down the hill... maybe you'd better stay here. Well, who cares! You won't just go there, you'll JUMP!\bMiraculously, you survive, and you find yourself... ";
 
 skibo_plaza : FakeConnector "You don't want to go to the Skibo Plaza! " { }
 

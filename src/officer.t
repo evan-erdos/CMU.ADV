@@ -6,6 +6,7 @@
 
 cmu_officer : Readable, Person 'police/officer/cop' 'Campus Officer'  @the_cut
 "This cop is mean and ugly; he's the Clint Eastwood of the academic world. You'd better not mess with him. " {
+	isProperNoun = true;
 	readDesc = "The cop has <b>mean<\b> written all over him. ";
 
 	harass(actor) { Events.init_limbo(); }

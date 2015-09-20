@@ -17,7 +17,7 @@
 -source rooms
 -source user
 
-# people
+-source people
 -source officer
 
 # buildings & campus
@@ -25,6 +25,7 @@
 -source baker
 -source cfa
 -source doherty
+-source ghc
 -source hammerschlag
 -source warner
 
