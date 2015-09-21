@@ -75,7 +75,7 @@ user : BagOfHolding, Mortal {
 				user.firstname = util.capitalize(s[0]);
 				user.lastname = util.capitalize(s[1]);
 			}
-		}"FUCKFUCK";
+		}
 	}
 
 	setGender() {

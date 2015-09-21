@@ -11,7 +11,7 @@ versionInfo : GameID {
 	original_byline = 'by Galloway & Kuehner & Pawlinger';
 	authorEmail = 'bescott@andrew.cmu.edu';
 	genre = 'Adventure';
-	version = 'v2.0.1';
+	version = 'v2.0.2';
 	firstPublished = '1986 (2015)';
 	IFID = 'TADS3CMU-ADV3-77C6-042E-278CEDED4BDC';
 
@@ -23,7 +23,7 @@ versionInfo : GameID {
 	} /* titleScreen */
 
 	showAbout() {
-		"\b<center><b><u>; <<versionInfo.name.toUpper()>></u></b>
+		"\b<b><u>; <<versionInfo.name.toUpper()>></u></b>
 		\n; <<versionInfo.tagline>>
 		\n; <<'&lt;'+versionInfo.original_byline+'&gt;'>>
 		\b<<versionInfo.byline>>, <<versionInfo.authorEmail>>

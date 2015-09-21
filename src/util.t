@@ -1,4 +1,4 @@
-/* Ben Scott - 201505142021 - vividity - util */
+/* Ben Scott - bescott@andrew.cmu.edu - 2015-09-21 - CMU.ADV - util */
 
 #include <adv3.h>
 #include <en_us.h>
@@ -59,7 +59,8 @@ Events : object {
 		eventList = ['The fog glowers at your plight. ',
 			'You think you noticed it get slightly brighter for a moment. ',
 			'The fog glowers at your plight. ',
-			{: say('<b>lo! but you are saved!</b>'), user.reset() }]
+			{: say('<b>lo! but you are saved!</b>'),
+				user.reset(), Events.stop_limbo() }]
 		eventPercent = 80;
 	}
 }
