@@ -79,7 +79,7 @@ Events : object {
 		eventList = ['The fog glowers at your plight. ',
 			'You think you noticed it get slightly brighter for a moment. ',
 			'The fog glowers at your plight. ',
-			{: say('<b>lo! but you are saved!</b>'),
+			{: print('<b>lo! but you are saved!</b>'),
 				user.reset(), Events.stop_limbo() }]
 		eventPercent = 80;
 	}

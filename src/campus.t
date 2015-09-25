@@ -176,7 +176,7 @@ campus_atmosphere : Ambience [
 	'The grass wavers about.',
 	'<<one of>>It gets a bit dark.<<at random>> Some clouds pass overhead. <<one of>>Droplets of rain fall sparsely here and there.<<at random>>',
 	'Individual drops of rain patter the concrete buildings, making the faintest tapping noise.',
-	{: say(uniqueEvents.doScript()) },
+	{: print(uniqueEvents.doScript()) },
 	'A class lets out across the way, and people mosey out. ',
 	'A <<one of>>serene<<or>>balmy<<at random>> breeze rolls over the lawn and eddies overtop the buildings. <<one of>>The campus\'s small trees dance and turn in the wind.<<at random>>',
 	'The grass waves at you; slow shockwaves of wind propagate from the south lawn.',

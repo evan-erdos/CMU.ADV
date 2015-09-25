@@ -4,16 +4,6 @@
 #include <en_us.h>
 #include "macros.h"
 
-modify Actor {
-	makeProper() {
-		if (isProperName==null && properName!=null) {
-			name = properName;
-			isProperName = true;
-			initializeVocabWith(properName);
-		} return name;
-	}
-}
-
 class Mortal : Person {
 	maxHealth = 16;
 	health = 16;
