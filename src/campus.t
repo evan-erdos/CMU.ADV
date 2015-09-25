@@ -4,8 +4,6 @@
 #include <en_us.h>
 #include "macros.h"
 
-//RoomConnector template @room1 @room2 "desc"?;
-
 class CampusOutdoorRoom : OutdoorRoom { atmosphereList = campus_atmosphere; }
 
 fence : MultiLoc, Fixture, Readable 'The Fence' 'the Fence'
@@ -174,16 +172,12 @@ frew_st_east : FakeConnector "You look at Frew St., and decide that ultimately, 
 ucc_atrium : FakeConnector "You are standing outside the UCC on Forbes. High up above, you see a pair of weathered pink flamingoes. An entrance lies south. Well, an entrance would be there if I implemented any of this. BACK TO WARNER FOR YOU. " { }
 
 campus_atmosphere : Ambience [
-	'A <<one of>>serene<<or>>gentle<<at random>> wind moseys in from the east.',
+	'A <<one of>>serene<<or>>gentle<<at random>> wind moseys in from the <<one of>>east<<or>>west<<at random>>.',
 	'The grass wavers about.',
-	'In the distance you can hear some people laughing, but then they become quiet all of a sudden. ',
 	'<<one of>>It gets a bit dark.<<at random>> Some clouds pass overhead. <<one of>>Droplets of rain fall sparsely here and there.<<at random>>',
 	'Individual drops of rain patter the concrete buildings, making the faintest tapping noise.',
-	'Two people walk by, speaking a language you can\'t even identify (and you\'re pretty worldly!). You both realize that you\'re staring at them. You stop. ',
+	{: say(uniqueEvents.doScript()) },
 	'A class lets out across the way, and people mosey out. ',
-	'A lone figure darts around a corner, his head and face obscured by a hat and a huge backpack. ',
-	'A car horn gives a short blip of noise to someone near the intersection, insomuch as you can tell. ',
-	'At a distance you can see a student jump in suprise, having just unwittingly stepped in a deep puddle. <i>Get it together, Cindy.</i> ',
 	'A <<one of>>serene<<or>>balmy<<at random>> breeze rolls over the lawn and eddies overtop the buildings. <<one of>>The campus\'s small trees dance and turn in the wind.<<at random>>',
 	'The grass waves at you; slow shockwaves of wind propagate from the south lawn.',
 	'The grass twirls around you in the wind.',
@@ -194,4 +188,13 @@ campus_atmosphere : Ambience [
 	'The grass twirls in the breeze.',
 	'It gets a bit darker as some clouds pass overhead. <<one of>>Pinpricks of tiny raindrops suprise you for a short while.<<or>><<at random>>',
 	'You hear chirping somewhere.'];
+
+uniqueEvents : RandomFiringScript, EventList [
+	'In the distance you can hear some people laughing, but then they become quiet all of a sudden. ',
+	'A lone figure darts around a corner, his head and face obscured by a hat and a huge backpack. ',
+	'A car horn gives a short blip of noise to someone near the intersection, insomuch as you can tell. ',
+	'At a distance you can see a student jump in suprise, having just unwittingly stepped in a deep puddle. <i>Get it together, Cindy.</i> ',
+	'Two people walk by, speaking a language you can\'t even identify (and you\'re pretty worldly!). You both realize that you\'re staring at them. You stop. '] eventPercent = 80;
+
+
 

@@ -30,4 +30,3 @@ versionInfo : GameID {
 		\nRelease <<versionInfo.version>>, <<versionInfo.firstPublished>>";
 	} /* showAbout */
 } /* versionInfo */
-

@@ -5,8 +5,6 @@
 #include "macros.h"
 
 RoomConnector template @room1 @room2 "desc"?;
-//Passage template -> masterObject 'vocabWords' 'name' @location? "desc"?
-//Door template 'name' @room1 @room2;
 
 root : Room 'dorm' 'your dorm room'
 "It's a standard-issue dwelling: there's random furniture crammed into all sorts of odd angles, and the effects of a roommate you haven't seen in months, not including his wallet, unfortunately. " {
@@ -32,6 +30,14 @@ root : Room 'dorm' 'your dorm room'
 limbo : Room 'limbo' 'Limbo'
 "You are in limbo.  There is nothing but foggy grey matter as far as the eye can see. Ghosts of ancient hackers wander around and through you. " {
 	specialDesc = "You can't seem to get out of here. ";
+	east = limbo;
+	northeast asExit(east);
+	north asExit(east);
+	northwest asExit(east);
+	south asExit(east);
+	southeast asExit(east);
+	southwest asExit(east);
+	west asExit(east);
 }
 
 into_limbo : TravelMessage -> limbo "You are taken to... " { }

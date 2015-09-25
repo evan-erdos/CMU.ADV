@@ -40,7 +40,7 @@ futuristic_leaflet : Thing '(small) note/email' 'futuristic leaflet' @root
 }
 
 newspaper : Readable, Thing
-'news/paper/tartan/newspaper' 'an issue of "The Tartan"' @dh_entrance
+'news/paper/tartan/newspaper' 'issue of "The Tartan"' @dh_entrance
 "It's what passes for a newspaper at this school. " {
 	initSpecialDesc = "A newspaper lies discarded on the ground. ";
 	readDesc {

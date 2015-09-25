@@ -5,6 +5,16 @@
 #include "macros.h"
 
 /* begin mods */
+
+// Passage template -> masterObject 'vocabWords' 'name' @location? "desc"?
+// Door template 'name' @room1 @room2;
+
+// Room template [room_list] "desc"?;
+// alternate format, includes up / down, etc.
+// [northwest, north, northeast] // [[NW,  U,  N,  NE],
+// [west,    'roomName',   east] //  [W,  IN, OUT, E ],
+// [southwest, south, southeast] //  [SW, D,   S,  SE]]
+
 modify Goal goalState = OpenGoal;
 
 modify YellAction {
@@ -15,6 +25,16 @@ modify Thing {
 	dobjFor(BarkAt) {
 		verify() {
 			illogical('{The dobj/he} {is} not something you can bark at. '); }
+	}
+}
+
+modify Actor {
+	makeProper() {
+		if (isProperName==null && properName!=null) {
+			name = properName;
+			isProperName = true;
+			initializeVocabWith(properName);
+		} return name;
 	}
 }
 
