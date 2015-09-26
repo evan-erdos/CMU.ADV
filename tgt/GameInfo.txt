@@ -2,8 +2,8 @@ IFID: TADS3CMU-ADV3-77C6-042E-278CEDED4BDC
 Name: CMU.ADV
 Byline: by Ben Scott
 AuthorEmail: bescott@andrew.cmu.edu
-Version: v2.0.2
-ReleaseDate: 2015-09-25
+Version: v2.0.3
+ReleaseDate: 2015-09-26
 FirstPublished: 1986 (2015)
 Language: en-US
 LicenseType: Freeware

@@ -126,8 +126,8 @@ cut_walkway_3 : CampusOutdoorRoom 'Walkway (Near Baker)' 'the walkway'
 pausch_bridge_entrance : CampusOutdoorRoom
 'The Pausch Bridge (near Purnell)' 'the Pausch Bridge'
 "You're in the shelter of the Purnell Center rotunda. " {
-	southeast = cut_south;
-	northeast = cut_walkway_1;
+	northeast = cut_south;
+	southeast = cut_walkway_1;
 	west = pausch_bridge_0;
 }
 
