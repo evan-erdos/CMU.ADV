@@ -11,7 +11,7 @@ dh_entrance : OutdoorRoom 'Doherty Hall (Outside)' 'Doherty'
 	in asExit(west);
 }
 
-dh_1_east : Room 'Doherty Hall (Atrium)' 'Doherty'
+dh_1_east : Room 'Doherty Hall (Foyer)' 'Doherty'
 "This is the east end of the first floor of Doherty Hall.  Locked classroom and laboratory doors line the hallway, which ends to the west but runs east into the building entrance.  A well-lit stairwell is nearby. " {
 	east = dh_entrance;
 }
