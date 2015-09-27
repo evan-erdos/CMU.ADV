@@ -30,15 +30,15 @@ ben_scott : Person
 /* this is the explicit description, which is run when the user
  * looks directly at me, or examines me */
 "He wears an obnoxiously neon shirt, and looks at you expectantly when you approach him. He knows that he's better than you, but he's frankly too kind to say so. Even if he did, you'd probably agree: He's pretty clever. " {
-	isBetterThanYou = true; // you can add properties to anything like this
-	initSpecialDesc { // special message, runs when user !ben_scott.seen
-		isInInitState = null; // set to null once we've run
-		user.name = user.name.toUpper(); // name trick
-		achievement.awardPointsOnce(); // award points
-		"Ben Scott is standing here. He turns to you and says \"<b>So</b>, full disclosure here: I lost my script. Yeah, they didn't tell me what to say here, so, eh... Hi? How are you...\" he squints a bit, and looks at your chest, where, all of a sudden, a nametag has appeared! \"<<user.name.toLower()>>? So, eh, you're... not a big fan of capital letters then, huh?\" Sure enough, you look down again and it's written differently! Your name is in all caps now. <<user.engender('What a guy.','You just can\'t help but think how dreamy he is.')>>"; }
-	specialDesc { ben_scott_list.doScript(); } // prints with room
+    isBetterThanYou = true; // you can add properties to anything like this
+    initSpecialDesc { // special message, runs when user !ben_scott.seen
+        isInInitState = null; // set to null once we've run
+        user.name = user.name.toUpper(); // name trick
+        achievement.awardPointsOnce(); // award points
+        "Ben Scott is standing here. He turns to you and says \"<b>So</b>, full disclosure here: I lost my script. Yeah, they didn't tell me what to say here, so, eh... Hi? How are you...\" he squints a bit, and looks at your chest, where, all of a sudden, a nametag has appeared! \"<<user.name.toLower()>>? So, eh, you're... not a big fan of capital letters then, huh?\" Sure enough, you look down again and it's written differently! Your name is in all caps now. <<user.engender('What a guy.','You just can\'t help but think how dreamy he is.')>>"; }
+    specialDesc { ben_scott_list.doScript(); } // prints with room
     /* This is a template also. This is a large number of points. */
-	achievement : Achievement { +64 "finding the infamous Ben Scott. " }
+    achievement : Achievement { +64 "finding the infamous Ben Scott. " }
 }
 
 /* Shuffled event lists are pretty useful, it iterates through
@@ -50,7 +50,7 @@ ben_scott_list : ShuffledEventList
 /* this is actually a short anonymous function, it prints the
  * string and awards points for the button puzzle */
 {: "He just starts speaking to you out of nowhere. \"I once killed a man in the desert, just because I wanted to see if it would inspire me artistically. It didn't. Do you know the elevator trick? That's how I got here. You take the bigger elevator down to the first floor, and when the door opens, you can reach outside to a button on the frame to your left, and then get to any floor you want! I think it's pretty neat. Do you like coffeecake? I don't know how I feel about it, really...\" You stop listening.",
-	ghc_button.achievement.awardPointsOnce()} ]
+    ghc_button.achievement.awardPointsOnce()} ]
 ['He gets up to strech, and looks out the window. It is an exceptional view. ',
  'His titanium cup is full of coffee again. You didn\'t notice him leave. ',
  'He types something, giggles to himself, but then instantly returns to looking stoic and stately when he realizes you\'re still here. '];
