@@ -42,7 +42,7 @@ newspaper : Readable, Thing
 "It's what passes for a newspaper at this school. " {
     initSpecialDesc = "A newspaper lies discarded on the ground. ";
     readDesc {
-        Events.initTypewriter('ohshit!',23);
+        Events.initTypewriter('Holy Shit!',23);
         "The headline reads \"\'Graduation Groovy,\' Quips Cyert.\"\n
         The story goes on to describe the graduation ceremonies, which went off without a hitch.\n Suddenly, a horrible realization dawns on you.  That was YOUR graduation.  And you don't remember any of it!  Dazedly you check the date on the paper -- sure enough, two days after graduation. You must have slept completely through it!  You didn't graduate, and you didn't get your diploma, and now you're not going to get that new Porsche from MegaMissles, Inc., either.  Without a diploma, they'll never hire you, no matter what that recruiter said. \n<b>You're dead meat.</b>\n";
         newspaper.achievement.awardPointsOnce();
