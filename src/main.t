@@ -19,6 +19,7 @@ gameMain : GameMainDef { // impugn
 
     newGame() {
         intro.prolog();
+        clear;
         startup(); cls();
         user.init();
         Events.init();
@@ -58,15 +59,15 @@ gameMain : GameMainDef { // impugn
 #ifdef SUDO
 
 DefineIAction(FiatLux)
-execAction {
-    if (gPlayerChar.brightness==0) {
-        "You\'re pretty bright. ";
-        gPlayerChar.brightness = 3;
-    } else {
-        "You feel dimmer. ";
-        gPlayerChar.brightness = 0;
+    execAction {
+        if (gPlayerChar.brightness==0) {
+            "You\'re pretty bright. ";
+            gPlayerChar.brightness = 3;
+        } else {
+            "You feel dimmer. ";
+            gPlayerChar.brightness = 0;
+        }
     }
-}
 ;
 
 

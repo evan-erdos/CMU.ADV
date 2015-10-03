@@ -38,6 +38,15 @@ modify Actor {
     }
 }
 
+modify statusLine {
+    showStatusRight() {
+        "<<user.name>> - <<versionInfo.name>> - ";
+        inherited();
+    }
+}
+
+enum male, female;
+
 class Ambience : RandomFiringScript, ShuffledEventList {
     eventPercent = 50;
 }
@@ -49,10 +58,37 @@ Ambience template [eventList];
 
 /* begin events */
 Events : object {
+
     sleep() { }
 
     init() {
         cmu_officer.addToAgenda(officer_agenda);
+    }
+
+    propertyset '*Typewriter' {
+        count = 1;
+        input = '';
+        daemon = null;
+
+        init(s, delay) {
+            if (daemonTypewriter==null) {
+                inputTypewriter = s;
+                print('adsfasdfasdf');
+                daemonTypewriter = new RealTimeDaemon(
+                    self,&advanceTypewriter,delay);
+            }
+        }
+
+        advance() {
+            if (countTypewriter<=inputTypewriter.length()) {
+                cls();
+                print(inputTypewriter.substr(1,countTypewriter));
+                countTypewriter++;
+            } else if (daemonTypewriter!=null) {
+                daemonTypewriter.removeEvent;
+                daemonTypewriter = null;
+            }
+        }
     }
 
     propertyset '*_limbo' {
@@ -123,11 +159,4 @@ util : object {
     offenses = 0;
 }
 
-modify statusLine {
-    showStatusRight() {
-        "<<user.name>> - <<versionInfo.name>> - ";
-        inherited();
-    }
-}
 
-enum male, female;
