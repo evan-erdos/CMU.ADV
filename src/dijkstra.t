@@ -1,4 +1,4 @@
-/* Ben Scott - bescott@andrew.cmu.edu - 2015-09-26 - CMU.ADV - dijkstra */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-26 * Dijkstra */
 
 #include <adv3.h>
 #include <en_us.h>

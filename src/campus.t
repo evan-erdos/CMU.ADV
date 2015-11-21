@@ -1,4 +1,4 @@
-/* Ben Scott - bescott@andrew.cmu.edu - 2015-09-19 - CMU.ADV - campus */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-19 * Campus */
 
 #include <adv3.h>
 #include <en_us.h>

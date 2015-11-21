@@ -1,9 +1,14 @@
-/* Ben Scott - bescott@andrew.cmu.edu - 2015-09-19 - CMU.ADV - items */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-19 * Items */
 
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
 
+/** `backpack` : **`BagOfHolding`**
+|*
+|* This is the main holdall for the `user`. Should be found in
+|* one of the starting rooms.
+|**/
 backpack : BagOfHolding, StretchyContainer 'backpack' @root
 "You've had this pack for awhile. It's somewhat old, but it still carries everything you need to go out adventuring." {
     initSpecialDesc = "Your tattered backpack is here. You typically don't leave home without it. ";
@@ -13,9 +18,18 @@ backpack : BagOfHolding, StretchyContainer 'backpack' @root
     //affinityFor(obj) { return obj.ofKind(Tablet) ? 200 : inherited(obj); }
 }
 
+/** `keyring` : **`Keyring`**
+|*
+|* This is the main `Keyring` for the `user`, which should also
+|* be situated near the start of the game.
+|**/
 keyring : Keyring 'keyring' @root
 "Your keyring is kindof barren. It\'s old enough that it\'s not as hard to separate it to put keys on, though. So, you\'ve got that going for you, which is nice." { }
 
+/** `flashlight` : **`Flashlight`**
+|*
+|* This is the main `Lamp` for the `user`.
+|**/
 flashlight : Flashlight 'flashlight' @root
 "Your flashlight is thin, and made from a very heavy metal. You would have a hard time breaking it, but the batteries don\'t last that long." {
     vocabWords = 'flash/flashlight/light/lamp/lantern/bulb/light/li';
