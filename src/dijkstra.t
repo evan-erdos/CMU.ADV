@@ -4,23 +4,26 @@
 #include <en_us.h>
 #include "macros.h"
 
-/*
- *   The basic path finder class.  This implements Dijkstra's algorithm to
- *   find the shortest path from one node to another in a graph.  This base
- *   implementation doesn't make any assumptions about the nature of the
- *   underlying graph; each subclass must override one method to provide
- *   the concrete graph implementation.
- */
+/** `BasePathFinder` : **`object`**
+ *
+ * The basic path finder class. This implements Dijkstra's algorithm to
+ * find the shortest path from one node to another in a graph.  This base
+ * implementation doesn't make any assumptions about the nature of the
+ * underlying graph; each subclass must override one method to provide
+ * the concrete graph implementation.
+ **/
 class BasePathFinder : object {
-    /*
-     *   Find the best path from 'fromNode' to 'toNode', which are nodes in
-     *   the underlying graph.  We'll return a vector consisting of graph
-     *   nodes, in order, giving the shortest path between the nodes.  Note
-     *   that 'fromNode' and 'toNode' are included in the returned vector.
+
+    /** `findPath` : **`function`**
      *
-     *   If the two nodes 'fromNode' and 'toNode' aren't connected in the
-     *   graph, we'll simply return null.
-     */
+     * Find the best path from 'fromNode' to 'toNode', which are nodes in
+     * the underlying graph.  We'll return a vector consisting of graph
+     * nodes, in order, giving the shortest path between the nodes.  Note
+     * that 'fromNode' and 'toNode' are included in the returned vector.
+     *
+     * If the two nodes 'fromNode' and 'toNode' aren't connected in the
+     * graph, we'll simply return null.
+     **/
     findPath(fromNode, toNode) {
         local i;
         local len;
@@ -34,31 +37,32 @@ class BasePathFinder : object {
         workingList = new Vector(32);
         workingList.append(new PathFinderNode(fromNode));
 
-        /*
-         *   Work through the list.  For each item in the list, add all of
-         *   the items adjacent to that item to the end of the list.  Keep
-         *   visiting new elements until we've visited everything in the
-         *   list once.
+        /**
+         * Work through the list. For each item in the list, add all of
+         * the items adjacent to that item to the end of the list. Keep
+         * visiting new elements until we've visited everything in the
+         * list once.
          *
-         *   We'll only add an element to the list if it's not already in
-         *   the list.  This guarantees that the loop will converge (since
-         *   the number of items in the graph must be finite).
-         */
-        for (i=1;i<=workingList.length();++i) { /* add each adjacent item to the working list */
+         * We'll only add an element to the list if it's not already in
+         * the list.  This guarantees that the loop will converge (since
+         * the number of items in the graph must be finite).
+         **/
+        for (i=1;i<=workingList.length();++i) {
+            /* add each adjacent item to the working list */
             forEachAdjacent(workingList[i].graphNode,new function(adj, dist) {
-                /*
-                 *   add the adjacent node only if it's not already in the
-                 *   working list
-                 */
+                /**
+                 * add the adjacent node only if it's not already in the
+                 * working list
+                 **/
                 if (workingList.indexWhich({x: x.graphNode == adj}) == null)
                     workingList.append(new PathFinderNode(adj));
             });
         }
 
-        /*
-         *   if the destination isn't in the working list, then there's no
-         *   hope of finding a path to it
-         */
+        /**
+         * if the destination isn't in the working list, then there's no
+         * hope of finding a path to it
+         **/
         if (workingList.indexWhich({x: x.graphNode == toNode}) == null)
             return null;
 
@@ -71,21 +75,18 @@ class BasePathFinder : object {
         cur.predNode = null;
 
         /* keep going while we have unresolved nodes */
-        while (workingList.length() != 0)
-        {
+        while (workingList.length() != 0) {
             local minIdx;
             local minDist;
 
             /* find the working list element with the shortest distance */
             minDist = null;
             minIdx = null;
-            for (i = 1, len = workingList.length() ; i <= len ; ++i)
-            {
+            for (i = 1, len = workingList.length() ; i <= len ; ++i) {
                 /* if this is the best so far, remember it */
                 cur = workingList[i];
                 if (cur.bestDist != null
-                    && (minDist == null || cur.bestDist < minDist))
-                {
+                    && (minDist == null || cur.bestDist < minDist)) {
                     /* this is the best so far */
                     minDist = cur.bestDist;
                     minIdx = i;
@@ -101,38 +102,36 @@ class BasePathFinder : object {
              *   update the best distance for everything adjacent to the
              *   one we just finished
              */
-            forEachAdjacent(cur.graphNode, new function(adj, dist)
-            {
+            forEachAdjacent(cur.graphNode, new function(adj, dist) {
                 local newDist;
                 local entry;
 
-                /*
-                 *   Find the working list entry from the adjacent room.
-                 *   If there's no working list entry, there's nothing we
-                 *   need to do here, since we must already be finished
-                 *   with it.
-                 */
+                /**
+                 * Find the working list entry from the adjacent room.
+                 * If there's no working list entry, there's nothing we
+                 * need to do here, since we must already be finished
+                 * with it.
+                 **/
                 entry = workingList.valWhich({x: x.graphNode == adj});
                 if (entry == null)
                     return;
 
-                /*
-                 *   calculate the new distance to the adjacent room, if
-                 *   we were to take a path from the room we just finished
-                 *   - this is simply the path distance to the
-                 *   just-finished room plus the distance from that room
-                 *   to the adjacent room (i.e., 'dist')
-                 */
+                /**
+                 * calculate the new distance to the adjacent room, if
+                 * we were to take a path from the room we just finished
+                 * - this is simply the path distance to the
+                 * just-finished room plus the distance from that room
+                 * to the adjacent room (i.e., 'dist')
+                 **/
                 newDist = cur.bestDist + dist;
 
-                /*
-                 *   If this is better than the best estimate for the
-                 *   adjacent room so far, assume we'll use this path.
-                 *   Note that if the best estimate so far is null, it
-                 *   means we haven't found any path to the adjacent node
-                 *   yet, so this new distance is definitely the best so
-                 *   far.
-                 */
+                /**
+                 * If this is better than the best estimate for the
+                 * adjacent room so far, assume we'll use this path.
+                 * Note that if the best estimate so far is null, it
+                 * means we haven't found any path to the adjacent node
+                 * yet, so this new distance is definitely the best so far.
+                 **/
                 if (entry.bestDist == null
                     || newDist < entry.bestDist)
                 {
