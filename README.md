@@ -28,12 +28,25 @@ A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 
 Above are the first few lines of cmu.adv, a file which probably still exists on the CMU afs server. Apparently, a similar attempt at writing a CMU text adventure was made in 1986, in some arcane, lisp-like language.
 
-This is a repository for the soon-to-be coolest text adventure on campus! *CMU.ADV* is written in TADS3, and compiles to a *.t3 format, readable by the [frob](https://github.com/realnc/frobtads "FrobTADS") interpreter.
+This is a repository for the soon-to-be coolest text adventure on campus! *CMU.ADV* is written in TADS3, and compiles to a *.t3 format, readable by the [frob][] interpreter.
 
 ---
 You can play this online! Click the image below!
 [![cmu_adv](https://cloud.githubusercontent.com/assets/6759009/9998540/992f043c-605f-11e5-8adc-c47a9f166ded.png)](http://gs.tads.io/?storyfile=http://www.andrew.cmu.edu/user/bescott/cmu.adv/cmu_adv.t3)
 ---
+
+## Compiling your own! ##
+
+First, you will need [FrobTads][] if you're on any unix system, and while there is some special thing for windows, perhaps sometimes try not using windows, or get a
+
+[frob]: <https://github.com/realnc/frobtads>
+[FrobTads]: <http://www.tads.org/tads3.htm#>
+
+---
+
+
+
+
 
 Todo:
 - ~~Add to map~~
