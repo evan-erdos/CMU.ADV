@@ -84,7 +84,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 ;
 
 ++ DefaultAnyTopic
-    "What major do you want to tell him? <.convstay>"
+    "What school do you want to tell him you're \"applying\" to? <.convstay>"
 ;
 
 ++ YesTopic, SuggestedYesTopic
@@ -93,13 +93,13 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 
      The reporter nods sagely, and jots something down on his notepad. Craning your neck slightly, you can see that he has written <q>What is Dijkstra? Very impressed with graph theory knowledge.</q>\b
 
-     Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program!" //Need next topic here
+     <q>Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program!</q>" //Need next topic here
 ;
 
 ++ NoTopic, SuggestedNoTopic
     "<q>Oh, no, I'm just a fan of Cobot,</q> you say. <q>I think he's cute! And he carries candy sometimes, so I like to hang around.</q>\b
 
-     The interviewer seems mildly amused by your response. He flounders for a bit, then apparently realizes that he still hasn't found out what you're interested in. <q>What school are you applying to, then?<.convstay></q>"
+     The interviewer seems mildly amused by your response. He flounders for a bit, then apparently realizes that he still hasn't found out what you're interested in. <q>What school are you applying to, then? Or... wait, did you say you were going for CS?</q><.convstay>"
 ;
 
 ++ SpecialTopic 'CIT' ['cit', 'engineering', 'ece', 'meche', 'college of engineering']
@@ -109,16 +109,45 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 ++ SpecialTopic 'Drama' ['drama', 'school of drama']
     "Okay, taking a quick break from narrating to say, <b>what are you doing in the CClub text adventure</b>? But. Anyway.\b
      <q>The gods have sent me yonder way, whenceforth I have taken upon me to apply to this divine school for its splendiferous Dramatization Program!</q> You have no idea if half of the things you've said are even words, and for some reason you appear to be holding a skull in your hand as you kneel to the interviewer. He seems impressed with your yowling, though.\b
-     <q></q>"
+     <q>Oh, what splendid acting! So you're a fan of the performing arts! What's your favorite play?</q><.convnode drama>"
 ;
 
 ++ SpecialTopic 'Tepper' ['tepper', 'business', 'socializing', 'tepper school of business', 'suit wearing']
     "Agh, how could he possibly think that you would willingly associate with those socially-blind androids?! <q>Ohh, nooo,</q> you quickly say, <q>I aspire to be an entrepreneur! I take my inspiration from the great Andrew Carnegie himself.</q>\b
-    <q></q>"
+    The interviewer nods sagely. <q>Ah, yes. Here to make... <i>connections</i>.</q> He coughs, then moves on. <q></q>" /***/
 ;
 
 ++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
-    "test"
+    "What do they even do in there? You don't really know, but decide to take a potshot and claim you're applying here anyway. <q>Dietrich!</q> you announce in your most overenthusiastic voice. Hopefully, your faux-excitement will carry you through here.\b
+    <q></q>" /***/
 ;
+
+/*********************<SCS>*************************/
++ ConvNode 'scs'
+;
+
+//++ SpecialTopic
+
+/*********************<CIT>*************************/
+
+/********************<Drama>************************/
++ ConvNode 'drama'
+;
+
+++ DefaultAnyTopic
+	"The interviewer seems dissatisfied with your response. <q>Did you mean <b>Pippin</b>?</q><.convstay>"
+;
+
+++ SpecialTopic 'say Pippin' ['Pippin']
+	"<q>GREAT!</q> he says, a little bit too excitedly."
+;
+
+/********************<Tepper>************************/
+
+/*******************<Dietrich>***********************/
+
+/**********************<MCS>*************************/
+
+
 
 me : Topic 'myself/me';
