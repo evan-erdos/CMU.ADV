@@ -93,7 +93,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 
      The reporter nods sagely, and jots something down on his notepad. Craning your neck slightly, you can see that he has written <q>What is Dijkstra? Very impressed with graph theory knowledge.</q>\b
 
-     <q>Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program!</q>" //Need next topic here
+     <q>Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program! Of course, I'll need to know if you've had any prior experience. Do you want to tell me about any of your extracurriculars?<.convnode extracurriculars></q>"
 ;
 
 ++ NoTopic, SuggestedNoTopic
@@ -114,19 +114,13 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 
 ++ SpecialTopic 'Tepper' ['tepper', 'business', 'socializing', 'tepper school of business', 'suit wearing']
     "Agh, how could he possibly think that you would willingly associate with those socially-blind androids?! <q>Ohh, nooo,</q> you quickly say, <q>I aspire to be an entrepreneur! I take my inspiration from the great Andrew Carnegie himself.</q>\b
-    The interviewer nods sagely. <q>Ah, yes. Here to make... <i>connections</i>.</q> He coughs, then moves on. <q></q>" /***/
+    The interviewer nods sagely. <q>Ah, yes. Here to make... <i>connections</i>.</q> He coughs, then moves on. <q>Please, tell me about your socialization and the connections you've made through extracurriculars.</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
     "What do they even do in there? You don't really know, but decide to take a potshot and claim you're applying here anyway. <q>Dietrich!</q> you announce in your most overenthusiastic voice. Hopefully, your faux-excitement will carry you through here.\b
     <q></q>" /***/
 ;
-
-/*********************<SCS>*************************/
-+ ConvNode 'scs'
-;
-
-//++ SpecialTopic
 
 /*********************<CIT>*************************/
 
@@ -139,15 +133,20 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 ;
 
 ++ SpecialTopic 'say Pippin' ['Pippin']
-	"<q>GREAT!</q> he says, a little bit too excitedly."
+	"<q>GREAT!</q> he says, a little bit too excitedly. You lean away slightly from flying spittle. <q>Yes. Anyway.</q> He coughs. <q>Back on (Tartan)Tra(c)k. Do you participate in any extracurricular activities?<.convnode extracurriculars></q>"
 ;
-
-/********************<Tepper>************************/
 
 /*******************<Dietrich>***********************/
 
 /**********************<MCS>*************************/
 
+/*****************<Extracurriculars>*****************/
++ ConvNode 'extracurriculars'
+;
 
+++ SpecialTopic 'none' ['no', 'none', 'nothing', 'nope']
+    "You think you'll have a little fun and break the model applicant mold. <q>Nope,</q> you say cheerfully.\b
+    The interviewer looks shocked and scandalized."
+;
 
 me : Topic 'myself/me';
