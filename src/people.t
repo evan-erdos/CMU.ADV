@@ -3,7 +3,6 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
-#include "interviewer.t"
 
 /* I've added this file as a kind of tutorial, for those who'd
  * like to become rich and famous, (i.e., people who want to be
@@ -55,11 +54,3 @@ ben_scott_list : ShuffledEventList
 ['He gets up to strech, and looks out the window. It is an exceptional view. ',
  'His titanium cup is full of coffee again. You didn\'t notice him leave. ',
  'He types something, giggles to himself, but then instantly returns to looking stoic and stately when he realizes you\'re still here. '];
-
-/*****************************/
-
-// Eventually she'll want those student tears.
-sad_251_ta : Person 'ta/teaching assistant/sad ta' '<b>Sad TA</b>' @ghc_citadel_commons
-"A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at an overcrowded table. Everyone seems to be ignoring her." {
-    isHer = true;
-}
