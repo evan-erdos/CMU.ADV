@@ -101,7 +101,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 ;
 
 // Currently not correct, will fix promptly
-++ TellTopic @cit
+/*++ TellTopic @cit
     "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges. <q></q>"
 ;
 
@@ -118,7 +118,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 
 ++ TellTopic @dietrich
     ""
-;
+;*/
 
 me : Topic 'myself/me';
 
