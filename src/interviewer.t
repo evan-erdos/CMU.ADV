@@ -1,4 +1,5 @@
 /* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2015-11-24 * interviewer */
+/* Ford Seidel * fseidel@andrew.cmu.edu * 2015-11-25 * CIT text/
 
 #include <adv3.h>
 #include <en_us.h>
@@ -103,7 +104,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 ;
 
 ++ SpecialTopic 'CIT' ['cit', 'engineering', 'ece', 'meche', 'college of engineering']
-    "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges. <q></q>"
+    "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges. <q>I want to be an engineer. My father and his father before him were engineers, and since birth, I've known that engineering was my calling. Plus, I hear you guys have a great engineering program. Out of curiosity, why does it take four years to learn how to operate a machine that can only speed up and slow down along a track?</q>"
 ;
 
 ++ SpecialTopic 'Drama' ['drama', 'school of drama']
@@ -119,6 +120,10 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 
 ++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
     "test"
+;
+
+++ SpecialTopic 'MCS' ['mcs', 'mellon', 'college of science', 'science', 'math']
+    "Beakers, flasks (containing alcohol, or otherwise), and equations are your thing. You live for biology/chemistry/physics/math/jesuschristhowmanymajorsareinthisonecollege. <q></q>\b"
 ;
 
 me : Topic 'myself/me';
