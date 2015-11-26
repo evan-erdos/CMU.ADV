@@ -32,6 +32,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
     ['He smiles at you.']
 ;
 
+// Eventually need to change the point awarding to the end of the interview, not arbitrarily when you say bye
 +++ ByeTopic, ShuffledEventList
     [{: "<q>Thanks for the interview!</q> you say.\b
      <q>Best of luck to you in your college process, I'm sure you'll be fine!</q> the interviewer replies, scribbling madly on a notepad. <q>Thanks for coming by and considering Carnegie Mellon.</q> ",
@@ -78,6 +79,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
      The interviewer nods, seemingly impressed by your knowledge of GHC happenings. <q>I assume you\'re applying to our School of Computer Science, then?</q> <.convnode major>"
 ;
 
+/* A conversation node about your major. Pick the school you're in. */
 + ConvNode 'major'
 ;
 
@@ -100,29 +102,23 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
      The interviewer seems mildly amused by your response. He flounders for a bit, then apparently realizes that he still hasn't found out what you're interested in. <q>What school are you applying to, then?<.convstay></q>"
 ;
 
-// Currently not correct, will fix promptly
-/*++ TellTopic @cit
+++ SpecialTopic 'CIT' ['cit', 'engineering', 'ece', 'meche', 'college of engineering']
     "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges. <q></q>"
 ;
 
-++ SpecialTopic @drama
+++ SpecialTopic 'Drama' ['drama', 'school of drama']
     "Okay, taking a quick break from narrating to say, <b>what are you doing in the CClub text adventure</b>? But. Anyway.\b
      <q>The gods have sent me yonder way, whenceforth I have taken upon me to apply to this divine school for its splendiferous Dramatization Program!</q> You have no idea if half of the things you've said are even words, and for some reason you appear to be holding a skull in your hand as you kneel to the interviewer. He seems impressed with your yowling, though.\b
      <q></q>"
 ;
 
-++ TellTopic @tepper
+++ SpecialTopic 'Tepper' ['tepper', 'business', 'socializing', 'tepper school of business', 'suit wearing']
     "Agh, how could he possibly think that you would willingly associate with those socially-blind androids?! <q>Ohh, nooo,</q> you quickly say, <q>I aspire to be an entrepreneur! I take my inspiration from the great Andrew Carnegie himself.</q>\b
     <q></q>"
 ;
 
-++ TellTopic @dietrich
-    ""
-;*/
+++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
+    "test"
+;
 
 me : Topic 'myself/me';
-
-cit : Topic 'engineering/CIT/ECE/MechE/college of engineering';
-drama : Topic 'drama/school of drama';
-tepper : Topic 'tepper/business/being a jerk/Tepper School of Business/suit wearing';
-dietrich : Topic 'dietrich/humanities';
