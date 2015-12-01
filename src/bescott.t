@@ -1,4 +1,4 @@
-/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-20 * people */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-20 * bescott */
 
 #include <adv3.h>
 #include <en_us.h>
@@ -7,12 +7,15 @@
 /* object definition (don't objectify me!)
  * but still, I'm an instance of the Person class */
 ben_scott : Person
+
 /* I'm using the actor template, so these are the vocabWords */
 'ben/scott/bescott/ben scott/cool kid'
+
 /* similar story for the name and location. It's s&p to use the
  * @location syntax instead of the + notation for people and
  * items which have a tendency to move about */
 '<b>Ben Scott</b>' @ghc_9_window
+
 /* this is the explicit description, which is run when the user
  * looks directly at me, or examines me */
 "He wears an obnoxiously neon shirt, and looks at you expectantly when you approach him. He knows that he's better than you, but he's frankly too kind to say so. Even if he did, you'd probably agree: He's pretty clever. " {

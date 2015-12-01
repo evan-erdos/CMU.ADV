@@ -1,4 +1,4 @@
-/* Ben Scott * bescott@andrew.cmu.edu * 2015-11-21 * Examples */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-12-01 * Examples */
 
 #include <adv3.h>
 #include <en_us.h>
@@ -40,6 +40,12 @@
  * also so that my website will render it properly, and make it
  * more legible.
  *
+ * Below are some uncommented examples of common objects. These
+ * will hopefully give readers a sense of what the most typical
+ * syntax is for these objects, and will act as a sort of code
+ * formatting standard for the rest of the project. For better
+ * and more commented examples, look in `src/Tutorial/`.
+ *
  * Finally, you will want a text editor that wraps lines. There
  * will be a lot of text that you probably don't want to bother
  * line-wrapping yourself, especially if your style of writing
@@ -47,68 +53,61 @@
  **/
 
 
-/* Humans of CMU something something mumble hipster */
-
-
 /** Example `Person` definition
  *
- * This follows the basic form of any other object definition
- * (don't objectify me!) but still, I'm an instance of `Person`
+ * This is a basic setup for a person. This person will exist
+ * at the entrance to Doherty Hall. The type is defined after
+ * the colon, and the rest of the items thereafter before the
+ * start of this definition's code block are specified by the
+ * `Actor` template.
+ *
+ * If you're into writing documentation comments, they look
+ * like this. I've been using `Markdown` in them quite a bit so
+ * I can just paste them into the wiki on github.
  **/
-ben_scott : Person 'ben/scott/bescott/ben scott/cool kid'
-'<b>Ben Scott</b>' @ghc_9_window
-"He wears an obnoxiously neon shirt, and looks at you expectantly when you approach him. He knows that he's better than you, but he's frankly too kind to say so. Even if he did, you'd probably agree: He's pretty clever. " {
-
-    /** `isBetterThanYou`
-     *
-     * To any definition of an object, you can simply tack on
-     * properties by declaring them, like this. Is this clean?
-     * No. Does this violate the Geneva Convention of Good
-     * Programming Language Design Decisions? Yes. Don't let it
-     * get to you. Maybe even use it once and awhile.
-     **/
-    isBetterThanYou = true;
-
+person_example : Person 'person/man/that guy/him' 'John Cena' @dh_entrance
+"This is the description of this person, which I usually put on its own line. " {
+    // beginning of this definition's scope
     initSpecialDesc {
-
         isInInitState = null;
+        "This is the first time you're seeing this person.
+        This message will not be displayed again. ";
+    }
 
-        user.name = user.name.toUpper(); // in-game name trick
-
-        // award points when this description is read
-        achievement.awardPointsOnce();
-
-        /** A note on seemingly random string literals in code
-         *
-         * Because printing is such a frequent event in text-
-         * adventures, TADS3 automatically `print`s or `say`s
-         * any double-quoted string. Single quoted strings are
-         * for string literals that shouldn't be evaluated the
-         * instant that they're interpreted.
-         **/
-        "Ben Scott is standing here. He turns to you and says \"<b>So</b>, full disclosure here: I lost my script. Yeah, they didn't tell me what to say here, so, eh... Hi? How are you...\" he squints a bit, and looks at your chest, where, all of a sudden, a nametag has appeared! \"<<user.name.toLower()>>? So, eh, you're... not a big fan of capital letters then, huh?\" Sure enough, you look down again and it's written differently! Your name is in all caps now. <<user.engender('What a guy.','You just can\'t help but think how dreamy he is.')>>"; }
-
-    specialDesc { ben_scott_list.doScript(); } // prints with room
-
-    /** `Achievement` property
-     *
-     * This both uses a `template` and also grants a relatively
-     * large number of points.
-     **/
-    achievement : Achievement { +64 "finding the infamous Ben Scott. " }
+    specialDesc { person_example_list.doScript(); }
 }
 
-ben_scott_list : ShuffledEventList
-['He seats himself in the weird chair, but just as soon as he leans into his computer, he leans back out again, and put\'s his feet up. You glance at his screen, and you can tell that he\'s rewritten his entire kernel from memory or something I mean, I dunno, does that sound like an impressive thing? Asking for a friend.\"<b>cd ../;2D;2D;2D;2C</b>whoops<b>:quit:q</b>how do i...<b>C-c C-c is undefined</b>come on<b>C-x C-c</b>',
+/* scope can be delimited by `C`-style brackets, or also with a
+ * single trailing semicolon. I prefer the former quite a bit,
+ * as it looks more like other languages, is visually clearer
+ * because the starting bracket denotes where the template ends
+ * and the scope begins, and also doesn't rely on indentation.
+ *
+ * This could also be written as:
+ *
+ * ```
+ * person_example : Person 'person' 'John' @dh_entrance
+ * "description!"
+ *     // whatever you please
+ *     lim = 9001
+ * ;
+ *```
+ */
 
-    // this is actually a short anonymous function, it prints
-    // the string and awards points for the button puzzle.
-{: "He just starts speaking to you out of nowhere. \"I once killed a man in the desert, just because I wanted to see if it would inspire me artistically. It didn't. Do you know the elevator trick? That's how I got here. You take the bigger elevator down to the first floor, and when the door opens, you can reach outside to a button on the frame to your left, and then get to any floor you want! I think it's pretty neat. Do you like coffeecake? I don't know how I feel about it, really...\" You stop listening.",
-    ghc_button.achievement.awardPointsOnce()} ]
-['He gets up to strech, and looks out the window. It is an exceptional view. ',
- 'His titanium cup is full of coffee again. You didn\'t notice him leave. ',
- 'He types something, giggles to himself, but then instantly returns to looking stoic and stately when he realizes you\'re still here. '];
-
-
-
-
+/** `ShuffledEventList`
+ *
+ * These are pretty useful: they iterate through the first list
+ * in the `template` in order, and then run any of the elements
+ * in the second list chaotically, i.e., with no element played
+ * twice in a row. Again, the weird syntax is the result of a
+ * pretty useful `template`. This isn't part of the definition
+ * above because the syntax looks weird.
+ **/
+person_example_list : ShuffledEventList
+    ['These descriptions will be printed in sequence.',
+     'One after the other, linearly.']
+    ['These will not appear linearly.',
+     'These will appear in an almost random order.',
+     'This will only happen after the first list of descriptions is exhausted.',
+     'This format is suprisingly useful when trying to write complicated events and interactions, as it lends a sense of randomness to the game.',
+     'Being that this is "Shuffled" not "Random", and given the nature of these games, it will not print the same element twice in a row. This makes things more believeable for the reader.'];
