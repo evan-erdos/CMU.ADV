@@ -1,4 +1,5 @@
 /* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2015-11-24 * interviewer */
+/* Ford Seidel * fseidel@andrew.cmu.edu * 2015-11-25 * CIT text/
 
 #include <adv3.h>
 #include <en_us.h>
@@ -32,6 +33,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
     ['He smiles at you.']
 ;
 
+// Eventually need to change the point awarding to the end of the interview, not arbitrarily when you say bye
 +++ ByeTopic, ShuffledEventList
     [{: "<q>Thanks for the interview!</q> you say.\b
      <q>Best of luck to you in your college process, I'm sure you'll be fine!</q> the interviewer replies, scribbling madly on a notepad. <q>Thanks for coming by and considering Carnegie Mellon.</q> ",
@@ -78,11 +80,12 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
      The interviewer nods, seemingly impressed by your knowledge of GHC happenings. <q>I assume you\'re applying to our School of Computer Science, then?</q> <.convnode major>"
 ;
 
+/* A conversation node about your major. Pick the school you're in. */
 + ConvNode 'major'
 ;
 
 ++ DefaultAnyTopic
-    "What major do you want to tell him? <.convstay>"
+    "What school do you want to tell him you're \"applying\" to? <.convstay>"
 ;
 
 ++ YesTopic, SuggestedYesTopic
@@ -91,38 +94,64 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 
      The reporter nods sagely, and jots something down on his notepad. Craning your neck slightly, you can see that he has written <q>What is Dijkstra? Very impressed with graph theory knowledge.</q>\b
 
-     Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program!" //Need next topic here
+     <q>Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program! Of course, I'll need to know if you've had any prior experience. Do you want to tell me about any of your extracurriculars?<.convnode extracurriculars></q>"
 ;
 
 ++ NoTopic, SuggestedNoTopic
     "<q>Oh, no, I'm just a fan of Cobot,</q> you say. <q>I think he's cute! And he carries candy sometimes, so I like to hang around.</q>\b
 
-     The interviewer seems mildly amused by your response. He flounders for a bit, then apparently realizes that he still hasn't found out what you're interested in. <q>What school are you applying to, then?<.convstay></q>"
+     The interviewer seems mildly amused by your response. He flounders for a bit, then apparently realizes that he still hasn't found out what you're interested in. <q>What school are you applying to, then? Or... wait, did you say you were going for CS?</q><.convstay>"
 ;
 
-// Currently not correct, will fix promptly
-/*++ TellTopic @cit
-    "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges. <q></q>"
+++ SpecialTopic 'CIT' ['cit', 'engineering', 'ece', 'meche', 'college of engineering']
+    "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges. <q>I want to be an engineer. My father and his father before him were engineers, and since birth, I've known that engineering was my calling. Plus, I hear you guys have a great engineering program. Out of curiosity, why does it take four years to learn how to operate a machine that can only speed up and slow down along a track?</q>"
 ;
 
-++ SpecialTopic @drama
+++ SpecialTopic 'Drama' ['drama', 'school of drama']
     "Okay, taking a quick break from narrating to say, <b>what are you doing in the CClub text adventure</b>? But. Anyway.\b
      <q>The gods have sent me yonder way, whenceforth I have taken upon me to apply to this divine school for its splendiferous Dramatization Program!</q> You have no idea if half of the things you've said are even words, and for some reason you appear to be holding a skull in your hand as you kneel to the interviewer. He seems impressed with your yowling, though.\b
-     <q></q>"
+     <q>Oh, what splendid acting! So you're a fan of the performing arts! What's your favorite play?</q><.convnode drama>"
 ;
 
-++ TellTopic @tepper
+++ SpecialTopic 'Tepper' ['tepper', 'business', 'socializing', 'tepper school of business', 'suit wearing']
     "Agh, how could he possibly think that you would willingly associate with those socially-blind androids?! <q>Ohh, nooo,</q> you quickly say, <q>I aspire to be an entrepreneur! I take my inspiration from the great Andrew Carnegie himself.</q>\b
-    <q></q>"
+    The interviewer nods sagely. <q>Ah, yes. Here to make... <i>connections</i>.</q> He coughs, then moves on. <q>Please, tell me about your socialization and the connections you've made through extracurriculars.</q><.convnode extracurriculars>"
 ;
 
-++ TellTopic @dietrich
-    ""
-;*/
+++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
+    "What do they even do in there? You don't really know, but decide to take a potshot and claim you're applying here anyway. <q>Dietrich!</q> you announce in your most overenthusiastic voice. Hopefully, your faux-excitement will carry you through here.\b
+    <q></q>" /***/
+;
+
+/*********************<CIT>*************************/
+
+/********************<Drama>************************/
++ ConvNode 'drama'
+;
+
+++ DefaultAnyTopic
+	"The interviewer seems dissatisfied with your response. <q>Did you mean <b>Pippin</b>?</q><.convstay>"
+;
+
+++ SpecialTopic 'say Pippin' ['Pippin']
+	"<q>GREAT!</q> he says, a little bit too excitedly. You lean away slightly from flying spittle. <q>Yes. Anyway.</q> He coughs. <q>Back on (Tartan)Tra(c)k. Do you participate in any extracurricular activities?<.convnode extracurriculars></q>"
+;
+
+/*******************<Dietrich>***********************/
+
+/**********************<MCS>*************************/
+
+/*****************<Extracurriculars>*****************/
++ ConvNode 'extracurriculars'
+;
+
+++ SpecialTopic 'none' ['no', 'none', 'nothing', 'nope']
+    "You think you'll have a little fun and break the model applicant mold. <q>Nope,</q> you say cheerfully.\b
+    The interviewer looks shocked and scandalized."
+;
+
+++ SpecialTopic 'MCS' ['mcs', 'mellon', 'college of science', 'science', 'math']
+    "Beakers, flasks (containing alcohol, or otherwise), and equations are your thing. You live for biology/chemistry/physics/math/jesuschristhowmanymajorsareinthisonecollege. <q></q>\b"
+;
 
 me : Topic 'myself/me';
-
-cit : Topic 'engineering/CIT/ECE/MechE/college of engineering';
-drama : Topic 'drama/school of drama';
-tepper : Topic 'tepper/business/being a jerk/Tepper School of Business/suit wearing';
-dietrich : Topic 'dietrich/humanities';
