@@ -54,15 +54,3 @@ ben_scott_list : ShuffledEventList
 ['He gets up to strech, and looks out the window. It is an exceptional view. ',
  'His titanium cup is full of coffee again. You didn\'t notice him leave. ',
  'He types something, giggles to himself, but then instantly returns to looking stoic and stately when he realizes you\'re still here. '];
-
-/*****************************/
-warner_interviewer : Person
-'interviewer'
-
-'<b>Harried Interviewer</b>' @interview_room
-"He looks baffled at your presence but seems to be too confused about his own schedule to chase you out of the interview room. He's offered you an interview, so what are you waiting for?"{
-    initSpecialDesc {
-        achievement.awardPointsOnce();
-    }
-    achievement : Achievement {+3 "took an admissions interview as a student... oops."}
-}
