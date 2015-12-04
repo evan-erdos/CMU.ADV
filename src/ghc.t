@@ -5,6 +5,8 @@
 #include <en_us.h>
 #include "macros.h"
 
+/**************<Floor 9>***************/
+
 ghc_9_entrance : Room 'The Gates Hillman Center (9th Floor)' 'the window'
 "It's the elevator part. It's like all the other elevator parts, except for this one is on the 9th floor. " {
     in = ghc_9_elevator;
@@ -16,6 +18,8 @@ ghc_9_window : Room
 "You find yourself in an oddly-angled room, with a study area in a corner alcove, arranged around a full-height window. Whats more, it's sunset: warm clouds frame the Cathedral of Learning, as lights blink in the hills beyond. " {
     east = ghc_9_entrance;
 }
+
+/**************<Floor 5>***************/
 
 ghc_5_entrance : Room 'The Gates Hillman Center (5th Floor)' 'main area'
 "It's the fifth floor common area. It's where the plebians who can't get to the upper floors sit. To your east lies the eternally overcrowded Citadel Commons. The elevator is here, and the Pausch Bridge leads out. The Helix is to your west, if you want to waste some time meandering down the spiral." {
@@ -29,6 +33,8 @@ ghc_citadel_commons : Room 'The Gates Hillman Center (Citadel Commons)' 'the fif
 "It's crowded here as always, and people are chattering about everything from graph theory to frogs. Eyeballing the crowd, you estimate that about fifteen different classes are holding TA Office Hours here at once, or everyone is here for 112. You'd be hard-pressed to find anywhere to sit." {
     west = ghc_5_entrance;
 }
+
+/**************<Floor 4>***************/
 
 ghc_4_entrance : Room 'The Gates Hillman Center (Helix Area, 4th Floor)' 'fourth floor' /** **/
 "You have wandered over to the area near the Helix on the fourth floor. There is not much here, except for some offices, classrooms that are a bit too small for the crowds that CS office hours tend to draw, and a bulletin board. A particularly interesting event called <b>Demosplash</b> is advertised, and you make a mental note to visit the site: <b>\"www.demosplash.org\"</b>. You can hear quiet murmuring from the common area to the east, and you briefly consider walking into the Helix." {
@@ -49,6 +55,8 @@ ghc_rashid : Room 'The Gates Hillman Center (Rashid Auditorium)' 'the fourth flo
     out = ghc_4_common_area;
 }
 
+/**************<Floor 3>***************/
+
 ghc_3_entrance : Room 'The Gates Hillman Center (3rd Floor)' 'the third floor'
 "It's the third floor, home of Tazza, which is home of wonderful brownies, which are home to probably way too much sugar for anyone who wants a working pancreas. Oh, and the mysterious Gates 3K cluster. The elevator is here, as is the Helix to your east." {
     in = ghc_3_elevator;
@@ -56,6 +64,8 @@ ghc_3_entrance : Room 'The Gates Hillman Center (3rd Floor)' 'the third floor'
     //southeast = gates_3k;
     //south = tazza_d_oro;
 }
+
+/**************<Floor 1>***************/
 
 ghc_1_entrance : Room 'The Gates Hillman Center (1st Floor)' 'the first floor'
 "It's the first floor. You're not sure what goes on here. " {

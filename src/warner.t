@@ -54,4 +54,5 @@ interview_in_progress : FakeConnector
 	\"What's the culture like at this school? What varieties of strep does CMU grow?\"<<or>>
 	\"I spend my weekends helping out at soup kitchens as a ladle, at the local library as a bookend, at the hospital as a backup syringe, at the Town Hall as a red-tape provider, and at the homeless astronaut shelter as an astronaut!\"
 	<<at random>>
-	You murmur some placating words and back out of the doorway.";
+	You murmur some placating words and back out of the doorway."
+;
