@@ -19,7 +19,6 @@ gameMain : GameMainDef { // impugn
 
     newGame() {
         intro.prolog();
-        clear;
         startup(); cls();
         user.init();
         Events.init();

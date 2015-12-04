@@ -1,18 +1,26 @@
 /* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2015-11-24 * interviewer */
-/* Ford Seidel * fseidel@andrew.cmu.edu * 2015-11-25 * CIT text/
+/* Ford Seidel * fseidel@andrew.cmu.edu * 2015-11-25 * CIT text */
 
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
 
-warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @interview_room
-"He looks baffled at your presence but seems to be too confused about his own schedule to chase you out of the interview room. He's offered you an interview, so what are you waiting for?"
-    isHim = true
-    globalParamName = "interviewer"
+warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
+"He looks baffled at your presence but seems to be too confused about his own schedule to chase you out of the interview room. He's offered you an interview, so what are you waiting for?" {
+    isHim = true;
+    globalParamName = "interviewer";
+
+    initSpecialDesc {
+        isInInitState = null;
+        "The interviewer in the room jumps and drops some papers as you enter, then waves you in while surreptitiously sliding the fallen sheaf under his desk with his foot. \"You must be... uh... Well, are you here for an interview?\" He trails off and scratches his head. Maybe you should leave before confusing him even more.";
+    }
+
+    specialDesc { warner_interviewer_list.doScript(); }
 
     /* To be awarded at the completion of the interview */
-    interview_achievement : Achievement {+3 "took an admissions interview as a student... oops."}
-;
+    interview_achievement : Achievement {+3 "taking an admissions interview as a student... oops."}
+    // present tense for achievements --bescott
+}
 
 + interviewerTalking : InConversationState
     specialDesc = "The interviewer looks at you expectantly."
@@ -29,7 +37,6 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
     ['<q>I\'m here for my interview!</q> you announce.\b
       <q>Ah, very good,</q> he replies, looking relieved that you seem to know what you\'re doing. <q>Why don\'t we get started?<\q>\b
       Perhaps you should tell him a little about yourself.']
-
     ['He smiles at you.']
 ;
 
@@ -54,7 +61,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 ;
 
 // Tell the interviewer about yourself (e.g. "tell him about me")
-++ TellTopic, ShuffledEventList @me 
+++ TellTopic, ShuffledEventList @me
     ['You\'re already a student here, but you\'re starting to find this whole situation rather amusing.\b
       <q>I\'m a Pittsburgh native who has been interested in Carnegie Mellon for years! I practically live on campus already, I\'m here so often.</q> ...Well, technically, you\'re not lying. So far, so good. The interviewer still seems enthusiastic but expectant, so you think hard for something generic to say so that your cover doesn\'t get blown.\b
       <q>I love Cobot!</q> You blurt out.\b
@@ -120,7 +127,7 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 
 ++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
     "What do they even do in there? You don't really know, but decide to take a potshot and claim you're applying here anyway. <q>Dietrich!</q> you announce in your most overenthusiastic voice. Hopefully, your faux-excitement will carry you through here.\b
-    <q></q>" /***/
+    <q></q>"
 ;
 
 /*********************<CIT>*************************/
@@ -155,3 +162,13 @@ warner_interviewer : Person 'interviewer' '<b>Harried Interviewer</b>' @intervie
 ;
 
 me : Topic 'myself/me';
+
+warner_interviewer_list : ShuffledEventList, RandomFiringScript
+    ['The interviewer bumbles around his office, and scratches his head a bit.',
+     'The interviewer now appears to have found what his previous head-scratching efforts didn\'t yield. ',
+     'The interviewer begins stapling a big stack of papers. ',
+     'You squirm a bit as you watch the interviewer narrowly avoid stapling his thumb to some poor student\'s application.']
+    ['The interviewer continues stapling.']
+    eventPercent = 80;
+
+
