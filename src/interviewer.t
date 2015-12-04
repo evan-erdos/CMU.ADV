@@ -127,7 +127,7 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 
 ++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
     "What do they even do in there? You don't really know, but decide to take a potshot and claim you're applying here anyway. <q>Dietrich!</q> you announce in your most overenthusiastic voice. Hopefully, your faux-excitement will carry you through here.\b
-    <q></q>" /***/
+    <q></q>"
 ;
 
 /*********************<CIT>*************************/
