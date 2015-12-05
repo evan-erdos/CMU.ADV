@@ -101,7 +101,7 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 
      The reporter nods sagely, and jots something down on his notepad. Craning your neck slightly, you can see that he has written <q>What is Dijkstra? Very impressed with graph theory knowledge.</q>\b
 
-     <q>Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program! Of course, I'll need to know if you've had any prior experience. Do you want to tell me about any of your extracurriculars?</q><.convnode extracurriculars>"
+     <q>Great! As you know, admissions are very competitive, but students learn a lot through our vigorous program! Of course, I'll need to know if you've had any prior experience. Do you want to tell me about any of your extracurriculars?</q><.convnode extracurriculars>"
 ;
 
 ++ NoTopic, SuggestedNoTopic
@@ -120,7 +120,7 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
     "Okay, taking a quick break from narrating to say, <b>what are you doing in the CClub text adventure</b>? But. Anyway.\b
     <q>The gods have sent me yonder way, whenceforth I have taken upon me to apply to this divine school for its splendiferous Dramatization Program!</q> You have no idea if half of the things you've said are even words, and for some reason you appear to be holding a skull in your hand as you kneel to the interviewer. He seems impressed with your yowling, though.\b
     <q>Oh, what splendid acting! So you're a fan of the performing arts! What's your favorite play?</q>\b
-    Come on, you know there's only one correct answer to this one.<.convnode drama>"
+    Oh come on, the answer is obvious.<.convnode drama>"
 ;
 
 ++ SpecialTopic 'Tepper' ['tepper', 'business', 'socializing', 'tepper school of business', 'suit wearing']
@@ -133,12 +133,18 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
     <q>Oh, yes! I'm a graduate of Dietrich, myself.</q>\b
     Oh, crap. <q>Oh... that's, uh. That's great! How did you like it?</q>\b
     Thankfully, your question seems to have diverted the interviewer's interest in you, and he spends five minutes rambling about his college experience. You listen attentively and retain nothing of what he has said.\b
-    <q>Er, right. So... where were we?</q> He asks sheepishly, then glances a bit too obviously at a post-it note on his monitor labeled <q>Generic Interview Questions</q>. <q>Extracurriculars. Yes. Do you have them?</q><.convnode extracurriculars>"
+    <q>Er, right. So... where were we?</q> He asks sheepishly, then glances a bit too obviously at a post-it note on his monitor labeled <q>Generic Interview Questions</q>. <q>Oh. Right. Extracurriculars. Yes. Do you have them?</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'MCS' ['mcs', 'mellon', 'college of science', 'science', 'math']
-    "Beakers, flasks (containing alcohol, or otherwise), and equations are your thing. You live for biology/chemistry/physics/math/jesuschristhowmanymajorsareinthisonecollege. <q>I am a pursuer of the truth! I live by the scientific method and by the laws of universe. To discover the secrets residing in the natural world and in higher mathematics is my goal!</q>\b
+    "Beakers, flasks (containing alcohol, or otherwise), and equations are your thing. You live for biology/chemistry/physics/math/jesuschristhowmanymajorsareinthisonecollege. <q>I am a pursuer of the truth! I live by the scientific method and aspire to discover the laws of universe. To discover the secrets residing in the natural world and in higher mathematics is my goal!</q>\b
     The interviewer looks at you blankly, and slowly writes <q>MCS</q> in large block letters on his notepad. <q>Right. Do you know what major you would want to pursue?</q><.convnode mcsmajor>"
+;
+
+++ SpecialTopic 'CFA' ['arts', 'college of fine arts']
+    "<q>Warhooooool!</q> you yell madly as a sort of interview war-cry.\b
+    The interviewer lets out a small squeak and scrambles backwards. His chair tips over, dumping him unceremoniously on his side. As he clambers back up and rights his chair, you hear him mutter, <q>Oh joy, another crazy art person.</q>\b
+    He grabs his notepad and licks the tip of his pencil. It's kind of gross. <q>I'm guessing that you spend a lot of time on art projects, but what else do you do outside of class?</q><.convnode extracurriculars>"
 ;
 
 /********************<Drama>************************/
@@ -150,25 +156,29 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 ;
 
 ++ SpecialTopic 'say Pippin' ['Pippin']
-	"<q>GREAT!</q> he says, a little bit too excitedly. <q></q> You lean away slightly from flying spittle. <q>Yes. Anyway.</q> He coughs. <q>Back on (Tartan)Tra(c)k. Given that you seem to have a solid acting background, I assume you participate in extracurricular activities?<.convnode extracurriculars></q>"
+	"<q><b>GREAT!</b></q> he says, a little bit too excitedly. You lean away slightly from flying spittle. <q>Yes. Anyway.</q>\b
+     He coughs. <q>Back on (Tartan)Tra(c)k. Given that you seem to have a solid acting background, I assume you participate in extracurricular activities?<.convnode extracurriculars></q>"
 ;
-
-/*******************<Dietrich>***********************/
 
 /**********************<MCS>*************************/
 + ConvNode 'mcsmajor'
 ;
 
-++ SpecialTopic 'Math' ['math', 'mathematics'] // @bescott--do you want to take this one? :P
+++ SpecialTopic 'Math' ['math', 'mathematics']
     ""
 ;
 
 ++ SpecialTopic 'Biology' ['biology', 'bio']
-    ""
+    "<q>The quickest way to my heart is through biology... and through my stomach and intestines!</q> You give a cheesy grin. You're pretty sure Terry Pratchett said something like that in one of his many books. But in the context of killing people.\b
+    The interviewer groans.\b
+    <q>Alright, then. What extracurriculars have you been involved in that also warm your heart or something?</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'Chemistry' ['chemistry', 'chem']
-    ""
+    "<q>I'm thinking about majoring in chemistry,</q> you say. <q>I enjoy acids and bases and learning about bonds and things! As my chem teacher used to say, 'If you're not part of the problem, you're part of the precipitate.</q> Wait, you think you screwed that one up. Crap. The interviewer doesn't seem to notice, though.\b
+    <q>Ahh, yes. Looking to invent the next superglue or Kevlar, are we? Did you know that Kevlar was invented here?</q>\b
+    <q>Nah, I just like silly putty,</q> you shrug.\b
+    The interviewer seems put out, but staunchly keeps going. <q>We may have to work on those long-term goals, I guess. What are you interested in outside of class, then?</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'Physics' ['physics']
@@ -179,14 +189,17 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 + ConvNode 'extracurriculars'
 ;
 
-++ SpecialTopic 'none' ['no', 'none', 'nothing', 'nope']
-    "You think you'll have a little fun and break the model applicant mold. <q>Nope,</q> you say cheerfully.\b
+++ SpecialTopic, ShuffledEventList 'say none' ['no', 'none', 'nothing', 'nope']
+    ['You think you\'ll have a little fun and break the model applicant mold. <q>Nope,</q> you say cheerfully.\b
     The interviewer looks shocked and scandalized, and his expression alternates between horror and surprise, then compromises by settling into dignified disgust.\b
-    You realize that this may have been a mistake to say. Better make something up real quick! <q>Haha, I'm just joking, I'm actually in...</q><.convstay>"
+    You realize that this may have been a mistake. Better make something up real quick! <q>Haha, I\'m just joking, I\'m actually in...</q><.convstay>']
+
+    ['You probably shouldn\'t be pushing your luck further. Nice try, buster. Nearly got yourself kicked out, there.']
 ;
 
 ++ SpecialTopic 'computer club' ['computing', 'computer', 'club']
-    "Heh, you suck-up."
+    "Heh, you suck-up.\b
+    <q>I'm in computer club,</q> you declare proudly."
 ;
 
 ++ SpecialTopic 'drama' ['acting', 'drama', 'theatre', 'theater']
