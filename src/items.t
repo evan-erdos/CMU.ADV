@@ -64,9 +64,3 @@ newspaper : Readable, Thing
 
     achievement : Achievement { +5 "being dumb enough to miss your graduation, but smart enough to read the newspaper to find that out! " };
 }
-
-student_tears : Thing '(small) tears/vial' 'vial of student tears' @ghc_rashid
-"A vial of 15-251 students' tears." {
-    initSpecialDesc = "The faces of the students in the back row glisten with tears. You are not sure whether they are tears of joy at the beauty of cellular automata and Turing Machines, or tears of suffering at the all-nighters they no doubt had to pull to finish their homework."
-    initDesc = "You could probably harvest the students' tears. They're starting to pool at the base of the seats."
-}
