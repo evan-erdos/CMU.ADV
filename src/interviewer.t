@@ -169,9 +169,9 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 ;
 
 ++ SpecialTopic 'Biology' ['biology', 'bio']
-    "<q>The quickest way to my heart is through biology... and through my stomach and intestines!</q> You give a cheesy grin. You're pretty sure Terry Pratchett said something like that in one of his many books. But in the context of killing people.\b
+    "<q>The quickest way to my heart is through biology... and through my stomach and intestines!</q> You give a cheesy grin. You're pretty sure Terry Pratchett said something like that in one of his many books. But in the context of assassins. What a great writer.\b
     The interviewer groans.\b
-    <q>Alright, then. What extracurriculars have you been involved in that also warm your heart or something?</q><.convnode extracurriculars>"
+    <q>Alright, then. What extracurriculars have you been involved in that also warm your heart or impale it or whatever?</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'Chemistry' ['chemistry', 'chem']
@@ -197,13 +197,35 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
     ['You probably shouldn\'t be pushing your luck further. Nice try, buster. Nearly got yourself kicked out, there.']
 ;
 
-++ SpecialTopic 'computer club' ['computing', 'computer', 'club']
-    "Heh, you suck-up.\b
+++ SpecialTopic 'computer club' ['computing', 'programming', 'computer', 'club']
+    "(Heh, you suck-up.)\b
     <q>I'm in computer club,</q> you declare proudly."
 ;
 
-++ SpecialTopic 'drama' ['acting', 'drama', 'theatre', 'theater']
+++ SpecialTopic 'drama' ['acting', 'drama', 'theatre', 'theater', 'improv']
     ""
+;
+
+// The only correct answer is... (--jocelynh)
+++ SpecialTopic 'stage crew' ['stage', 'construction', 'lighting', 'light', 'sound', 'tech', 'crew']
+    ""
+; //
+
+// fseidel, do you want to take this one? --jocelynh
+++ SpecialTopic 'robotics' ['FIRST', 'robotics', 'robotics club']
+    ""
+;
+
+++ SpecialTopic 'anime club' ['anime', 'anime club', 'japanese', 'japanese club', 'weeaboo', 'weeb']
+    ""
+;
+
+++ SpecialTopic 'sports' ['sports', 'exercise', 'football', 'basketball', 'baseball', 'soccer', 'tennis', 'generic sport', 'golf', 'track', 'and field', 'badminton', 'lacrosse', 'rugby', 'field', 'hockey']
+    ""
+;
+
+++ SpecialTopic 'eavesdropped sports' ['quidditch', 'jai alai', 'flag football', 'foosball', 'calvinball', 'hopscotch', 'parkour', 'hitball']
+    "You decide to take a leaf out of that random other interviewee's book and chuck up some random ridiculous sports. You manage to rattle off <q>Quidditch, Jai Alai, flag football, foosball, Calvinball, hopscotch, parkour, hitball...</q> before the interviewer cuts you off."
 ;
 
 /*****************************************************/

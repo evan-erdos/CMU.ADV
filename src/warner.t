@@ -46,9 +46,9 @@ interview_in_progress : FakeConnector
 	\"My greatest strength is my team-leading ability, which I have demonstrated at length through my presidencies in my school's debate, cooking, MUN, anime, and waterskiing clubs!\"<<or>>
 	\"I have lived in twenty-three different countries and am very well versed in Chinese, Spanish, Latin, Hakka, Japanese, Finnish, Proto-Indonesian, Whistled Turkish, Esperanto, Klingon, and Python, but only Python 2.7!\"<<or>>
 	\"I love Carnegie Mellon because of the premier academic experiences, prestigious programs, and varied and esteemed extracurriculars, such as the KGB, that it offers!\"<<or>>
-	\"I excel at all sports, and have recently won tennis, soccer, flag football, foosball, Calvinball, parkour, <i>Jai alai</i>, and hitball tournaments!\"<<or>>
+	\"I excel at all sports, and have recently won tennis, soccer, flag football, foosball, Calvinball, hopscotch, parkour, <i>Jai alai</i>, and hitball tournaments!\"<<or>>
 	\"I've gone through as many hardships as the human heart and mind can bear, since my grandmother died last year, my grandfather died two years ago, my other grandmother died three years ago, my other grandfather died four years ago, all of my cousins died five years ago, and most tragic of all, my goldfish died at age twenty a mere six years ago. I had to bury them all.\"<<or>>
-	\"I have won many awards for my excellent academic ability, and have been recognized as a National Merit Scholar for my 2500 SAT score, have won a Sieman's Award for my cure for hypochondriacs, and maintain a 17.40 GPA!\"<<or>>
+	\"I have won many awards for my excellent academic ability, and have been recognized as a National Merit Scholar for my 2500 SAT score, have won a Siemen's Award for my cure for hypochondriacs, and maintain a 17.40 GPA!\"<<or>>
 	\"(Help, I wandered on campus by accident and got into an interview! I'm actually a middle schooler!)\"<<or>>
 	\"What's the culture like at this school? What varieties of strep does CMU grow?\"<<or>>
 	\"I spend my weekends helping out at soup kitchens as a ladle, at the local library as a bookend, at the hospital as a backup syringe, at the Town Hall as a red-tape provider, and at the homeless astronaut shelter as an astronaut!\"
