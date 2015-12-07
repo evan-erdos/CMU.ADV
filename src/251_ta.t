@@ -6,7 +6,7 @@
 
 // Eventually she'll want those student tears.
 sad_251_ta : Person 'ta/teaching assistant/sad ta' '<b>Sad TA</b>' @ghc_citadel_commons
-"A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at an overcrowded table. Everyone seems to be ignoring her."
+"A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge of an overcrowded table. Everyone seems to be ignoring her."
     isHer = true
     globalParamName = "sad 251 TA"
 ;
@@ -23,7 +23,9 @@ sad_251_ta : Person 'ta/teaching assistant/sad ta' '<b>Sad TA</b>' @ghc_citadel_
 ;
 
 +++ HelloTopic, ShuffledEventList
-	['You decide to approach the TA.']
+	['As a model concerned citizen, you decide to approach the TA.\b
+	<q>Are you alright?</q> you ask. The TA turns towards you and lets out another long sigh.\b
+	<q>My students don\'t seem to care about my course.</q> This sounds intriguing. You\'ve never heard of anyone not caring about 251 before; perhaps you could inquire further.']
 
 	['She looks up hopefully, then sighs when she sees it\'s just you again.']
 ;
@@ -31,6 +33,15 @@ sad_251_ta : Person 'ta/teaching assistant/sad ta' '<b>Sad TA</b>' @ghc_citadel_
 +++ ByeTopic
 	"You decide not to bother her further, and back away. She immediately goes back to staring at her students\' grades."
 ;
+
+++ AskTopic 'students'
+	"You inch closer. <q>What do you mean, your students don\'t care about your course?</q>\b
+	She gestures towards a yellow Office Hours sign half-buried under papers from other people at the table. <q>No one ever shows up to my office hours, and everyone seems to be struggling. Look at these grades!</q> she exclaims in disgust.\b
+	After some halfhearted protest about seeing students' grades, you lean in for a brief glance.\b
+	Indeed, they're pretty bad, but on the whole they seem par for the course. You tell her so, to which she responds <q>Hmph! There's no proof of that. And they don't even show up to Office Hours for help.</q>"
+;
+
+/******<Items for TA>*******/
 
 student_tears : Thing '(small) tears/vial' 'vial of student tears' @ghc_rashid
 "A vial of 15-251 students' tears." {
