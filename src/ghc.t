@@ -62,7 +62,18 @@ ghc_3_entrance : Room 'The Gates Hillman Center (3rd Floor)' 'the third floor'
     in = ghc_3_elevator;
     east = ghc_helix_3;
     //southeast = gates_3k;
-    //south = tazza_d_oro;
+    south = tazza_d_oro;
+}
+
+tazza_d_oro : Room 'Tazza d\' Oro' 'Tazza'
+"Here is the source of an empirically proven 97% of the good smells in Gates. Brownies, cookies, coffee, tea, paninis... From sizzling grills to baked goods, it's got it all. If only they didn't want you to sell your firstborn child to afford any food, it's so prohibitively expensive." {
+    in = gates_3k;
+    north = ghc_3_entrance;
+}
+
+gates_3k : Room 'Gates 3K' 'the third floor'
+"The fabled and unofficially favored lounge of KGB members, masquerading as just another Gates cluster. The first thing that strikes you is the abundance of floor-to-ceiling whiteboards that are covered in drawings, quotes, and other interesting doodles that range from Picasso to stick figure. People with outlandishly dyed hair click furiously at their mice and murmur to each other." {
+    out = tazza_d_oro;
 }
 
 /**************<Floor 1>***************/

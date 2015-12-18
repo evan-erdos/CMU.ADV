@@ -101,23 +101,26 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 
      The reporter nods sagely, and jots something down on his notepad. Craning your neck slightly, you can see that he has written <q>What is Dijkstra? Very impressed with graph theory knowledge.</q>\b
 
-     <q>Great. As you know, admissions are very competitive, but students learn a lot through our vigorous program! Of course, I'll need to know if you've had any prior experience. Do you want to tell me about any of your extracurriculars?<.convnode extracurriculars></q>"
+     <q>Great! As you know, admissions are very competitive, but students learn a lot through our vigorous program! Of course, I'll need to know if you've had any prior experience. Do you want to tell me about any of your extracurriculars?</q><.convnode extracurriculars>"
 ;
 
 ++ NoTopic, SuggestedNoTopic
     "<q>Oh, no, I'm just a fan of Cobot,</q> you say. <q>I think he's cute! And he carries candy sometimes, so I like to hang around.</q>\b
 
-     The interviewer seems mildly amused by your response. He flounders for a bit, then apparently realizes that he still hasn't found out what you're interested in. <q>What school are you applying to, then? Or... wait, did you say you were going for CS?</q><.convstay>"
+     The interviewer seems mildly amused by your response. He flounders for a bit, then apparently realizes that he still hasn't found out what you're interested in. <q>What school are you applying to, then? Or... wait, did you say you were going for CS?</q> What a confused man.<.convstay>"
 ;
 
 ++ SpecialTopic 'CIT' ['cit', 'engineering', 'ece', 'meche', 'college of engineering']
-    "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges. <q>I want to be an engineer. My father and his father before him were engineers, and since birth, I've known that engineering was my calling. Plus, I hear you guys have a great engineering program. Out of curiosity, why does it take four years to learn how to operate a machine that can only speed up and slow down along a track?</q>"
+    "You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges.\b
+    <q>I want to be an engineer. My father and his father before him were engineers, and since birth, I've known that engineering was my calling. Plus, I hear you guys have a great engineering program. Out of curiosity, why does it take four years to learn how to operate a machine that can only speed up and slow down along a track?</q>\b
+    The interviewer steeples his fingers and looks down his nose at you. <q>It's a fine art of balance and morality, especially when you're faced with either running one person over or two. Now, I need to know, do you have the background in extracurriculars to undertake this rigorous training?</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'Drama' ['drama', 'school of drama']
     "Okay, taking a quick break from narrating to say, <b>what are you doing in the CClub text adventure</b>? But. Anyway.\b
-     <q>The gods have sent me yonder way, whenceforth I have taken upon me to apply to this divine school for its splendiferous Dramatization Program!</q> You have no idea if half of the things you've said are even words, and for some reason you appear to be holding a skull in your hand as you kneel to the interviewer. He seems impressed with your yowling, though.\b
-     <q>Oh, what splendid acting! So you're a fan of the performing arts! What's your favorite play?</q><.convnode drama>"
+    <q>The gods have sent me yonder way, whenceforth I have taken upon me to apply to this divine school for its splendiferous Dramatization Program!</q> You have no idea if half of the things you've said are even words, and for some reason you appear to be holding a skull in your hand as you kneel to the interviewer. He seems impressed with your yowling, though.\b
+    <q>Oh, what splendid acting! So you're a fan of the performing arts! What's your favorite play?</q>\b
+    Oh come on, the answer is obvious.<.convnode drama>"
 ;
 
 ++ SpecialTopic 'Tepper' ['tepper', 'business', 'socializing', 'tepper school of business', 'suit wearing']
@@ -127,44 +130,110 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 
 ++ SpecialTopic 'Dietrich' ['dietrich', 'humanities', 'school of arts and sciences']
     "What do they even do in there? You don't really know, but decide to take a potshot and claim you're applying here anyway. <q>Dietrich!</q> you announce in your most overenthusiastic voice. Hopefully, your faux-excitement will carry you through here.\b
-    <q></q>"
+    <q>Oh, yes! I'm a graduate of Dietrich, myself.</q>\b
+    Oh, crap. <q>Oh... that's, uh. That's great! How did you like it?</q>\b
+    Thankfully, your question seems to have diverted the interviewer's interest in you, and he spends five minutes rambling about his college experience. You listen attentively and retain nothing of what he has said.\b
+    <q>Er, right. So... where were we?</q> He asks sheepishly, then glances a bit too obviously at a post-it note on his monitor labeled <q>Generic Interview Questions</q>. <q>Oh. Right. Extracurriculars. Yes. Do you have them?</q><.convnode extracurriculars>"
 ;
 
-/*********************<CIT>*************************/
+++ SpecialTopic 'MCS' ['mcs', 'mellon', 'college of science', 'science', 'math']
+    "Beakers, flasks (containing alcohol, or otherwise), and equations are your thing. You live for biology/chemistry/physics/math/jesuschristhowmanymajorsareinthisonecollege. <q>I am a pursuer of the truth! I live by the scientific method and aspire to discover the laws of universe. To discover the secrets residing in the natural world and in higher mathematics is my goal!</q>\b
+    The interviewer looks at you blankly, and slowly writes <q>MCS</q> in large block letters on his notepad. <q>Right. Do you know what major you would want to pursue?</q><.convnode mcsmajor>"
+;
+
+++ SpecialTopic 'CFA' ['arts', 'college of fine arts']
+    "<q>Warhooooool!</q> you yell madly as a sort of interview war-cry.\b
+    The interviewer lets out a small squeak and scrambles backwards. His chair tips over, dumping him unceremoniously on his side. As he clambers back up and rights his chair, you hear him mutter, <q>Oh joy, another crazy art person.</q>\b
+    He grabs his notepad and licks the tip of his pencil. It's kind of gross. <q>I'm guessing that you spend a lot of time on art projects, but what else do you do outside of class?</q><.convnode extracurriculars>"
+;
 
 /********************<Drama>************************/
 + ConvNode 'drama'
 ;
 
 ++ DefaultAnyTopic
-	"The interviewer seems dissatisfied with your response. <q>Did you mean <b>Pippin</b>?</q><.convstay>"
+	"The interviewer seems dissatisfied with your response. Did you mean <b>Pippin</b>?<.convstay>"
 ;
 
 ++ SpecialTopic 'say Pippin' ['Pippin']
-	"<q>GREAT!</q> he says, a little bit too excitedly. You lean away slightly from flying spittle. <q>Yes. Anyway.</q> He coughs. <q>Back on (Tartan)Tra(c)k. Do you participate in any extracurricular activities?<.convnode extracurriculars></q>"
+	"<q><b>GREAT!</b></q> he says, a little bit too excitedly. You lean away slightly from flying spittle. <q>Yes. Anyway.</q>\b
+     He coughs. <q>Back on (Tartan)Tra(c)k. Given that you seem to have a solid acting background, I assume you participate in extracurricular activities?<.convnode extracurriculars></q>"
 ;
 
-/*******************<Dietrich>***********************/
-
 /**********************<MCS>*************************/
++ ConvNode 'mcsmajor'
+;
+
+++ SpecialTopic 'Math' ['math', 'mathematics']
+    ""
+;
+
+++ SpecialTopic 'Biology' ['biology', 'bio']
+    "<q>The quickest way to my heart is through biology... and through my stomach and intestines!</q> You give a cheesy grin. You're pretty sure Terry Pratchett said something like that in one of his many books. But in the context of assassins. What a great writer.\b
+    The interviewer groans.\b
+    <q>Alright, then. What extracurriculars have you been involved in that also warm your heart or impale it or whatever?</q><.convnode extracurriculars>"
+;
+
+++ SpecialTopic 'Chemistry' ['chemistry', 'chem']
+    "<q>I'm thinking about majoring in chemistry,</q> you say. <q>I enjoy acids and bases and learning about bonds and things! As my chem teacher used to say, 'If you're not part of the problem, you're part of the precipitate.</q> Wait, you think you screwed that one up. Crap. The interviewer doesn't seem to notice, though.\b
+    <q>Ahh, yes. Looking to invent the next superglue or Kevlar, are we? Did you know that Kevlar was invented here?</q>\b
+    <q>Nah, I just like silly putty,</q> you shrug.\b
+    The interviewer seems put out, but staunchly keeps going. <q>We may have to work on those long-term goals, I guess. What are you interested in outside of class, then?</q><.convnode extracurriculars>"
+;
+
+++ SpecialTopic 'Physics' ['physics']
+    ""
+;
 
 /*****************<Extracurriculars>*****************/
 + ConvNode 'extracurriculars'
 ;
 
-++ SpecialTopic 'none' ['no', 'none', 'nothing', 'nope']
-    "You think you'll have a little fun and break the model applicant mold. <q>Nope,</q> you say cheerfully.\b
-    The interviewer looks shocked and scandalized."
+++ SpecialTopic, ShuffledEventList 'say none' ['no', 'none', 'nothing', 'nope']
+    ['You think you\'ll have a little fun and break the model applicant mold. <q>Nope,</q> you say cheerfully.\b
+    The interviewer looks shocked and scandalized, and his expression alternates between horror and surprise, then compromises by settling into dignified disgust.\b
+    You realize that this may have been a mistake. Better make something up real quick! <q>Haha, I\'m just joking, I\'m actually in...</q><.convstay>']
+
+    ['You probably shouldn\'t be pushing your luck further. Nice try, buster. Nearly got yourself kicked out, there.']
 ;
 
-++ SpecialTopic 'MCS' ['mcs', 'mellon', 'college of science', 'science', 'math']
-    "Beakers, flasks (containing alcohol, or otherwise), and equations are your thing. You live for biology/chemistry/physics/math/jesuschristhowmanymajorsareinthisonecollege. <q></q>\b"
+++ SpecialTopic 'computer club' ['computing', 'programming', 'computer', 'club']
+    "(Heh, you suck-up.)\b
+    <q>I'm in computer club,</q> you declare proudly."
 ;
+
+++ SpecialTopic 'drama' ['acting', 'drama', 'theatre', 'theater', 'improv']
+    ""
+;
+
+// The only correct answer is... (--jocelynh)
+++ SpecialTopic 'stage crew' ['stage', 'construction', 'lighting', 'light', 'sound', 'tech', 'crew']
+    ""
+; //
+
+// fseidel, do you want to take this one? --jocelynh
+++ SpecialTopic 'robotics' ['FIRST', 'robotics', 'robotics club']
+    ""
+;
+
+++ SpecialTopic 'anime club' ['anime', 'anime club', 'japanese', 'japanese club', 'weeaboo', 'weeb']
+    ""
+;
+
+++ SpecialTopic 'sports' ['sports', 'exercise', 'football', 'basketball', 'baseball', 'soccer', 'tennis', 'generic sport', 'golf', 'track', 'and field', 'badminton', 'lacrosse', 'rugby', 'field', 'hockey']
+    ""
+;
+
+++ SpecialTopic 'eavesdropped sports' ['quidditch', 'jai alai', 'flag football', 'foosball', 'calvinball', 'hopscotch', 'parkour', 'hitball']
+    "You decide to take a leaf out of that random other interviewee's book and chuck up some random ridiculous sports. You manage to rattle off <q>Quidditch, Jai Alai, flag football, foosball, Calvinball, hopscotch, parkour, hitball...</q> before the interviewer cuts you off."
+;
+
+/*****************************************************/
 
 me : Topic 'myself/me';
 
 warner_interviewer_list : ShuffledEventList, RandomFiringScript
-    ['The interviewer bumbles around his office, and scratches his head a bit.',
+    ['The interviewer bumbles around his office, slipping a few times on the papers under his desk, and scratches his head a bit.',
      'The interviewer now appears to have found what his previous head-scratching efforts didn\'t yield. ',
      'The interviewer begins stapling a big stack of papers. ',
      'You squirm a bit as you watch the interviewer narrowly avoid stapling his thumb to some poor student\'s application.']
