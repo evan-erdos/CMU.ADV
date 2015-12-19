@@ -169,20 +169,22 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 ;
 
 ++ SpecialTopic 'Biology' ['biology', 'bio']
-    "<q>The quickest way to my heart is through biology... and through my stomach and intestines!</q> You give a cheesy grin. You're pretty sure Terry Pratchett said something like that in one of his many books. But in the context of assassins. What a great writer.\b
+    "<q>The quickest way to my heart is through biology... and through my stomach and intestines!</q> You give a cheesy grin. You're pretty sure Terry Pratchett said something like that in one of his many books. But in the context of assassins. What a legend.\b
     The interviewer groans.\b
-    <q>Alright, then. What extracurriculars have you been involved in that also warm your heart or impale it or whatever?</q><.convnode extracurriculars>"
+    <q>Alright, then. What extracurriculars have you been involved in that also warm your heart or whatever?</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'Chemistry' ['chemistry', 'chem']
     "<q>I'm thinking about majoring in chemistry,</q> you say. <q>I enjoy acids and bases and learning about bonds and things! As my chem teacher used to say, 'If you're not part of the problem, you're part of the precipitate.</q> Wait, you think you screwed that one up. Crap. The interviewer doesn't seem to notice, though.\b
     <q>Ahh, yes. Looking to invent the next superglue or Kevlar, are we? Did you know that Kevlar was invented here?</q>\b
-    <q>Nah, I just like silly putty,</q> you shrug.\b
-    The interviewer seems put out, but staunchly keeps going. <q>We may have to work on those long-term goals, I guess. What are you interested in outside of class, then?</q><.convnode extracurriculars>"
+    <q>Nah, I just like silly putty and I want there to be more of it in the world,</q> you shrug.\b
+    The interviewer seems put out, but staunchly keeps going. <q>That's a... unique goal. We may have to work on those long-term goals, I guess. What are you interested in outside of class, then?</q><.convnode extracurriculars>"
 ;
 
 ++ SpecialTopic 'Physics' ['physics']
-    ""
+    "You have a deep love of spherical cows and frictionless surfaces. In a perfect world, you've always believed there would be no thermal energy loss or drag force.\b
+    <q>Physics!</q> you declare proudly, <q>My role models are Einstein and Feynman, though the admiration sadly doesn't go as far as bongo drums.</q>
+    <q>May the force be with you,</q> the interviewer intones."
 ;
 
 /*****************<Extracurriculars>*****************/
@@ -194,7 +196,8 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
     The interviewer looks shocked and scandalized, and his expression alternates between horror and surprise, then compromises by settling into dignified disgust.\b
     You realize that this may have been a mistake. Better make something up real quick! <q>Haha, I\'m just joking, I\'m actually in...</q><.convstay>']
 
-    ['You probably shouldn\'t be pushing your luck further. Nice try, buster. Nearly got yourself kicked out, there.']
+    ['You probably shouldn\'t be pushing your luck further. Nice try, buster. Nearly got yourself kicked out, there.<.convstay>',
+    'No, seriously, just make something up if you really don\'t have any experience in anything.<.convstay>']
 ;
 
 ++ SpecialTopic 'computer club' ['computing', 'programming', 'computer', 'club']
@@ -203,13 +206,22 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 ;
 
 ++ SpecialTopic 'drama' ['acting', 'drama', 'theatre', 'theater', 'improv']
-    ""
+    "<q>I act, of course!</q>"
 ;
 
 // The only correct answer is... (--jocelynh)
 ++ SpecialTopic 'stage crew' ['stage', 'construction', 'lighting', 'light', 'sound', 'tech', 'crew']
     ""
-; //
+; // (I'm really biased.)
+
+++ SpecialTopic 'bridge' ['american contract', 'bridge', 'contract bridge', 'bridge club']
+    "American Contract Bridge. Ah, the game of intellectuals. <q>I am personally rather fond of Bridge, and not the one that you cross to get into Pittsburgh. 'Bridge, and not chess, is the ultimate war game,'</q> you quote. Michael Leeden.\b
+    <q>Ah, good, you enjoy strategy and thinking games!</q> He discreetly scribbles <q>Gets along with old people and plays cards</q> on his notepad. <q>I think I have something for you, then...</q>\b
+    The interviewer flails his hands briefly across his desk before hastily yanking a battered-looking flyer from under a desk lamp.\b
+    <q>Here it is. We don't have a Bridge club proper, but we do have a group that plays Bridge every Saturday morning in the UC!</q> Glancing at the flyer, you see <b>9:30AM</b> printed in large font, and decide against waking up early to go. You like Bridge, but you also like sleep.\b
+    <q>Thanks for letting me know,</q> you say, flapping the paper briefly and then placing it aside to be immediately lost in the clutter.\b
+    <q>Bridge is a pretty specialized group activity, though; so what do you do in your own free time?</q><.convnode sparetime>"
+;
 
 // fseidel, do you want to take this one? --jocelynh
 ++ SpecialTopic 'robotics' ['FIRST', 'robotics', 'robotics club']
@@ -221,11 +233,27 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 ;
 
 ++ SpecialTopic 'sports' ['sports', 'exercise', 'football', 'basketball', 'baseball', 'soccer', 'tennis', 'generic sport', 'golf', 'track', 'and field', 'badminton', 'lacrosse', 'rugby', 'field', 'hockey']
-    ""
+    "You pride yourself in sports, or at least you'll pretend to. Flexing your not-particularly-defined biceps, you declare, <q>I love sports! I love watching all the tournaments, from the Superbowl to the World Cup to the US Open. In fact, I'm so devoted to sports that I've practiced enough to become the captain of my school's</q> (you mumble something) <q>team, carrying us to the championship for the past two years in a row.</q>\b
+    <q>Ah, you're an athlete!</q> the interviewer enthuses, <q>we like good athletes and I think you would fit in well here please come I promise we actually do have football fields and soccer fields and golf and everything.</q>\b
+    There seems to be a touch of desperation in his voice. He sees your surprise at his outburst and mistakes it for hesitation. Eager to further the conversation and usher you through the interview, he continues:\b
+    <q>You seem like a great fit for the school and I'd like to learn more about you! We have a lot of unique people and cultures here, and so I'd like to ask--what hobbies do you have outside of sports that you enjoy in your own time?</q><.convNode sparetime>"
 ;
 
 ++ SpecialTopic 'eavesdropped sports' ['quidditch', 'jai alai', 'flag football', 'foosball', 'calvinball', 'hopscotch', 'parkour', 'hitball']
-    "You decide to take a leaf out of that random other interviewee's book and chuck up some random ridiculous sports. You manage to rattle off <q>Quidditch, Jai Alai, flag football, foosball, Calvinball, hopscotch, parkour, hitball...</q> before the interviewer cuts you off."
+    "You decide to take a leaf out of that random other interviewee's book and chuck up some random ridiculous sports. You manage to rattle off <q>Quidditch, Jai Alai, flag football, foosball, Calvinball, hopscotch, parkour, hitball...</q> and claiming that you've been team captain for about half of these before the interviewer cuts you off.\b
+    <q>You seem to have eclectic tastes in physical activity,</q> he comments. <q>That's good; we like to see a healthy interests in a variety of unique fields. I can also see that you have had ample leadership experience through your sports!</q>\b
+    You can't believe he actually bought it, but sure, you'll take it. You daredevil.\b
+    The interviewer continues, <q>So I can see that you seem very well-rounded in your activities, but tell me a little about what you do in your alone time.</q><.convnode sparetime>"
+;
+
+/***************<Spare Time Activities>***************/
++ ConvNode 'sparetime'
+;
+
+// Help me out here --jocelynh
+
+/*******************<CMU Interest>*******************/
++ ConvNode 'interest'
 ;
 
 /*****************************************************/
