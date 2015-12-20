@@ -99,7 +99,7 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
     /* I'm not biased, nope not at all --jocelynh */
     "Of course you are! CS is only the absolute coolest major there is. You enthusiastically tell him, <q>I love computer science! I've been in love with Graph Theory since I was a toddler and my mom told me to find the nearest shopping cart. After implementing a quick shortest path algorithm in my head (Dijkstra for efficient parallelization, of course), I was absolutely smitten.</q>\b
 
-     The reporter nods sagely, and jots something down on his notepad. Craning your neck slightly, you can see that he has written <q>What is Dijkstra? Very impressed with graph theory knowledge.</q>\b
+     The interviewer nods sagely, and jots something down on his notepad. Craning your neck slightly, you can see that he has written <q>What is Dijkstra? Very impressed with graph theory knowledge.</q>\b
 
      <q>Great! As you know, admissions are very competitive, but students learn a lot through our vigorous program! Of course, I'll need to know if you've had any prior experience. Do you want to tell me about any of your extracurriculars?</q><.convnode extracurriculars>"
 ;
@@ -197,7 +197,10 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
     You realize that this may have been a mistake. Better make something up real quick! <q>Haha, I\'m just joking, I\'m actually in...</q><.convstay>']
 
     ['You probably shouldn\'t be pushing your luck further. Nice try, buster. Nearly got yourself kicked out, there.<.convstay>',
-    'No, seriously, just make something up if you really don\'t have any experience in anything.<.convstay>']
+    'No, seriously, just make something up if you really don\'t have any experience in anything.<.convstay>',
+    'Please?',
+    'Seriously, just pick anything. Responses are gonna start looping soon.',
+    'You have a life, trust me. Pick an extracurricular!']
 ;
 
 ++ SpecialTopic 'computer club' ['computing', 'programming', 'computer', 'club']
@@ -248,6 +251,28 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 
 /***************<Spare Time Activities>***************/
 + ConvNode 'sparetime'
+;
+
+++ SpecialTopic 'say reading' ['read', 'reading', 'books', 'literature']
+    "You like your literature, and don't hesitate to let the world know.\b
+    <q>I <b>love</b> reading!</q> you trumpet, startling the interviewer. <q>From Terry Pratchett to Malcolm Gladwell, Daniel Tammet to Douglas Adams, I love them all. I have a Kindle for travel, a library-in-progress at home, and I know my library card number backwards and forwards!</q>\b
+    The interviewer looks pleased at your intellectual and literary curiosity. He waves at you a copy of Randy Pausch's <b>The Last Lecture</b>. <q>Have you read this?</q>\b
+    <q>Of course I have! I love his commentary on the frailty of human life and on optimism in the face of mortality.</q> What a great man.\b
+    <q>He was a professor here, you know,</q> the interviewer says, almost proudly. <q>Well, enough of that. You seem like a bright kid and a good fit. But I'd like to know specifically, what interests you about CMU?</q><.convnode interest>"
+;
+
+++ SpecialTopic 'play video games' ['play games', 'play video games', 'gaming', 'video games']
+    ""
+;
+
+++ SpecialTopic 'watch Netflix' ['watch TV', 'watch Netflix', 'watch shows']
+    ""
+;
+
+++ SpecialTopic 'solitaire' ['play solitaire', 'solitaire']
+    "You really can't think of anything that might be done alone, and in the heat of the moment, you say <q>I play a lot of Solitaire!</q>\b
+    The interviewer gives you a long, disdainful look. You can tell from that stare that he's more of a Minesweeper kind of guy.\b
+    <q>Uh huh. We probably shouldn't dwell too much on your solitary pursuits, then.</q> He flips over to a new page in his notebook. <q>Now then, why do you want to come to CMU?</q><.convnode interest>"
 ;
 
 // Help me out here --jocelynh
