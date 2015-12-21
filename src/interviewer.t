@@ -164,7 +164,7 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 + ConvNode 'mcsmajor'
 ;
 
-++ SpecialTopic 'Math' ['math', 'mathematics']
+++ SpecialTopic 'Math' ['math', 'mathematics'] // But we must have Paul Erdos! --jocelynh
     ""
 ;
 
@@ -232,7 +232,7 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 ;
 
 ++ SpecialTopic 'anime club' ['anime', 'anime club', 'japanese', 'japanese club', 'weeaboo', 'weeb']
-    ""
+    ""//"<q>私はアニメが大好きです~~~!</q>"
 ;
 
 ++ SpecialTopic 'sports' ['sports', 'exercise', 'football', 'basketball', 'baseball', 'soccer', 'tennis', 'generic sport', 'golf', 'track', 'and field', 'badminton', 'lacrosse', 'rugby', 'field', 'hockey']
