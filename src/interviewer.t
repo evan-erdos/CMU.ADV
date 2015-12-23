@@ -164,7 +164,8 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 + ConvNode 'mcsmajor'
 ;
 
-++ SpecialTopic 'Math' ['math', 'mathematics'] // But we must have Paul Erdos! --jocelynh
+++ SpecialTopic 'Math' ['math', 'mathematics']
+    // I actually have no idea what to say here though --jocelynh
     ""
 ;
 
@@ -183,8 +184,10 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 
 ++ SpecialTopic 'Physics' ['physics']
     "You have a deep love of spherical cows and frictionless surfaces. In a perfect world, you've always believed there would be no thermal energy loss or drag force.\b
-    <q>Physics!</q> you declare proudly, <q>My role models are Einstein and Feynman, though the admiration sadly doesn't go as far as bongo drums.</q>
-    <q>May the force be with you,</q> the interviewer intones."
+    <q>Physics!</q> you declare proudly, <q>My role models are Einstein and Feynman, though the admiration sadly doesn't go as far as bongo drums.</q>\b
+    <q>May the Force be with you,</q> the interviewer intones.\b
+    <q>...That's Star Wars,</q> you point out, feeling a bit truculent. He looks a bit embarrassed; now look what you've done. <q>Er, may the Force be with you, too.</q> He gives a little sigh of relief.\b
+    <q>So do you enjoy watching movies in your spare time? What do you like to do alone?</q><.convnode extracurriculars>"
 ;
 
 /*****************<Extracurriculars>*****************/
@@ -265,7 +268,7 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
     ""
 ;
 
-++ SpecialTopic 'watch Netflix' ['watch TV', 'watch Netflix', 'watch shows']
+++ SpecialTopic 'watch TV' ['watch TV', 'watch Netflix', 'watch shows', 'watch movies']
     ""
 ;
 
@@ -281,6 +284,21 @@ warner_interviewer : Person 'interviewer' 'Harried Interviewer' @interview_room
 + ConvNode 'interest'
 ;
 
+++ SpecialTopic 'say academics' ['academics', 'learning']
+    ""
+;
+
+++ SpecialTopic 'ranking' ['school ranking', 'ranking']
+    ""
+;
+
+++ SpecialTopic 'robots' ['robots', 'robotics']
+    ""
+;
+
+++ SpecialTopic 'bagpipes' ['listening to', 'bagpipes', 'the kiltie band']
+    ""
+;
 /*****************************************************/
 
 me : Topic 'myself/me';
