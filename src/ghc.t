@@ -61,7 +61,7 @@ ghc_3_entrance : Room 'The Gates Hillman Center (3rd Floor)' 'the third floor'
 "It's the third floor, home of Tazza, which is home of wonderful brownies, which are home to probably way too much sugar for anyone who wants a working pancreas. Oh, and the mysterious Gates 3K cluster. The elevator is here, as is the Helix to your east." {
     in = ghc_3_elevator;
     east = ghc_helix_3;
-    //southeast = gates_3k;
+    southeast = gates_3k;
     south = tazza_d_oro;
 }
 
