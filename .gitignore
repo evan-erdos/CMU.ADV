@@ -1,6 +1,7 @@
 # Object files
 *.o
 *.t3o
+*.t3m
 *.t3s
 *.ko
 *.obj
