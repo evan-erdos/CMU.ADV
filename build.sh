@@ -30,7 +30,7 @@ function run {
 }
 
 function web {
-	frob tgt/cmu_adv_web.t3
+	frob -N 44 tgt/cmu_adv_web.t3
 }
 
 if [ $# -gt 0 ]; then
