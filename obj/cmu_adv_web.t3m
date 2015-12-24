@@ -1,0 +1,48 @@
+
+-DLANGUAGE=en_us
+-DMESSAGESTYLE=neu
+
+-nobanner
+-D TADS_INCLUDE_NET
+-Fy web -Fo web
+-I ../src/
+-Fs ../src/ -Fs ../src/people/ -Fs ../src/map/
+-o ../tgt/cmu_adv_web.t3
+-lib system
+-lib adv3/adv3web
+-lib webui
+-source tadsnet
+
+# sources
+-source main
+
+-source about
+-source hints
+-source init
+-source items
+-source user
+
+# people
+-source people
+
+-source 251_ta
+-source bescott
+-source interviewer
+-source officer
+
+# map
+-source map
+
+-source baker
+-source campus
+-source cfa
+-source doherty
+-source ghc
+-source hammerschlag
+-source warner
+
+# utilities
+-source util
+
+-source combat
+-source dijkstra
