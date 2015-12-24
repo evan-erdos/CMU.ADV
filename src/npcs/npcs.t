@@ -1,4 +1,4 @@
-/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-20 * people */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-20 * npcs */
 
 #include <adv3.h>
 #include <en_us.h>
