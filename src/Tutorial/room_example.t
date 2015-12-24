@@ -1,4 +1,4 @@
-/* Ben Scott * bescott@andrew.cmu.edu * 2015-11-21 * PersonExample */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-11-21 * Room Example */
 
 #include <adv3.h>
 #include <en_us.h>

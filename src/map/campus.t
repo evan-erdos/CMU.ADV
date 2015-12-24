@@ -4,8 +4,6 @@
 #include <en_us.h>
 #include "macros.h"
 
-class CampusOutdoorRoom : OutdoorRoom { atmosphereList = campus_atmosphere; }
-
 fence : MultiLoc, Fixture, Readable 'The Fence' 'the Fence'
 "The fence can be seen from here. It has recently been painted. " {
     locationList = [forbes_cut, cut_north, the_cut,

@@ -1,33 +1,40 @@
+
 -DLANGUAGE=en_us
 -DMESSAGESTYLE=neu
 
 -nobanner
 -D TADS_INCLUDE_NET
--Fs src -Fy obj/web -Fo obj/web
--o tgt/cmu_adv_web.t3
+-Fy web -Fo web
+-I ../src/
+-Fs ../src/ -Fs ../src/people/ -Fs ../src/map/
+-o ../tgt/cmu_adv_web.t3
 -lib system
 -lib adv3/adv3web
 -lib webui
 -source tadsnet
--source macros.h
+
+# sources
+-source main
 
 -source about
 -source hints
 -source init
 -source items
--source main
--source npcs
--source rooms
 -source user
 
+# people
 -source people
+
+-source 251_ta
+-source bescott
 -source interviewer
 -source officer
--source 251_ta
 
-# buildings & campus
--source campus
+# map
+-source map
+
 -source baker
+-source campus
 -source cfa
 -source doherty
 -source ghc
@@ -35,7 +42,7 @@
 -source warner
 
 # utilities
--source combat
--source dijkstra
 -source util
 
+-source combat
+-source dijkstra

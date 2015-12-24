@@ -1,30 +1,37 @@
+
 -DLANGUAGE=en_us
 -DMESSAGESTYLE=neu
 
 -nobanner
--Fs src -Fy obj/cmd -Fo obj/cmd
--o tgt/cmu_adv_cmd.t3
+-Fy cmd -Fo cmd
+-I ../src/
+-Fs ../src/ -Fs ../src/people/ -Fs ../src/map/
+-o ../tgt/cmu_adv_cmd.t3
 -lib system
 -lib adv3/adv3
--source macros.h
+
+# sources
+-source main
 
 -source about
 -source hints
 -source init
 -source items
--source main
--source npcs
--source rooms
 -source user
 
+# people
 -source people
+
+-source 251_ta
+-source bescott
 -source interviewer
 -source officer
--source 251_ta
 
-# buildings & campus
--source campus
+# map
+-source map
+
 -source baker
+-source campus
 -source cfa
 -source doherty
 -source ghc
@@ -32,6 +39,7 @@
 -source warner
 
 # utilities
+-source util
+
 -source combat
 -source dijkstra
--source util

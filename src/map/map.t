@@ -6,6 +6,11 @@
 
 RoomConnector template @room1 @room2 "desc"?;
 
+class CampusOutdoorRoom : OutdoorRoom {
+    atmosphereList = campus_atmosphere;
+}
+
+
 root : Room 'dorm' 'your dorm room'
 "It's a standard-issue dwelling: there's random furniture crammed into all sorts of odd angles, and the effects of a roommate you haven't seen in months, not including his wallet, unfortunately. " {
     out = root_door_0;
