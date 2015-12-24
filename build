@@ -11,10 +11,12 @@ FLAGS="
 # flags for building to the command line
 CMD_FLAGS="
 -nobanner
--Fy cmd -Fo cmd
--I ../src/
--Fs ../src/ -Fs ../src/people/ -Fs ../src/map/
--o ../tgt/cmu_adv_cmd.t3
+-Fy ../cmd -Fo ../cmd
+-I ../../src/
+-Fs ../../src/
+-Fs ../../src/npc/
+-Fs ../../src/map/
+-o ../../tgt/cmu_adv_cmd.t3
 -lib system
 -lib adv3/adv3"
 
@@ -23,10 +25,12 @@ CMD_FLAGS="
 WEB_FLAGS="
 -nobanner
 -D TADS_INCLUDE_NET
--Fy web -Fo web
--I ../src/
--Fs ../src/ -Fs ../src/people/ -Fs ../src/map/
--o ../tgt/cmu_adv_web.t3
+-Fy ../web -Fo ../web
+-I ../../src/
+-Fs ../../src/
+-Fs ../../src/npc/
+-Fs ../../src/map/
+-o ../../tgt/cmu_adv_web.t3
 -lib system
 -lib adv3/adv3web
 -lib webui
@@ -44,8 +48,8 @@ SOURCE_FILES="
 -source items
 -source user
 
-# people
--source people
+# NPCs
+-source npc
 
 -source 251_ta
 -source bescott
@@ -93,13 +97,13 @@ function help {
 #
 # Constructs two `*.t3m` files for building the t3make.
 function make {
-  echo "${FLAGS}" > 'obj/cmu_adv_cmd.t3m'
-  echo "${CMD_FLAGS}" >> 'obj/cmu_adv_cmd.t3m'
-  echo "${SOURCE_FILES}" >> 'obj/cmu_adv_cmd.t3m'
+  echo "${FLAGS}" > 'obj/web/cmu_adv_web.t3m'
+  echo "${WEB_FLAGS}" >> 'obj/web/cmu_adv_web.t3m'
+  echo "${SOURCE_FILES}" >> 'obj/web/cmu_adv_web.t3m'
 
-  echo "${FLAGS}" > 'obj/cmu_adv_web.t3m'
-  echo "${WEB_FLAGS}" >> 'obj/cmu_adv_web.t3m'
-  echo "${SOURCE_FILES}" >> 'obj/cmu_adv_web.t3m'
+  echo "${FLAGS}" > 'obj/cmd/cmu_adv_cmd.t3m'
+  echo "${CMD_FLAGS}" >> 'obj/cmd/cmu_adv_cmd.t3m'
+  echo "${SOURCE_FILES}" >> 'obj/cmd/cmu_adv_cmd.t3m'
 }
 
 
@@ -108,8 +112,8 @@ function make {
 # Explicitly deletes all the object files in `obj/` and deletes
 # the `*.t3` executables from `tgt/`.
 function clean {
-  t3make -clean -f obj/cmu_adv_cmd.t3m
-  t3make -clean -f obj/cmu_adv_web.t3m
+  t3make -clean -f obj/web/cmu_adv_web.t3m
+  t3make -clean -f obj/cmd/cmu_adv_cmd.t3m
 }
 
 
@@ -120,8 +124,8 @@ function clean {
 # makefiles, compiles the project, and then runs it.
 function build {
   make
-  t3make -v -w1 -f obj/cmu_adv_web.t3m &&
-  t3make -v -w1 -f obj/cmu_adv_cmd.t3m
+  t3make -v -w1 -f obj/web/cmu_adv_web.t3m &&
+  t3make -v -w1 -f obj/cmd/cmu_adv_cmd.t3m
 }
 
 
@@ -139,6 +143,7 @@ function run {
 function web {
   frob -N 44 tgt/cmu_adv_web.t3
 }
+
 
 if [ $# -gt 0 ]; then
 while [ "$1" != "" ]; do
