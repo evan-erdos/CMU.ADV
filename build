@@ -5,17 +5,15 @@
 # flags shared between web and cmd builds
 FLAGS="
 -DLANGUAGE=en_us
--DMESSAGESTYLE=neu"
+-DMESSAGESTYLE=neu
+-nobanner
+-Fs ../../src/"
 
 
 # flags for building to the command line
 CMD_FLAGS="
--nobanner
 -Fy ../cmd -Fo ../cmd
 -I ../../src/
--Fs ../../src/
--Fs ../../src/npc/
--Fs ../../src/map/
 -o ../../tgt/cmu_adv_cmd.t3
 -lib system
 -lib adv3/adv3"
@@ -23,55 +21,14 @@ CMD_FLAGS="
 
 # flags for building to the web
 WEB_FLAGS="
--nobanner
 -D TADS_INCLUDE_NET
 -Fy ../web -Fo ../web
 -I ../../src/
--Fs ../../src/
--Fs ../../src/npc/
--Fs ../../src/map/
 -o ../../tgt/cmu_adv_web.t3
 -lib system
 -lib adv3/adv3web
 -lib webui
 -source tadsnet"
-
-
-# a list of files to compile
-SOURCE_FILES="
-# sources
--source main
-
--source about
--source hints
--source init
--source items
--source user
-
-# NPCs
--source npc
-
--source 251_ta
--source bescott
--source interviewer
--source officer
-
-# map
--source map
-
--source baker
--source campus
--source cfa
--source doherty
--source ghc
--source hammerschlag
--source warner
-
-# utilities
--source util
-
--source combat
--source dijkstra"
 
 
 function usage {
@@ -98,12 +55,20 @@ function help {
 # Constructs two `*.t3m` files for building the t3make.
 function make {
   echo "${FLAGS}" > 'obj/web/cmu_adv_web.t3m'
-  echo "${WEB_FLAGS}" >> 'obj/web/cmu_adv_web.t3m'
-  echo "${SOURCE_FILES}" >> 'obj/web/cmu_adv_web.t3m'
-
   echo "${FLAGS}" > 'obj/cmd/cmu_adv_cmd.t3m'
+
+  for dir in $(find ./src/ -type d); do
+    echo "-Fs ../../src/`basename ${dir}`" >> 'obj/web/cmu_adv_web.t3m'
+    echo "-Fs ../../src/`basename ${dir}`" >> 'obj/cmd/cmu_adv_cmd.t3m'
+  done
+
+  echo "${WEB_FLAGS}" >> 'obj/web/cmu_adv_web.t3m'
   echo "${CMD_FLAGS}" >> 'obj/cmd/cmu_adv_cmd.t3m'
-  echo "${SOURCE_FILES}" >> 'obj/cmd/cmu_adv_cmd.t3m'
+
+  for file in $(find ./src -name '*.t'); do
+    echo "-source ${file##*/}" >> 'obj/web/cmu_adv_web.t3m'
+    echo "-source ${file##*/}" >> 'obj/cmd/cmu_adv_cmd.t3m'
+  done
 }
 
 
