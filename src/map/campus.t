@@ -61,6 +61,7 @@ the_cut : CampusOutdoorRoom 'The Cut' 'the Cut'
     southeast = kiltie_front;
     south = cut_south;
     west = cut_walkway_0;
+    up = steam_tunnels_0;
     down asExit(southeast);
 }
 
