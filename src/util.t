@@ -40,7 +40,7 @@ modify Actor {
 
 modify statusLine {
     showStatusRight() {
-        "<<user.name>> - <<config.name>> - ";
+        "<<user.name>> - <<versionInfo.name>> - ";
         inherited();
     }
 }

@@ -6,7 +6,7 @@
 
 #pragma newline_spacing(preserve)
 
-config : GameID {
+versionInfo : GameID {
     name = 'CMU.ADV';
     tagline = 'an adventure...\n;';
     byline = 'by Ben Scott';
@@ -47,14 +47,14 @@ config : GameID {
 
     about() {
         """<p><b><u>
-        ; <<config.name.toUpper()>></u></b>
-        ; <<config.tagline>>
-        ; <<'&lt;'+config.original_byline+'&gt;'>>
+        ; <<versionInfo.name.toUpper()>></u></b>
+        ; <<versionInfo.tagline>>
+        ; <<'&lt;'+versionInfo.original_byline+'&gt;'>>
         </p><p>
-        <<config.byline>>, <<config.authorEmail>>
-        Release <<config.version>>, <<config.firstPublished>>
+        <<versionInfo.byline>>, <<versionInfo.authorEmail>>
+        Release <<versionInfo.version>>, <<versionInfo.firstPublished>>
         </p>""";
     } /* about */
-} /* config */
+} /* versionInfo */
 
 

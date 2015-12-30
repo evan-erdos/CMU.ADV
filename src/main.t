@@ -30,7 +30,7 @@
  **/
 gameMain : GameMainDef {
     initialPlayerChar = user;
-    scoreRankTable = config.scoreRankTable;
+    scoreRankTable = versionInfo.scoreRankTable;
     maxScore = null;
 
     newGame() {
@@ -42,7 +42,7 @@ gameMain : GameMainDef {
     } /* newGame */
 
     begin() {
-        config.title();
+        versionInfo.title();
         for (;;) {
             local cmd;
             local kw;
@@ -55,7 +55,7 @@ gameMain : GameMainDef {
                 kw = rexGroup(1)[3]; /* get the keyword */
                 rqArg = rexGroup(3)[3]; /* get the argument */
             } else kw = ' ';
-            if ('about'.startsWith(kw)) config.showAbout();
+            if ('about'.startsWith(kw)) versionInfo.showAbout();
             else if ('restore'.startsWith(kw) && (RestoreAction.askAndRestore())) return 2;
             else if ('quit'.startsWith(kw)) return 3; /* deal with it */
             else if (kw=='rq' || 'replay'.startsWith(kw)) {
@@ -82,7 +82,7 @@ startup : InitObject {
 #ifndef TADS_INCLUDE_NET
         bannerClear(1);
 #endif
-        config.intro();
+        versionInfo.intro();
         clear;
 #ifndef TADS_INCLUDE_NET
         local spacer = bannerCreate(
@@ -103,12 +103,12 @@ startup : InitObject {
             title,ColorBlue,ColorTransparent);
         bannerSetScreenColor(title,ColorStatusBg);
         bannerSay(title,
-        '\b          <<config.name>>       \b');
+        '\b          <<versionInfo.name>>       \b');
         clear;
         bannerDelete(spacer);
         bannerDelete(title);
 #else
-        config.showAbout();
+        versionInfo.showAbout();
         clear;
 #endif
     }
