@@ -185,14 +185,14 @@ campus_atmosphere : Ambience [
     'A <<one of>>freshman<<or>>sophomore<<or>>junior<<at random>> passes you, and you overhear him saying "<<one of>>112<<or>>122<<or>>213<<at random>> is <<one of>><b>harrrddd-duh</b><<or>>like, totally below me, br0h<<or>>a course here<<at random>>."',
     'A <<user.engender('gaggle of freshmen girls giggle at you','bunch of sophomore boys put their noses deeper into textbooks')>> as they walk by. ',
     'The grass twirls in the breeze.',
-    'It gets a bit darker as some clouds pass overhead. <<one of>>Pinpricks of tiny raindrops suprise you for a short while.<<or>><<at random>>',
+    'It gets a bit darker as some clouds pass overhead. <<one of>>Pinpricks of tiny raindrops surprise you for a short while.<<or>><<at random>>',
     'You hear chirping somewhere.'];
 
 uniqueEvents : RandomFiringScript, EventList [
     'In the distance you can hear some people laughing, but then they become quiet all of a sudden. ',
     'A lone figure darts around a corner, his head and face obscured by a hat and a huge backpack. ',
     'A car horn gives a short blip of noise to someone near the intersection, insomuch as you can tell. ',
-    'At a distance you can see a student jump in suprise, having just unwittingly stepped in a deep puddle. <i>Get it together, Cindy.</i> ',
+    'At a distance you can see a student jump in surprise, having just unwittingly stepped in a deep puddle. <i>Get it together, Cindy.</i> ',
     'Two people walk by, speaking a language you can\'t even identify (and you\'re pretty worldly!). You both realize that you\'re staring at them. You stop. '] eventPercent = 80;
 
 

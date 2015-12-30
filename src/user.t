@@ -4,6 +4,37 @@
 #include <en_us.h>
 #include "macros.h"
 
+
+/** `user` : **`Mortal`**
+ *
+ * This is the primary class representing the player. Anything
+ * which pertains to the main player should be included here.
+ * It inherits from **`BagOfHolding`**, to simulate a person's
+ * pockets and general ability to carry things, and from the
+ * **`Mortal`** class, which is a kind of **`Person`** which
+ * can be killed or harmed in one way or another.
+ *
+ * - `name` : **`string`**
+ *     The `user` will be referred to as this when being listed
+ *     in a room, or when being addressed by another `Actor`.
+ *
+ * - `firstname` : **`string`**
+ *     a surname to be used in certain special encounters.
+ *
+ * - `lastname` : **`string`**
+ *     see `firstname`
+ *
+ * - `gender` : **`Gender`**
+ *     a value of the `enum` which defines gender.
+ *
+ * - `location` : **`Room`**
+ *     the initial location for the player.
+ *
+ * - `bulk` : **`int`**
+ *     amount of weight the `user` can carry without using a
+ *     holdall, e.g., the `backpack`.
+ *
+ **/
 user : BagOfHolding, Mortal {
     name = 'Paul Erdos';
     firstname = 'Paul';
@@ -106,7 +137,8 @@ user : BagOfHolding, Mortal {
         }
     }
 
-    printGender() { return (user.gender==male)?'Male':'Female'; }
+    printGender() {
+        return (user.gender==male)?'Male':'Female'; }
 
     commitCrime(n) { /* n is severity of crime */
         user.crimes+=n; // as it is, you can't ever repent

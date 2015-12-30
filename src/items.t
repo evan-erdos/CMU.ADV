@@ -4,11 +4,12 @@
 #include <en_us.h>
 #include "macros.h"
 
+
 /** `backpack` : **`BagOfHolding`**
-|*
-|* This is the main holdall for the `user`. Should be found in
-|* one of the starting rooms.
-|**/
+ *
+ * This is the main holdall for the `user`. Should be found in
+ * one of the starting rooms.
+ **/
 backpack : BagOfHolding, StretchyContainer 'backpack' @root
 "You've had this pack for awhile. It's somewhat old, but it still carries everything you need to go out adventuring." {
     initSpecialDesc = "Your tattered backpack is here. You typically don't leave home without it. ";
@@ -18,18 +19,20 @@ backpack : BagOfHolding, StretchyContainer 'backpack' @root
     //affinityFor(obj) { return obj.ofKind(Tablet) ? 200 : inherited(obj); }
 }
 
+
 /** `keyring` : **`Keyring`**
-|*
-|* This is the main `Keyring` for the `user`, which should also
-|* be situated near the start of the game.
-|**/
+ *
+ * This is the main `Keyring` for the `user`, which should also
+ * be situated near the start of the game.
+ **/
 keyring : Keyring 'keyring' @root
 "Your keyring is kindof barren. It\'s old enough that it\'s not as hard to separate it to put keys on, though. So, you\'ve got that going for you, which is nice." { }
 
+
 /** `flashlight` : **`Flashlight`**
-|*
-|* This is the main `Lamp` for the `user`.
-|**/
+ *
+ * This is the main `Lamp` for the `user`.
+ **/
 flashlight : Flashlight 'flashlight' @root
 "Your flashlight is thin, and made from a very heavy metal. You would have a hard time breaking it, but the batteries don\'t last that long." {
     vocabWords = 'flash/flashlight/light/lamp/lantern/bulb/light/li';
@@ -39,11 +42,13 @@ flashlight : Flashlight 'flashlight' @root
     weight = 2;
 }
 
+
 leaflet : Thing '(small) leaflet' 'leaflet' @the_cut
 "The leaflet is quite short, and has a tear along the top edge. It reads \"... the most amazing territory ever seen by mortals. No computer should be without one!\" At the end is what looks like a serial number, <b>69105</b>. Typical." {
     initSpecialDesc = "There's a leaflet here, held down by a rock. An edge flutters in the breeze.";
     initDesc = "It's just a small piece of paper. You have no idea how it hasn't blown away yet.";
 }
+
 
 futuristic_leaflet : Thing '(small) note/email' 'futuristic leaflet' @root
 "It reads:\b \"Hi guys, Homework 1 has been posted. Please start it right away. Note that, as opposed to other courses, you can think about most of these problems while waking around and doing mechanical errands. Cheers, Irina\"\b You think you can see tears on the bottom, but those could just as easily be from the rain. " {
@@ -51,8 +56,9 @@ futuristic_leaflet : Thing '(small) note/email' 'futuristic leaflet' @root
     initDesc = "It's just a note. You wonder why it hasn't blown away yet.";
 }
 
+
 newspaper : Readable, Thing
-'news/paper/tartan/newspaper' 'issue of "The Tartan"' @dh_entrance
+'news/paper/tartan/newspaper' 'issue of <i>The Tartan</i>' @dh_entrance
 "It's what passes for a newspaper at this school. " {
     initSpecialDesc = "A newspaper lies discarded on the ground. ";
     readDesc {
@@ -64,3 +70,6 @@ newspaper : Readable, Thing
 
     achievement : Achievement { +5 "being dumb enough to miss your graduation, but smart enough to read the newspaper to find that out! " };
 }
+
+
+

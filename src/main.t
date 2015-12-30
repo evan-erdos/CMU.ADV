@@ -4,29 +4,45 @@
 #include <en_us.h>
 #include "macros.h"
 
-gameMain : GameMainDef { // impugn
+
+/** `gameMain` : **`GameMainDef`**
+ *
+ * This is a special class which TADS3 relies on to start the
+ * game. It deals with all manner of startup and title-related
+ * functions, and sets up some global variables to be used by
+ * the TADS3 framework. Such variables include:
+ *
+ * - `initialPlayerChar` : **`Actor`**
+ *     Whose body to start out the game in. This can be rebound
+ *     to another instance of `Actor`, which means you can jump
+ *     between different people during the game.
+ *
+ * - `scoreRankTable` : **`<int,string>[]`**
+ *     Numbers mapped to strings, which are the "ranks" that
+ *     a player can achieve, e.g., what they are considered at
+ *     a given value `n` would be the string at `n`, rounded
+ *     down to the nearest value. Points are typically awarded
+ *     by the `Achievement` class.
+ *
+ * - `maxScore` : **`int`**
+ *     optional maximum, if undefined, the limit is calculated
+ *     to be the sum of the points from all `Achievement`s.
+ **/
+gameMain : GameMainDef {
     initialPlayerChar = user;
-    scoreRankTable = [
-        [0,  'a dumb freshman'],
-        [10, 'a basic sophomore'],
-        [15, 'a dumb corgi (this is a holdover from a different game, don\'t mind this, just get some more points, you\'ll stop being a dog)'],
-        [20, 'such a good boy, yes you *ARE*! (yeah, no, just one more)'],
-        [32, 'a silly senior'],
-        [63, 'a bachelor of something or, uh, sure why not I... I don\'t know.'],
-        [82, 'a PH.D, you\'z got that fancy title now, dockta. '],
-        [99, 'a coked-out professor']];
+    scoreRankTable = config.scoreRankTable;
     maxScore = null;
 
     newGame() {
-        intro.prolog();
-        startup(); cls();
+        startup.init();
+        begin(); cls();
         user.init();
         Events.init();
         runGame(true);
     } /* newGame */
 
-    startup() {
-        versionInfo.titleScreen();
+    begin() {
+        config.title();
         for (;;) {
             local cmd;
             local kw;
@@ -39,7 +55,7 @@ gameMain : GameMainDef { // impugn
                 kw = rexGroup(1)[3]; /* get the keyword */
                 rqArg = rexGroup(3)[3]; /* get the argument */
             } else kw = ' ';
-            if ('about'.startsWith(kw)) versionInfo.showAbout();
+            if ('about'.startsWith(kw)) config.showAbout();
             else if ('restore'.startsWith(kw) && (RestoreAction.askAndRestore())) return 2;
             else if ('quit'.startsWith(kw)) return 3; /* deal with it */
             else if (kw=='rq' || 'replay'.startsWith(kw)) {
@@ -52,10 +68,54 @@ gameMain : GameMainDef { // impugn
                 }
             } else return 1;
         }
-    } /* startup */
+    } /* begin */
 } /* gameMain */
 
-#ifdef SUDO
+
+/** `startup` : **`InitObject`**
+ *
+ * Called by `gameMain` to deal with the opening sequence.
+ **/
+startup : InitObject {
+
+    init() {
+#ifndef TADS_INCLUDE_NET
+        bannerClear(1);
+#endif
+        config.intro();
+        clear;
+#ifndef TADS_INCLUDE_NET
+        local spacer = bannerCreate(
+            null, BannerFirst,
+            statuslineBanner.handle_,
+            BannerTypeTextGrid,
+            BannerAlignTop,10,
+            BannerSizePercent,
+            BannerStyleBorder);
+        local title = bannerCreate(
+            null, BannerLast,
+            statuslineBanner.handle_,
+            BannerTypeTextGrid,
+            BannerAlignTop, 16,
+            BannerSizePercent,
+            BannerStyleBorder);
+        bannerSetTextColor(
+            title,ColorBlue,ColorTransparent);
+        bannerSetScreenColor(title,ColorStatusBg);
+        bannerSay(title,
+        '\b          <<config.name>>       \b');
+        clear;
+        bannerDelete(spacer);
+        bannerDelete(title);
+#else
+        config.showAbout();
+        clear;
+#endif
+    }
+}
+
+
+#ifdef __DEBUG
 
 DefineIAction(FiatLux)
     execAction {

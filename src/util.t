@@ -4,7 +4,7 @@
 #include <en_us.h>
 #include "macros.h"
 
-/* begin mods */
+/* begin modifications */
 
 // Passage template -> masterObject 'vocabWords' 'name' @location? "desc"?
 // Door template 'name' @room1 @room2;
@@ -40,7 +40,7 @@ modify Actor {
 
 modify statusLine {
     showStatusRight() {
-        "<<user.name>> - <<versionInfo.name>> - ";
+        "<<user.name>> - <<config.name>> - ";
         inherited();
     }
 }
@@ -53,7 +53,7 @@ class Ambience : RandomFiringScript, ShuffledEventList {
 
 Ambience template [eventList];
 
-/* end mods */
+/* end modifications */
 
 
 /* begin events */
@@ -134,28 +134,28 @@ util : object {
     }
 
     censor : StringPreParser {
-        doParsing(str, which) {
-            if (rexMatch(util.obscenities.toLower(),str)!=null) {
-                util.offenses+=1;
-                if (util.offenses>8) {
-                    "Come back when you've classed it up a bit.";
-                    finishGameMsg('You have missed the point entirely.',null); }
-                else if (util.offenses>7) "Be very careful.";
-                else if (util.offenses>6) "Tenacious, huh?";
-                else if (util.offenses>5) "I'll do something awful if you keep this up.";
-                else if (util.offenses>4) "No, you're right, this is hilarious.";
-                else if (util.offenses>3) "How was middle school for you?";
-                else if (util.offenses>2) "Try me.";
-                else if (util.offenses>1) "Knock it off.";
-                else if (util.offenses>0) "Be careful.";
-                return null;
-            } return str;
+        doParsing(s, which) {
+            if (rexMatch(util.obscenities.toLower(),s)==null)
+                return s;
+            util.offenses+=1;
+            if (util.offenses>8) {
+                "Come back when you've classed it up a bit.";
+                finishGameMsg('You have missed the point entirely.',null); }
+            else if (util.offenses>7) "Be very careful.";
+            else if (util.offenses>6) "Tenacious, huh?";
+            else if (util.offenses>5) "I'll do something awful if you keep this up.";
+            else if (util.offenses>4) "No, you're right, this is hilarious.";
+            else if (util.offenses>2) "Try me.";
+            else if (util.offenses>1) "Knock it off.";
+            else if (util.offenses>0) "Be careful.";
+            return null;
         }
     }
 
-    suppressOutput : OutputFilter { filterText(tgt,src) { return ' '; } }
+    suppressOutput : OutputFilter {
+        filterText(tgt,src) { return ' '; } }
 
-    obscenities = '%bfuck|shit|ass|penis|pussy|shit|damn|vagina|tit|boob|felch|cunt|blumpkin|clit|cum|semen%b';
+    obscenities = R'%b([^a-eg-z0-9][^a-tv-z0-9][^abd-z0-9][^a-jl-z0-9])|([^a-rt-z0-9][^a-gi-z0-9][^a-hj-z0-9][^a-su-z0-9])%b'; // straightforward? no, but it keeps the repo classy.
     offenses = 0;
 }
 

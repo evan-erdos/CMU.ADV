@@ -1,10 +1,12 @@
 /* Ben Scott * bescott@andrew.cmu.edu * 2015-09-19 * Macros */
 
+
 /** `null` : **`macro`**
  *
  * Because we ain't no Lispers here
  **/
 #define null nil
+
 
 /** `print()` : **`macro`**
  *
@@ -12,11 +14,13 @@
  **/
 #define print say
 
+
 /** `println()` : **`macro`**
  *
  * Same as print, adds a newline
  **/
 #define println(s) (say('\n'+(s)))
+
 
 /** `clear` : **`macro`**
  *
@@ -27,6 +31,7 @@
  **/
 #define clear inputManager.getKey(null,null); cls()
 
+
 /** `clear` : **`macro`**
  *
  * Waits for the user to press any key before continuing to
@@ -34,11 +39,6 @@
  **/
 #define next inputManager.getKey(null,null)
 
-/** `SUDO` : **`macro`**
- *
- * Adds some special verbs for debugging purposes.
- **/
-#define SUDO
 
 /** `Thing` : **`template`**
  *
@@ -46,11 +46,13 @@
  **/
 Thing template 'name' @location? "desc";
 
+
 /** `Person` : **`template`**
  *
  * Reorganizes the usual `Person` `template`
  **/
 Person template 'name' @location? "desc";
+
 
 /** `Room` : **`template`**
  *
@@ -58,7 +60,5 @@ Person template 'name' @location? "desc";
  * name, e.g., what prints when it says "east, to the room".
  **/
 Room template 'roomName' "desc"? 'destName'? 'name'?;
-
-
 
 

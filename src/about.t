@@ -4,7 +4,9 @@
 #include <en_us.h>
 #include "macros.h"
 
-versionInfo : GameID {
+#pragma newline_spacing(preserve)
+
+config : GameID {
     name = 'CMU.ADV';
     tagline = 'an adventure...\n;';
     byline = 'by Ben Scott';
@@ -15,18 +17,44 @@ versionInfo : GameID {
     firstPublished = '1986 (2015)';
     IFID = 'TADS3CMU-ADV3-77C6-042E-278CEDED4BDC';
 
-    titleScreen() {
-        showAbout();
-        "<p>(Type <<aHref('about', 'ABOUT')>> for basic information about this game, or <<aHref('restore', 'RESTORE')>> to restore
-            a saved position. To <<aHref('', 'begin the game')>>, just
-            press the Enter key, and type <<aHref('help','HELP')>> once you start if you get stuck.) </p>";
-    } /* titleScreen */
+    scoreRankTable = [
+        [0,  'a dumb freshman'],
+        [10, 'a basic sophomore'],
+        [15, 'a dumb corgi (where\'s my script?)'],
+        [20, 'such a good boy, yes you *ARE*!'],
+        [32, 'a silly senior'],
+        [63, 'a bachelor of something or, uh, sure why not I... I don\'t know.'],
+        [82, 'a PH.D: You\'z got a fancy title now, dockta.'],
+        [99, 'a coked-out professor']];
 
-    showAbout() {
-        "\b<b><u>; <<versionInfo.name.toUpper()>></u></b>
-        \n; <<versionInfo.tagline>>
-        \n; <<'&lt;'+versionInfo.original_byline+'&gt;'>>
-        \b<<versionInfo.byline>>, <<versionInfo.authorEmail>>
-        \nRelease <<versionInfo.version>>, <<versionInfo.firstPublished>>";
-    } /* showAbout */
-} /* versionInfo */
+
+    intro() {
+        """<p>
+        That was some party last night... you must have had about twenty beers. Or was it thirty?  As you try to recall, the night becomes a giant blur, swimming around and around in your head. It spins faster, and you feel dizzy. Don't worry, though, you're lying down.
+        </p><p>
+        On the ground...
+        </p>""";
+    } /* intro */
+
+
+    title() {
+        about();
+        """
+        <p>(Type <<aHref('about', 'ABOUT')>> for basic information about this game, or <<aHref('restore', 'RESTORE')>> to restore a saved position. To <<aHref('', 'begin the game')>>, just press the Enter key, and type <<aHref('help','HELP')>> once you start if you get stuck.) </p>
+        """;
+    } /* title */
+
+
+    about() {
+        """<p><b><u>
+        ; <<config.name.toUpper()>></u></b>
+        ; <<config.tagline>>
+        ; <<'&lt;'+config.original_byline+'&gt;'>>
+        </p><p>
+        <<config.byline>>, <<config.authorEmail>>
+        Release <<config.version>>, <<config.firstPublished>>
+        </p>""";
+    } /* about */
+} /* config */
+
+
