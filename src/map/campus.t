@@ -3,6 +3,8 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
+
 
 fence : MultiLoc, Fixture, Readable 'The Fence' 'the Fence'
 "The fence can be seen from here. It has recently been painted. " {

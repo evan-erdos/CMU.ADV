@@ -4,6 +4,8 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
+
 
 warner_entrance : OutdoorRoom 'Warner Hall (Outside)' 'Warner'
 "You are standing on a north-south walkway outside Warner Hall. The recently bought marble exterior ($180,000) impresses you beyond words, though there's a black grate obscuring some of the design. The cut is nearby, and you see a large black building to the west." {

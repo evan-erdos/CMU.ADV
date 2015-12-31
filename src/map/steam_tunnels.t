@@ -3,6 +3,8 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
+
 
 class SteamRoom : Room {
     desc = "You're in a very dangerous situation. You're wandering through active steam tunnels. You have a hard time differentiating directions, and there's quite a smell in the air. ";

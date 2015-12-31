@@ -3,18 +3,7 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
-
-/* I've added this file as a kind of tutorial, for those who'd
- * like to become rich and famous, (i.e., people who want to be
- * in the game, but aren't hacking the mainframe enough to have
- * added themselves in already).
- *
- * You can add yourself in as a person, put something somewhere
- * on campus, &/| add your dorm room. There are no rules, aside
- * from not breaking anything / adding comments that say things
- * like, "THE NEXT INSTANCE OF PERSON DEFINED BELOW THIS POINT
- * IS A LITTLE BIIIITTTCCCCHHHHH!! HAHAA!! BUSH-REAGAN 1984!!!"
- * I trust you people. */
+#pragma newline_spacing(preserve)
 
 
 class Mortal : Person {
@@ -26,9 +15,9 @@ class Mortal : Person {
     dodge = 5;
     weapon_damage = 1;
 
-    Harm(n) { /* must be implemented by subclass */ }
+    Harm(n) { /* virtual */ }
 
-    attackDamage() { return self.strength+weapon_damage; } // weapon_damage -> ref item
+    attackDamage() { return self.strength+weapon_damage; }
 }
 
 class NPCWorn : Wearable {
@@ -44,6 +33,7 @@ class Group : Mortal { isPlural = true; isIt = true; }
 emily_dickinson : Person 'Emily' @cfa_field
 "She sits quietly in a stiff wooden chair. She is deathly pale, and you know what color she's wearing." {
     isHer = true;
+
     npcDesc {
         'A solemn thing - it was - I said -
         A Woman - White - to be -
@@ -52,6 +42,7 @@ emily_dickinson : Person 'Emily' @cfa_field
 
         F 307 (1862) 271';
     }
+
     isProperName = true;
     vocabWords = 'em/emmy/emily/emily dickinson/dickinson';
     properName = 'Emily Dickinson';
@@ -59,7 +50,7 @@ emily_dickinson : Person 'Emily' @cfa_field
 }
 
 + NPCWorn '(white|summer) frock/dress/housedress' 'dress'
-"It\'s a very clean, very white housedress." {
+"It's a very clean, very white housedress." {
     isListed = (!isIn(emily_dickinson));
 }
 

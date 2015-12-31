@@ -1,14 +1,27 @@
 #!/bin/bash
 # CMU.ADV
 
+# flags to be sent directly to the compiler
+FLAGS=""
+
+# tell the compiler to print a bunch of nonsense
+VERBOSE="-v -w1"
+
+# optional debug flag
+DEBUG="-d"
 
 # flags shared between web and cmd builds
-FLAGS="
+MAKE_FLAGS="
 -DLANGUAGE=en_us
 -DMESSAGESTYLE=neu
 -nobanner
 -Fs ../../src/"
 
+# filename for chararray makefile
+MAKE_CMD="obj/cmd/cmu_adv_cmd.t3m"
+
+# filename for web makefile
+MAKE_WEB="obj/web/cmu_adv_web.t3m"
 
 # flags for building to the command line
 CMD_FLAGS="
@@ -32,7 +45,7 @@ WEB_FLAGS="
 
 
 function usage {
-  echo "usage: .cmu-adv [-chrw]"
+  echo "usage: . build [-cdhrw]"
 }
 
 
@@ -44,6 +57,7 @@ function help {
   echo "options:
     -b, --build    clean both targets, compile and run
     -c, --clean    clean build files without compiling
+    -d, --debug    send debug flags to the compiler
     -h, --help     displays usage and help text
     -r, --run      runs the console build
     -w, --web      runs the web build"
@@ -54,20 +68,20 @@ function help {
 #
 # Constructs two `*.t3m` files for building the t3make.
 function make {
-  echo "${FLAGS}" > 'obj/web/cmu_adv_web.t3m'
-  echo "${FLAGS}" > 'obj/cmd/cmu_adv_cmd.t3m'
+  echo -e "${MAKE_FLAGS}" > $MAKE_WEB
+  echo -e "${MAKE_FLAGS}" > $MAKE_CMD
 
   for dir in $(find ./src/ -type d); do
-    echo "-Fs ../../src/`basename ${dir}`" >> 'obj/web/cmu_adv_web.t3m'
-    echo "-Fs ../../src/`basename ${dir}`" >> 'obj/cmd/cmu_adv_cmd.t3m'
+    echo "-Fs ../../src/`basename ${dir}`" >> $MAKE_WEB
+    echo "-Fs ../../src/`basename ${dir}`" >> $MAKE_CMD
   done
 
-  echo "${WEB_FLAGS}" >> 'obj/web/cmu_adv_web.t3m'
-  echo "${CMD_FLAGS}" >> 'obj/cmd/cmu_adv_cmd.t3m'
+  echo "${WEB_FLAGS}" >> $MAKE_WEB
+  echo "${CMD_FLAGS}" >> $MAKE_CMD
 
   for file in $(find ./src -name '*.t'); do
-    echo "-source ${file##*/}" >> 'obj/web/cmu_adv_web.t3m'
-    echo "-source ${file##*/}" >> 'obj/cmd/cmu_adv_cmd.t3m'
+    echo "-source ${file##*/}" >> $MAKE_WEB
+    echo "-source ${file##*/}" >> $MAKE_CMD
   done
 }
 
@@ -77,8 +91,8 @@ function make {
 # Explicitly deletes all the object files in `obj/` and deletes
 # the `*.t3` executables from `tgt/`.
 function clean {
-  t3make -clean -f obj/web/cmu_adv_web.t3m
-  t3make -clean -f obj/cmd/cmu_adv_cmd.t3m
+  t3make -clean -f $MAKE_WEB
+  t3make -clean -f $MAKE_CMD
 }
 
 
@@ -89,8 +103,18 @@ function clean {
 # makefiles, compiles the project, and then runs it.
 function build {
   make
-  t3make -v -w1 -f obj/web/cmu_adv_web.t3m &&
-  t3make -v -w1 -f obj/cmd/cmu_adv_cmd.t3m
+  t3make $FLAGS -f $MAKE_WEB &&
+  t3make $FLAGS -f $MAKE_CMD
+}
+
+
+# debug
+#
+# sets flags for a debug build
+function debug {
+  FLAGS="$DEBUG $VERBOSE $FLAGS"
+  build
+  run
 }
 
 
@@ -116,6 +140,7 @@ while [ "$1" != "" ]; do
     -b | --build )  clean
                     build
                     run;;
+    -d | --debug )  debug;;
     -c | --clean )  clean;;
     -h | --help  )  help;;
     -r | --run   )  run;;

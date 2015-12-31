@@ -3,6 +3,8 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
+
 
 dh_entrance : OutdoorRoom 'Doherty Hall East 1 (Front Entrance)' 'right outside Doherty'
 "This is the entrance to Doherty Hall.  Cold, black marble walls rise up above you to meet at a strange ironwork globe set in the ceiling.  Clamshell lights shine dimly upward into the darkness. " {

@@ -3,6 +3,8 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
+
 
 /* begin modifications */
 
@@ -21,10 +23,17 @@ modify YellAction {
     execAction() { mainReport('You bark as loud as you can. '); }
 }
 
+
 modify Thing {
     dobjFor(BarkAt) {
         verify() {
             illogical('{The dobj/he} {is} not something you can bark at. '); }
+    }
+
+    dobjFor(Purloin) {
+        verify() {
+            illogical('{you/he} can\'t steal {that dobj/him}! ');
+        }
     }
 }
 
@@ -135,7 +144,7 @@ util : object {
 
     censor : StringPreParser {
         doParsing(s, which) {
-            if (rexMatch(util.obscenities.toLower(),s)!=null) {
+            if (rexMatch(util.obscenities,s.toLower())!=null) {
                 util.offenses+=1;
                 if (util.offenses>8) {
                     "Come back when you've classed it up a bit.";

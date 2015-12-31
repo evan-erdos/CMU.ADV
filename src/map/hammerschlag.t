@@ -3,6 +3,8 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
+
 
 hh_entrance : Room 'Hammerschlag Entrance' 'Hammerschlag'
 "This is the entrance to Hammerschlag Hall, that tower

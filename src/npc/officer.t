@@ -3,6 +3,7 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
 
 
 cmu_officer : Readable, Person
@@ -15,7 +16,7 @@ cmu_officer : Readable, Person
 
     harass(actor) { Events.init_limbo(); }
 
-    uselessToAttackMsg { "Trying anything funny with this fellow seems like a terrible idea. You might have woken up on the ground in the middle of campus, but you're not <b>that </b> foolhardy. "; }
+    uselessToAttackMsg { "Trying anything funny with this fellow seems like a terrible idea. You might have woken up on the ground in the middle of campus, but you're not <b>that</b> foolhardy. "; }
 }
 
 + officer_init : ActorState {
@@ -37,15 +38,41 @@ cmu_officer : Readable, Person
 }
 
 +++ officer_agenda_list : ShuffledEventList
-    ['The campus cop squints at you from behind his mirror shades and rasps, "You\'ll have to move along, <<user.engender('son','little missy')>>."',
+    ['''
+    The campus cop squints at you from behind his mirror shades and rasps, "You'll have to move along, <<user.engender('son','little missy')>>."
+    ''',
     'The cop taps his foot impatiently.',
-    'He says, "Five more minutes of this, I\'m gonna get mad!"',
-    '"Not <b>my</b> fault this is happening..."',
-    'The cop gives you a weird look. You\'re not sure what to make of it.',
-    'The officer grumbles, and looks like he\'s about to make his move. ',
-    'He\'s going to do something any moment now. "One more chance, come on!"',
-    'The cop is all worked up now. "Last chance to get outta here!"']
-    [{: print('<<user.engender('The cop hauls you up by the collar. "Okay, wise guy, beat it!"','The cop says "Sorry to have to do this, ma\'am." and then carries you off.')>> '),
+
+    '''
+    He says, "Five more minutes of this, I'm gonna get mad!"
+    ''',
+
+    '''
+    "Not <b>my</b> fault this is happening..."
+    ''',
+
+    '''
+    The cop gives you a weird look. You're not sure what to make of it.
+    ''',
+
+    '''
+    The officer grumbles, and looks like he's about to make his move.
+    ''',
+
+    '''
+    He's going to do something any moment now. "One more chance, come on!"
+    ''',
+
+    '''
+    The cop is all worked up now. "Last chance to get outta here!"
+    ''']
+    [{: print('''<<user.engender('''
+        The cop hauls you up by the collar.
+        "Okay, wise guy, beat it!"
+        ''',
+        '''
+        The cop says "Sorry to have to do this, ma'am." and then carries you off.
+        ''')>>'''),
         cmu_officer.harass(user),
         officer_agenda.resetItem(),
         isDone = true }];

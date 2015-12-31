@@ -3,6 +3,7 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
 
 
 /** `gameMain` : **`GameMainDef`**
@@ -115,25 +116,6 @@ startup : InitObject {
 }
 
 
-#ifdef __DEBUG
 
-DefineIAction(FiatLux)
-    execAction {
-        if (gPlayerChar.brightness==0) {
-            "You\'re pretty bright. ";
-            gPlayerChar.brightness = 3;
-        } else {
-            "You feel dimmer. ";
-            gPlayerChar.brightness = 0;
-        }
-    }
-;
-
-
-VerbRule(FiatLux) 'fiat' 'lux' : FiatLuxAction {
-    verbPhrase = 'make/making light'
-}
-;
-#endif
 
 
