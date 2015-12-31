@@ -6,9 +6,6 @@
 #pragma newline_spacing(preserve)
 
 
-#pragma newline_spacing(preserve)
-
-
 fence : MultiLoc, Fixture, Readable
 'The Fence' 'the Fence'
 "You can see the fence from here, covered with thousands of layers of paint. It looks a bit rickety, but it always has. You're reasonably confident that the paint will hold it up for at least another seven years. " {

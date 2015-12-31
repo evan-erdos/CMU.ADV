@@ -6,7 +6,6 @@
 #pragma newline_spacing(preserve)
 
 
-
 RoomConnector template @room1 @room2 "desc"?;
 
 
