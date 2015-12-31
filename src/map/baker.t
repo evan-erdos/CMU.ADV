@@ -4,6 +4,9 @@
 #include <en_us.h>
 #include "macros.h"
 
+#pragma newline_spacing(preserve)
+
+
 bh_entrance : OutdoorRoom 'Baker Hall (Outside)' 'Baker'
 "You are at the entrance to Baker Hall. A walkway is east and a hallway leads west. There is a staircase leading up and down." {
     east = cut_walkway_3;
@@ -37,12 +40,19 @@ bh_bookstore_entrance : Room 'Baker Hall (near the Bookstore)' 'Baker'
     up = bh_entrance;
 }
 
-bh_bookstore : FakeConnector "You bump your head against the doors, which are locked and have a big sign across them:\n CLOSED FOR THE SUMMER.";
-
 ph_1_main : Room 'Porter Hall (A Level)' 'Porter'
-"Porter Hall 1st Floor.  There is a hallway east and stairs down." {
+"This is the First Floor of Porter Hall.  There is a hallway to the east and some stairs leading down." {
     east = bh_1_west;
 }
 
-//bh_bookstore : Room 'Bookstore (Baker Hall)' 'the bookstore'
-//"You bump your head against the doors, which are locked and have a big sign across them: \n CLOSED FOR THE SUMMER." {  }
+bh_bookstore : DeadEndConnector
+'Bookstore (Baker Hall)' 'the bookstore'
+"""
+You bump your head against the doors, which are locked and have a big sign across them:
+> <b>CLOSED FOR THE SUMMER</b>.
+""" {  }
+
+
+
+
+

@@ -41,13 +41,13 @@ versionInfo : GameID {
     title() {
         about();
         """
-        <p>(Type <<aHref('about', 'ABOUT')>> for basic information about this game, or <<aHref('restore', 'RESTORE')>> to restore a saved position. To <<aHref('', 'begin the game')>>, just press the Enter key, and type <<aHref('help','HELP')>> once you start if you get stuck.) </p>
-        """;
+        <p>(Type <<aHref('about', 'ABOUT')>> for basic information about this game, or <<aHref('restore', 'RESTORE')>> to restore a saved position. To <<aHref('', 'begin the game')>>, just press the Enter key, and type <<aHref('help','HELP')>> once you start if you get stuck.) </p>""";
     } /* title */
 
 
     about() {
-        """<p><b><u>
+        """
+        <p><b><u>
         ; <<versionInfo.name.toUpper()>></u></b>
         ; <<versionInfo.tagline>>
         ; <<'&lt;'+versionInfo.original_byline+'&gt;'>>
