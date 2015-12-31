@@ -132,26 +132,25 @@ Events : object {
 //combinedSpecialDesc : ListGroupSorted {
 //  compareGroupItems(a,b) { return (a.listOrder-b.listOrder);} }
 
-    /** `valToList()` : **`<T>[]`**
-     *
-     * convert anything to a list. If it's already a list,
-     * simply return it. If it's `null`, return an empty list.
-     * If it's a singleton value, return a one-element list
-     * containing it.
-     **/
-    valToList(val) {
-        switch (dataType(val)) {
-            case TypeNil : return [];
-            case TypeList : return val;
-            case TypeObject :
-                if (val.ofKind(Vector))
-                    return val.toList;
-                else return [val];
-            default: return [val];
-        }
+
+/** `valToList()` : **`<T>[]`**
+ *
+ * convert anything to a list. If it's already a list,
+ * simply return it. If it's `null`, return an empty list.
+ * If it's a singleton value, return a one-element list
+ * containing it.
+ **/
+valToList(val) {
+    switch (dataType(val)) {
+        case TypeNil : return [];
+        case TypeList : return val;
+        case TypeObject :
+            if (val.ofKind(Vector))
+                return val.toList;
+            else return [val];
+        default: return [val];
     }
-
-
+}
 
 
 util : object {
