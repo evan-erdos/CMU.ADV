@@ -4,7 +4,6 @@
 #include <en_us.h>
 #include "macros.h"
 
-#ifndef PROTOTYPE
 modify Room {
     regions = null
 
@@ -38,8 +37,6 @@ modify Room {
         return allRegions.subset(
             {x: x.roomList.indexOf(other) != null}); }
 }
-#endif
-
 
 RoomConnector template @room1 @room2 "desc"?;
 
