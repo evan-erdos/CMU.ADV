@@ -4,7 +4,9 @@
 #include <en_us.h>
 #include "macros.h"
 
+
 RoomConnector template @room1 @room2 "desc"?;
+
 
 class CampusOutdoorRoom : OutdoorRoom {
     atmosphereList = campus_atmosphere;
