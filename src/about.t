@@ -6,6 +6,7 @@
 
 #pragma newline_spacing(preserve)
 
+
 versionInfo : GameID {
     name = 'CMU.ADV';
     tagline = 'an adventure...\n;';

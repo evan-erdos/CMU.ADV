@@ -33,7 +33,6 @@
  * - `bulk` : **`int`**
  *     amount of weight the `user` can carry without using a
  *     holdall, e.g., the `backpack`.
- *
  **/
 user : BagOfHolding, Mortal {
     name = 'Paul Erdos';

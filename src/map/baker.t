@@ -45,4 +45,4 @@ ph_1_main : Room 'Porter Hall (A Level)' 'Porter'
 }
 
 //bh_bookstore : Room 'Bookstore (Baker Hall)' 'the bookstore'
-//"You bump your head against the doors, which are locked and have a big sign across them:\n CLOSED FOR THE SUMMER." {  }
+//"You bump your head against the doors, which are locked and have a big sign across them: \n CLOSED FOR THE SUMMER." {  }

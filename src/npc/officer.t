@@ -4,7 +4,10 @@
 #include <en_us.h>
 #include "macros.h"
 
-cmu_officer : Readable, Person 'police/officer/cop' 'Campus Officer'  @the_cut
+
+cmu_officer : Readable, Person
+'police/officer/cop'
+'Campus Officer' @the_cut
 "This cop is mean and ugly; he's the Clint Eastwood of the academic world. You'd better not mess with him. " {
     isProperNoun = true;
     isHim = true;

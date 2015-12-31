@@ -170,7 +170,7 @@ frew_st_east : FakeConnector "You look at Frew St., and decide that ultimately, 
 
 ucc_atrium : FakeConnector "You are standing outside the UCC on Forbes. High up above, you see a pair of weathered pink flamingoes. An entrance lies south. Well, an entrance would be there if I implemented any of this. BACK TO WARNER FOR YOU. " { }
 
-campus_atmosphere : Ambience [
+campus_atmosphere : Ambiance [
     'A <<one of>>serene<<or>>gentle<<at random>> wind moseys in from the <<one of>>east<<or>>west<<at random>>.',
     'The grass wavers about.',
     '<<one of>>It gets a bit dark.<<at random>> Some clouds pass overhead. <<one of>>Droplets of rain fall sparsely here and there.<<at random>>',

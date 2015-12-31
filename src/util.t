@@ -47,11 +47,11 @@ modify statusLine {
 
 enum male, female;
 
-class Ambience : RandomFiringScript, ShuffledEventList {
+class Ambiance : RandomFiringScript, ShuffledEventList {
     eventPercent = 50;
 }
 
-Ambience template [eventList];
+Ambiance template [eventList];
 
 /* end modifications */
 
@@ -135,27 +135,28 @@ util : object {
 
     censor : StringPreParser {
         doParsing(s, which) {
-            if (rexMatch(util.obscenities.toLower(),s)==null)
-                return s;
-            util.offenses+=1;
-            if (util.offenses>8) {
-                "Come back when you've classed it up a bit.";
-                finishGameMsg('You have missed the point entirely.',null); }
-            else if (util.offenses>7) "Be very careful.";
-            else if (util.offenses>6) "Tenacious, huh?";
-            else if (util.offenses>5) "I'll do something awful if you keep this up.";
-            else if (util.offenses>4) "No, you're right, this is hilarious.";
-            else if (util.offenses>2) "Try me.";
-            else if (util.offenses>1) "Knock it off.";
-            else if (util.offenses>0) "Be careful.";
-            return null;
+            if (rexMatch(util.obscenities.toLower(),s)!=null) {
+                util.offenses+=1;
+                if (util.offenses>8) {
+                    "Come back when you've classed it up a bit.";
+                    finishGameMsg('You have missed the point entirely.',null); }
+                else if (util.offenses>7) "Be very careful.";
+                else if (util.offenses>6) "Tenacious, huh?";
+                else if (util.offenses>5) "I'll do something awful if you keep this up.";
+                else if (util.offenses>4) "No, you're right, this is hilarious.";
+                else if (util.offenses>3) "How was middle school for you?";
+                else if (util.offenses>2) "Try me.";
+                else if (util.offenses>1) "Knock it off.";
+                else if (util.offenses>0) "Be careful.";
+                return null;
+            } return s;
         }
     }
 
     suppressOutput : OutputFilter {
         filterText(tgt,src) { return ' '; } }
 
-    obscenities = R'%b([^a-eg-z0-9][^a-tv-z0-9][^abd-z0-9][^a-jl-z0-9])|([^a-rt-z0-9][^a-gi-z0-9][^a-hj-z0-9][^a-su-z0-9])%b'; // straightforward? no, but it keeps the repo classy.
+    obscenities = '%b([^a-eg-z0-9][^a-tv-z0-9][^abd-z0-9][^a-jl-z0-9])|([^a-rt-z0-9][^a-gi-z0-9][^a-hj-z0-9][^a-su-z0-9])%b'; // straightforward? no, but it keeps the repo classy.
     offenses = 0;
 }
 

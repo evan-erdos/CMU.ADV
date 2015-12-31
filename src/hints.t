@@ -4,6 +4,7 @@
 #include <en_us.h>
 #include "macros.h"
 
+
 TopHintMenu 'Hints';
 
 + HintMenu 'General Questions';
@@ -11,7 +12,7 @@ TopHintMenu 'Hints';
 ++ Goal 'How do I even' [
     'First text adventure, huh?',
     'Yeah, it figures. It might be helpful to read over the <b>Basic Commands</b> section.',
-    'If you sort-of know what you\'re doing, maybe pour over <b>Command Aliases</b> for some game-specific commands you might not know.',
+    'If you sort-of know what you\'re doing, maybe pore over <b>Command Aliases</b> for some game-specific commands you might not know.',
     'There aren\'t a lot of special formats here, but it is important to note that the bolded and caps-locked texts represent commands that you might enter.',
     'Additionally, the listed commands are just the most common usages: usually, if you\'re close enough, the parser will understand.'];
 

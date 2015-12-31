@@ -27,7 +27,7 @@ steam : Vaporous, MultiLoc 'steam' 'the steam'
     steam_list : RandomFiringScript, ShuffledEventList {
         startEvents = [
             'Everything\'s quiet, for now. ',
-            'You hear strange clangings and rumbles, eminating from all around you. ',
+            'You hear strange clanging noises, and rumbles, emanating from all around you. ',
             'You feel air starting to move past you. ',
             'It\'s become very windy, and also, much warmer. ',
             'The steam is almost upon you. '];
@@ -96,8 +96,7 @@ steam_tunnels_4 : Room 'Steam Tunnels (Under Doherty Hall)' {
 //+ cut_grating_0 : SecretDoor -> cut_grating_1 'grating' 'the hatch'
 //"It's your standard, corrugated hatch, it leads up to the main viewing platform." { }
 
-
-steam_tunnels_atmosphere : Ambience [
+steam_tunnels_atmosphere : Ambiance [
     'You feel a <<one of>>slight<<or>>gentle<<at random>> wind from somewhere <<one of>>behind<<or>>to your left<<or>>to your right<<or>>in front of you<<at random>>.',
     'You hear a rumbling noise come from somewhere.',
     'Something made a splashing noise, but you can\'t tell what. ',
