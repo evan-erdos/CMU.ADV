@@ -4,20 +4,35 @@
 #include <en_us.h>
 #include "macros.h"
 
-fence : MultiLoc, Fixture, Readable 'The Fence' 'the Fence'
-"The fence can be seen from here. It has recently been painted. " {
-    locationList = [forbes_cut, cut_north, the_cut,
-        cut_walkway_0, cut_walkway_1, cut_walkway_2, cut_walkway_3,
-        dh_entrance, bh_entrance, hh_entrance, cfa_field];
-    readDesc = "The paint on the fence reads: \"<b>PARTY ALL NIGHT, YEAH, DRINK BEER.</b>\" It is very ugly. ";
+#pragma newline_spacing(preserve)
+
+fence : MultiLoc, Fixture, Readable
+'The Fence' 'the Fence'
+"You can see the fence from here, covered with thousands of layers of paint. It looks a bit rickety, but it always has. You're reasonably confident that the paint will hold it up for at least another seven years. " {
+    locationList = [
+        forbes_cut, cut_north, cut_south, the_cut,
+        cut_walkway_0, cut_walkway_1,
+        cut_walkway_2, cut_walkway_3,
+        dh_entrance, bh_entrance,
+        hh_entrance, cfa_field];
+
+    readDesc = """
+        The paint on the fence reads:
+        <p>
+        >
+        > <b>PARTY ALL NIGHT, YEAH, DRINK BEER.</b>
+        >
+        </p>
+        It is very ugly. """;
+
     initSpecialDesc { isInInitState = null;
-        "From here you can see <b>The Fence</b>, painted in the famous CMU tradition. It looks a bit rickety, but it always has. You're reasonably confident that the paint will hold it up for at least another seven years. "; readDesc;
+        "From here you can see <b>The Fence</b>, painted in the famous CMU tradition."; readDesc;
     }
 
     specialDesc { fence_list.doScript(); }
 
     fence_list : RandomFiringScript, ShuffledEventList {
-        startEvents = [
+        firstEvents = [
             'You can see The Fence from here. ',
             'It\'ll last forever, that fence. ',
             'A hundred years, Fence and Doherty! ',
@@ -32,16 +47,19 @@ fence : MultiLoc, Fixture, Readable 'The Fence' 'the Fence'
     }
 }
 
-forbes_morewood : FakeConnector "You'd be squished flat in a second! Why don't you just wait for the walk signal at the intersection?" {  }
+forbes_morewood : FakeConnector
+"You'd be squished flat in a second! Why don't you just wait for the walk signal at the intersection?" {  }
 
-forbes_cut : CampusOutdoorRoom 'The Cut (near Forbes Ave.)' 'forbes'
+forbes_cut : CampusOutdoorRoom
+'The Cut (near Forbes Ave.)' 'forbes'
 "You are at the intersection of Forbes and Morewood. To the north is Forbes Avenue, with hundreds of cars racing along at high speed." {
     north = forbes_morewood;
     south = cut_north;
 }
 
-cut_north : CampusOutdoorRoom 'The Cut (North)' 'the Cut'
-"You are on the north end of the Cut.  The impressive, boxlike silhouette of Warner Hall to the west somehow fails to impress you.  There is the sound of traffic to the north, while Skibo looms to the southeast. " {
+cut_north : CampusOutdoorRoom
+'The Cut (North)' 'the Cut'
+"You are on the north end of the Cut. The impressive, boxlike silhouette of Warner Hall to the west somehow fails to impress you. There is the sound of traffic to the north, while Skibo looms to the southeast. " {
     north = forbes_cut;
     south = the_cut;
     se = skibo_plaza;
@@ -52,10 +70,13 @@ cut_north : CampusOutdoorRoom 'The Cut (North)' 'the Cut'
 
 + cut_grating_1 : Lockable, SecretDoor
 '(metal) grate/grating/hatch' 'metal grating'
-"A metal grating is set in the ground here, as well. " { isLocked = true; }
+"A metal grating is set in the ground here. " {
+    isLocked = true;
+}
 
-the_cut : CampusOutdoorRoom 'The Cut' 'the Cut'
-"You at the center of the cut.  The grass here is lush and green -- sort of the Prime Cut, you might say. Skibo is to the east and a stairway leading down is to the southeast." {
+the_cut : CampusOutdoorRoom
+'The Cut' 'the Cut'
+"You at the center of the cut. The grass here is lush and green -- sort of the Prime Cut, you might say. Skibo is to the east and a stairway leading down is to the southeast. " {
     north = cut_north;
     east = skibo_plaza;
     southeast = kiltie_front;
@@ -65,8 +86,9 @@ the_cut : CampusOutdoorRoom 'The Cut' 'the Cut'
     down asExit(southeast);
 }
 
-cut_south : CampusOutdoorRoom 'The Cut (South)' 'the Cut'
-"You are on the south end of the Cut, that fantabulously grassy area in the center of campus.  From here you can see Hunt Library a little ways to the south, and Forbes Avenue far to the north.  It's almost as if they planned it that way, you know? \bThe fence is here as well, covered with thousands of layers of paint. Walkways parallel the Cut to the east and west. " {
+cut_south : CampusOutdoorRoom
+'The Cut (South)' 'the Cut'
+"You are on the south end of the Cut, that fantabulously grassy area in the center of campus. From here you can see Hunt Library a little ways to the south, and Forbes Avenue far to the north.  It's almost as if they planned it that way, you know? " {
     north = the_cut;
     east = maggie_courts;
     southeast = cfa_lot;
@@ -76,7 +98,8 @@ cut_south : CampusOutdoorRoom 'The Cut (South)' 'the Cut'
     northwest = cut_hill;
 }
 
-cut_walkway_0 : CampusOutdoorRoom 'Walkway (North)' 'the walkway'
+cut_walkway_0 : CampusOutdoorRoom
+'Walkway (North)' 'the walkway'
 "You're on a walkway, running north and south. Warner hall lies to the west, and Skibo is across the Cut to the east. The flowers in the planters nearby are in full bloom. " {
     north = forbes_cut;
     east = the_cut;
@@ -84,10 +107,12 @@ cut_walkway_0 : CampusOutdoorRoom 'Walkway (North)' 'the walkway'
     west = warner_entrance;
 }
 
-+ cut_flowers : Decoration '(pretty) flowers/plants' 'some flowers'
-    "Aren't they beautiful? " { }
++ cut_flowers : Decoration
+'(pretty) flowers/plants' 'some flowers'
+"Aren't they beautiful? " {  }
 
-cut_walkway_1 : CampusOutdoorRoom 'Walkway (Near Doherty)' 'the walkway'
+cut_walkway_1 : CampusOutdoorRoom
+'Walkway (Near Doherty)' 'the walkway'
 "This is a walkway running north and south. The ornate stonework of the Doherty Hall entrance is west from here, and the fence is directly east." {
     north = cut_walkway_0;
     east = cut_south;
@@ -96,7 +121,8 @@ cut_walkway_1 : CampusOutdoorRoom 'Walkway (Near Doherty)' 'the walkway'
     west = dh_entrance;
 }
 
-cut_walkway_2 : CampusOutdoorRoom 'Walkway (South)' 'the walkway'
+cut_walkway_2 : CampusOutdoorRoom
+'Walkway (South)' 'the walkway'
 "You are on a walkway which continues to the north and south. To the west lies the grassy expanse of the Mall. To the east is the College of Fine Arts lawn." {
     north = cut_walkway_1;
     northeast = cut_south;
@@ -105,10 +131,12 @@ cut_walkway_2 : CampusOutdoorRoom 'Walkway (South)' 'the walkway'
     west = mall_east;
 }
 
-+ cut_grating_0 : SecretDoor -> cut_grating_1 'grating' 'the hatch'
++ cut_grating_0 : SecretDoor -> cut_grating_1
+'grating' 'the hatch'
 "It's your standard, corrugated hatch, it leads up to the main viewing platform." { }
 
-cut_walkway_3 : CampusOutdoorRoom 'Walkway (Near Baker)' 'the walkway'
+cut_walkway_3 : CampusOutdoorRoom
+'Walkway (Near Baker)' 'the walkway'
 "You are at the south end of a walkway leading north. To the west is the stately face of Baker Hall, its freshly scrubbed bricks shining like new -- which is odd, because the last time you looked at them, they were covered with a half-century of soot." {
     north = cut_walkway_2;
     south = frew_st_east;
@@ -156,19 +184,26 @@ pausch_bridge_2 : OutdoorRoom
 cut_hill : TravelMessage -> pausch_bridge_entrance
 "It's a long way down the hill... maybe you'd better stay here. Well, who cares! You won't just go there, you'll JUMP!\bMiraculously, you survive, and you find yourself... ";
 
-skibo_plaza : FakeConnector "You don't want to go to the Skibo Plaza! " { }
+skibo_plaza : FakeConnector
+"You don't want to go to the Skibo Plaza! " { }
 
-skibo_lot : FakeConnector "You don't want to go to the Skibo Lot! " { }
+skibo_lot : FakeConnector
+"You don't want to go to the Skibo Lot! " { }
 
-kiltie_front : FakeConnector "That's not even on campus anymore, AFAIK! How am I supposed to include that, huh? " { }
+kiltie_front : FakeConnector
+"That's not even on campus anymore, AFAIK! How am I supposed to include that, huh? " { }
 
-maggie_courts : FakeConnector "If there's one thing you're not, it's 'in the mood for tennis'" { }
+maggie_courts : FakeConnector
+"If there's one thing you're not, it's 'in the mood for tennis'" { }
 
-mall_east : FakeConnector "You don't want to go to the East Lawn! " { }
+mall_east : FakeConnector
+"You don't want to go to the East Lawn! " { }
 
-frew_st_east : FakeConnector "You look at Frew St., and decide that ultimately, it's just not worth it. " { }
+frew_st_east : FakeConnector
+"You look at Frew St., and decide that ultimately, it's just not worth it. " { }
 
-ucc_atrium : FakeConnector "You are standing outside the UCC on Forbes. High up above, you see a pair of weathered pink flamingoes. An entrance lies south. Well, an entrance would be there if I implemented any of this. BACK TO WARNER FOR YOU. " { }
+ucc_atrium : FakeConnector
+"You are standing outside the UCC on Forbes. High up above, you see a pair of weathered pink flamingoes. An entrance lies south. Well, an entrance would be there if I implemented any of this. BACK TO WARNER FOR YOU. " { }
 
 campus_atmosphere : Ambiance [
     'A <<one of>>serene<<or>>gentle<<at random>> wind moseys in from the <<one of>>east<<or>>west<<at random>>.',

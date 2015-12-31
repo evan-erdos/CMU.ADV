@@ -17,9 +17,11 @@
 
 modify Goal goalState = OpenGoal;
 
+
 modify YellAction {
     execAction() { mainReport('You bark as loud as you can. '); }
 }
+
 
 modify Thing {
     dobjFor(BarkAt) {
@@ -27,6 +29,7 @@ modify Thing {
             illogical('{The dobj/he} {is} not something you can bark at. '); }
     }
 }
+
 
 modify Actor {
     makeProper() {
@@ -38,6 +41,7 @@ modify Actor {
     }
 }
 
+
 modify statusLine {
     showStatusRight() {
         "<<user.name>> - <<versionInfo.name>> - ";
@@ -45,15 +49,19 @@ modify statusLine {
     }
 }
 
+
 enum male, female;
+
 
 class Ambiance : RandomFiringScript, ShuffledEventList {
     eventPercent = 50;
 }
 
+
 Ambiance template [eventList];
 
 /* end modifications */
+
 
 
 /* begin events */
@@ -123,6 +131,26 @@ Events : object {
 
 //combinedSpecialDesc : ListGroupSorted {
 //  compareGroupItems(a,b) { return (a.listOrder-b.listOrder);} }
+
+    /** `valToList()` : **`<T>[]`**
+     *
+     * convert anything to a list. If it's already a list,
+     * simply return it. If it's `null`, return an empty list.
+     * If it's a singleton value, return a one-element list
+     * containing it.
+     **/
+    valToList(val) {
+        switch (dataType(val)) {
+            case TypeNil : return [];
+            case TypeList : return val;
+            case TypeObject :
+                if (val.ofKind(Vector))
+                    return val.toList;
+                else return [val];
+            default: return [val];
+        }
+    }
+
 
 
 

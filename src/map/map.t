@@ -4,7 +4,45 @@
 #include <en_us.h>
 #include "macros.h"
 
+#ifndef PROTOTYPE
+modify Room {
+    regions = null
+
+
+    isIn(region) {
+        return valToList(regions).indexWhich(
+            {x: x.isOrIsIn(region)})!=null; }
+
+
+    addToRegions() {
+        foreach(local reg in valToList(regions))
+            reg.addToRoomList(self); }
+
+
+    allRegions() {
+        local ar = getAllRegions();
+        allRegions = ar;
+        return ar;
+    }
+
+
+    getAllRegions() {
+        local thisRegions = new Vector(valToList(regions));
+        foreach(local reg in valToList(regions))
+            thisRegions.appendUnique(reg.allRegions);
+        return thisRegions.toList();
+    }
+
+
+    regionsInCommonWith(other) {
+        return allRegions.subset(
+            {x: x.roomList.indexOf(other) != null}); }
+}
+#endif
+
+
 RoomConnector template @room1 @room2 "desc"?;
+
 
 class CampusOutdoorRoom : OutdoorRoom {
     atmosphereList = campus_atmosphere;
