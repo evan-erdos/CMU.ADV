@@ -6,13 +6,22 @@
 #pragma newline_spacing(preserve)
 
 
+SteamRoom template 'under';
+
 class SteamRoom : Room {
     desc = "You're in a very dangerous situation. You're wandering through active steam tunnels. You have a hard time differentiating directions, and there's quite a smell in the air. ";
     under = '';
-    name = 'Steam Tunnels (Under '+under+')';
+    roomName = 'Steam Tunnels (Under <<under>>)';
+    atmosphereList : Ambiance {
+        ['You feel a <<one of>>slight<<or>>gentle<<at random>> wind from somewhere <<one of>>behind<<or>>to your left<<or>>to your right<<or>>in front of you<<at random>>.',
+        'You hear a rumbling noise come from somewhere.',
+        'Something made a splashing noise, but you can\'t tell what. ',
+        'A weird sound echoes in from an unknown direction.',
+        'You hear the faint sound of footsteps coming from somewhere above. ']
+        eventPercent = 20;
+    }
 }
 
-SteamRoom template 'under';
 
 steam : Vaporous, MultiLoc 'steam' 'the steam'
 "Although this <i>is</i> a steam tunnel, there isn't much steam to be found. You don't much fancy the idea of waiting around for to see any steam, neither. You sensibly begin to look for a way out. " {
@@ -43,11 +52,6 @@ steam : Vaporous, MultiLoc 'steam' 'the steam'
 }
 
 
-steam_tunnels : object {
-    sharedDesc = "You're in a very dangerous situation. You're wandering through active steam tunnels. You have a hard time differentiating directions, and there's quite a smell in the air. ";
-}
-
-
 steam_tunnels_end : DeadEndConnector 'Steam Tunnels (Dead End)'
 "You wander out into a smaller tunnel which seems to wind away forever into steamy darkness. You sense that wandering around side-tunnels is an awful idea, and you turn around. " { }
 
@@ -56,23 +60,20 @@ steam_tunnels_back : TravelMessage -> steam_tunnels_end
 
 
 steam_tunnels_0 : SteamRoom 'Forbes Ave.' {
-    desc = steam_tunnels.sharedDesc;
     north = steam_tunnels_3;
     east = steam_tunnels_end;
     south = steam_tunnels_1;
     west = steam_tunnels_end;
 }
 
-steam_tunnels_1 : Room 'Steam Tunnels (Under Warner Hall)' {
-    desc = steam_tunnels.sharedDesc;
+steam_tunnels_1 : SteamRoom 'Warner Hall' {
     north = steam_tunnels_0;
     east = steam_tunnels_end;
     south = steam_tunnels_2;
     west = steam_tunnels_end;
 }
 
-steam_tunnels_2 : Room 'Steam Tunnels (Under the Cut)' {
-    desc = steam_tunnels.sharedDesc;
+steam_tunnels_2 : SteamRoom 'the Cut' {
     north = steam_tunnels_1;
     east = steam_tunnels_end;
     south = steam_tunnels_end;
@@ -85,24 +86,15 @@ steam_tunnels_2 : Room 'Steam Tunnels (Under the Cut)' {
     isLocked = true;
 }
 
-steam_tunnels_3 : Room 'Steam Tunnels (Under E Tower)' {
-    desc = steam_tunnels.sharedDesc;
+steam_tunnels_3 : SteamRoom 'E Tower' {
     north = steam_tunnels_1;
 }
 
-steam_tunnels_4 : Room 'Steam Tunnels (Under Doherty Hall)' {
-    desc = steam_tunnels.sharedDesc;
+steam_tunnels_4 : SteamRoom 'Doherty Hall' {
     east = steam_tunnels_2;
 }
 
 //+ cut_grating_0 : SecretDoor -> cut_grating_1 'grating' 'the hatch'
 //"It's your standard, corrugated hatch, it leads up to the main viewing platform." { }
-
-steam_tunnels_atmosphere : Ambiance [
-    'You feel a <<one of>>slight<<or>>gentle<<at random>> wind from somewhere <<one of>>behind<<or>>to your left<<or>>to your right<<or>>in front of you<<at random>>.',
-    'You hear a rumbling noise come from somewhere.',
-    'Something made a splashing noise, but you can\'t tell what. ',
-    'A weird sound echoes in from an unknown direction.',
-    'You hear the faint sound of footsteps coming from somewhere above. '];
 
 

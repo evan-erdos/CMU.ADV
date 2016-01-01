@@ -31,7 +31,6 @@ CMD_FLAGS="
 -lib system
 -lib adv3/adv3"
 
-
 # flags for building to the web
 WEB_FLAGS="
 -D TADS_INCLUDE_NET
@@ -44,8 +43,11 @@ WEB_FLAGS="
 -source tadsnet"
 
 
+# usage
+#
+# Displays the usage syntax and flags.
 function usage {
-  echo "usage: . build [-cdhrw]"
+  echo "usage: . build [-bcdhqrw]"
 }
 
 
@@ -55,10 +57,11 @@ function usage {
 function help {
   usage
   echo "options:
-    -b, --build    clean both targets, compile and run
-    -c, --clean    clean build files without compiling
-    -d, --debug    send debug flags to the compiler
-    -h, --help     displays usage and help text
+    -b, --build    clean, compile and run
+    -c, --clean    clean build files
+    -d, --debug    compile debug version
+    -h, --help     displays this help text
+    -q, --qtads    runs the build via QTADS.
     -r, --run      runs the console build
     -w, --web      runs the web build"
 }
@@ -133,6 +136,13 @@ function web {
   frob -N 44 tgt/cmu_adv_web.t3
 }
 
+# qtads
+#
+# Attempts to use QTads to run the game.
+function qtads {
+  open -a QTads tgt/cmu_adv_cmd.t3
+}
+
 
 if [ $# -gt 0 ]; then
 while [ "$1" != "" ]; do
@@ -145,6 +155,7 @@ while [ "$1" != "" ]; do
     -h | --help  )  help;;
     -r | --run   )  run;;
     -w | --web   )  web;;
+    -q | --qtads )  qtads;;
     *            )  usage;;
   esac
   shift

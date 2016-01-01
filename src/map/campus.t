@@ -16,14 +16,14 @@ fence : MultiLoc, Fixture, Readable
         dh_entrance, bh_entrance,
         hh_entrance, cfa_field];
 
-    readDesc = """
+    readDesc =
+        """
         The paint on the fence reads:
-        <p>
-        >
-        > <b>PARTY ALL NIGHT, YEAH, DRINK BEER.</b>
-        >
-        </p>
-        It is very ugly. """;
+        <blockquote>
+        <b>PARTY ALL NIGHT, YEAH, DRINK BEER.</b>
+        </blockquote>
+        It is very ugly.
+        """;
 
     initSpecialDesc { isInInitState = null;
         "From here you can see <b>The Fence</b>, painted in the famous CMU tradition."; readDesc;
@@ -32,17 +32,15 @@ fence : MultiLoc, Fixture, Readable
     specialDesc { fence_list.doScript(); }
 
     fence_list : RandomFiringScript, ShuffledEventList {
-        firstEvents = [
-            'You can see The Fence from here. ',
-            'It\'ll last forever, that fence. ',
-            'A hundred years, Fence and Doherty! ',
-            'www.FenceAndDoherty, www.FenceAndDohertyAdventures.com! ',
-            '...Fence and Doherty, Fence, Doher... 2.0! Hundred years!'];
-        eventList = [
-            'Man, what a fence we have here. ',
-            'It\'ll last forever, that fence. ',
-            'The paint on the fence beckons to you to repaint it. ',
-            'You can still see The Fence, just keepin\' it fresh on the Cut.'];
+        ['You can see The Fence from here. ',
+         'It\'ll last forever, that fence. ',
+         'A hundred years, Fence and Doherty! ',
+         'www.FenceAndDoherty, www.FenceAndDohertyAdventures.com! ',
+         '...Fence and Doherty, Fence, Doher... 2.0! Hundred years!']
+        ['Man, what a fence we have here. ',
+         'It\'ll last forever, that fence. ',
+         'The paint on the fence beckons to you to repaint it. ',
+         'You can still see The Fence, just keepin\' it fresh on the Cut.']
         eventPercent = 40;
     }
 }

@@ -11,11 +11,11 @@
 // Passage template -> masterObject 'vocabWords' 'name' @location? "desc"?
 // Door template 'name' @room1 @room2;
 
-// Room template [room_list] "desc"?;
-// alternate format, includes up / down, etc.
-// [northwest, north, northeast] // [[NW,  U,  N,  NE],
-// [west,    'roomName',   east] //  [W,  IN, OUT, E ],
-// [southwest, south, southeast] //  [SW, D,   S,  SE]]
+//Room template [rooms] "desc"?;
+//alternate format, includes up / down, etc.
+//[northwest, north, northeast] //[[NW,  U,  N,  NE],
+//[west,    'roomName',   east] // [W,  IN, OUT, E ],
+//[southwest, south, southeast]; // [SW, D,   S,  SE]]
 
 modify Goal goalState = OpenGoal;
 

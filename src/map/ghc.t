@@ -6,6 +6,7 @@
 #include "macros.h"
 #pragma newline_spacing(preserve)
 
+
 /**************<Floor 9>***************/
 
 ghc_9_entrance : Room
