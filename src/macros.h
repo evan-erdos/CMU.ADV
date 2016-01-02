@@ -62,3 +62,9 @@ Person template 'name' @location? "desc";
 Room template 'roomName' "desc"? 'destName'? 'name'?;
 
 
+/** `ActorState` : **`template`**
+ *
+ * Allows the `stateDesc` to be specified in the template.
+ **/
+ActorState template @location? "stateDesc";
+

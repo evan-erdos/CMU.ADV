@@ -147,6 +147,9 @@ Todo (Original):
 ---
 
 
+LICENSE
+=======
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Ben Scott <bescott@andrew.cmu.edu>

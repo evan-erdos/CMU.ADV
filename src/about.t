@@ -8,7 +8,7 @@
 
 versionInfo : GameID {
     name = 'CMU.ADV';
-    tagline = 'an adventure...\n;';
+    tagline = 'an adventure...';
     byline = 'by Ben Scott';
     original_byline = 'by Galloway & Kuehner & Pawlinger';
     authorEmail = 'bescott@andrew.cmu.edu';
@@ -29,31 +29,33 @@ versionInfo : GameID {
 
 
     intro() {
-        """<p>
-        That was some party last night... you must have had about twenty beers. Or was it thirty?  As you try to recall, the night becomes a giant blur, swimming around and around in your head. It spins faster, and you feel dizzy. Don't worry, though, you're lying down.
+        """
+        <p>That was some party last night... you must have had about twenty beers. Or was it thirty?  As you try to recall, the night becomes a giant blur, swimming around and around in your head. It spins faster, and you feel dizzy. Don't worry, though, you're lying down.
         </p><p>
-        On the ground...
-        </p>""";
+        On the ground...</p>
+        """;
     } /* intro */
 
 
     title() {
         about();
         """
-        <p>(Type <<aHref('about', 'ABOUT')>> for basic information about this game, or <<aHref('restore', 'RESTORE')>> to restore a saved position. To <<aHref('', 'begin the game')>>, just press the Enter key, and type <<aHref('help','HELP')>> once you start if you get stuck.) </p>""";
+        <p>(Type <<aHref('about', 'ABOUT')>> for basic information about this game, or <<aHref('restore', 'RESTORE')>> to restore a saved position. To <<aHref('', 'begin the game')>>, just press the Enter key, and type <<aHref('help','HELP')>> once you start if you get stuck.) </p>
+        """;
     } /* title */
 
 
     about() {
         """
-        <p><b><u>
+        <center><p><b><u>
         ; <<versionInfo.name.toUpper()>></u></b>
         ; <<versionInfo.tagline>>
         ; <<'&lt;'+versionInfo.original_byline+'&gt;'>>
+        ;
         </p><p>
         <<versionInfo.byline>>, <<versionInfo.authorEmail>>
-        Release <<versionInfo.version>>, <<versionInfo.firstPublished>>
-        </p>""";
+        Release <<versionInfo.version>>, <<versionInfo.firstPublished>></p>
+        """;
     } /* about */
 } /* versionInfo */
 
