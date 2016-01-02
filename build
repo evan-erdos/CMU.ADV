@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # Ben Scott <bescott@andrew.cmu.edu> 2016-01-01
 #
 # CMU.ADV
@@ -15,12 +16,14 @@ VERBOSE="-v -w1"
 # optional debug flag
 DEBUG="-d"
 
+# a comment to be put at the head of the makefiles
+HEADER="# ${NAME} - TADS 3 Build File"
+
 # flags shared between web and cmd builds
 MAKE_FLAGS="
 -DLANGUAGE=en_us
 -DMESSAGESTYLE=neu
--nobanner
--Fs ../../src/"
+-nobanner"
 
 # filename for chararray makefile
 MAKE_CMD="obj/cmd/${NAME}_cmd.t3m"
@@ -56,10 +59,10 @@ function usage {
 }
 
 
-# `help`
+# `about`
 #
 # When the user does something dumb, display this help text.
-function help {
+function about {
   usage
   echo "options:
     -b, --build    clean, compile and run
@@ -76,12 +79,12 @@ function help {
 #
 # Constructs two `*.t3m` files for building the t3make.
 function make {
-  echo -e "${MAKE_FLAGS}" > $MAKE_WEB
-  echo -e "${MAKE_FLAGS}" > $MAKE_CMD
+  echo -e "${HEADER}\n${MAKE_FLAGS}" > $MAKE_WEB
+  echo -e "${HEADER}\n${MAKE_FLAGS}" > $MAKE_CMD
 
-  for dir in $(find ./src/ -type d); do
-    echo "-Fs ../../src/`basename ${dir}`" >> $MAKE_WEB
-    echo "-Fs ../../src/`basename ${dir}`" >> $MAKE_CMD
+  for dir in $(find ./src -type d); do
+    echo "-Fs ../.${dir}" >> $MAKE_WEB
+    echo "-Fs ../.${dir}" >> $MAKE_CMD
   done
 
   echo "${WEB_FLAGS}" >> $MAKE_WEB
@@ -158,7 +161,7 @@ while [ "$1" != "" ]; do
                     run;;
     -d | --debug )  debug;;
     -c | --clean )  clean;;
-    -h | --help  )  help;;
+    -h | --help  )  about;;
     -r | --run   )  build
                     run;;
     -w | --web   )  build
@@ -172,4 +175,3 @@ done
 else
   build && run
 fi
-
