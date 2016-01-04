@@ -1,6 +1,10 @@
 /* Ben Scott * bescott@andrew.cmu.edu * 2015-09-19 * Macros */
 
 
+#ifndef MACROS_H
+#define MACROS_H
+
+
 /** `null` : **`macro`**
  *
  * Because we ain't no Lispers here
@@ -67,4 +71,7 @@ Room template 'roomName' "desc"? 'destName'? 'name'?;
  * Allows the `stateDesc` to be specified in the template.
  **/
 ActorState template @location? "stateDesc";
+
+
+#endif /* MACROS_H */
 
