@@ -10,7 +10,9 @@
 sad_251_ta : Person
 'ta/teaching assistant/sad ta'
 '<b>Sad TA</b>' @ghc_citadel_commons
-"A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge of an overcrowded table. Everyone seems to be ignoring her." {
+"""
+A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge of an overcrowded table. Everyone seems to be ignoring her.
+""" {
     isHer = true;
     globalParamName = 'sad 251 TA';
 }
@@ -18,12 +20,15 @@ sad_251_ta : Person
 + taTalking : InConversationState
 	specialDesc = "She is looking around the Citadel Commons, and occasionally glances at you.";
 
-++ ta_ready : ConversationReadyState
-	isInitState = true
+++ ta_ready : ConversationReadyState {
+	isInitState = true;
 	commonDesc =
-	'''staring at her laptop and sighing. You can see that she's just looking at her students' grades and nothing else.'''
-	specialDesc = 'The dejected 251-TA is <<commonDesc>>'
+	'''
+	staring at her laptop and sighing. You can see that she's just looking at her students' grades and nothing else.
+	''';
+	specialDesc = 'The dejected 251-TA is <<commonDesc>>';
 	stateDesc = 'She is <<commonDesc>>';
+}
 
 +++ HelloTopic, ShuffledEventList
 	['''
@@ -34,8 +39,7 @@ sad_251_ta : Person
 	"My students don't seem to care about my course."
 
 	This sounds intriguing. You've never heard of anyone not caring about 251 before; perhaps you could inquire further.
-	''']
-	['''
+	''']['''
 	She looks up hopefully, then sighs when she sees it's just you again.
 	'''];
 

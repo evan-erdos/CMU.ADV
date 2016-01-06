@@ -4,7 +4,7 @@ CMU.ADV
 
 A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 
-[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)
+[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)[![version](https://img.shields.io/badge/version-2.0.2-blue.svg)](https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2)
 
 ---
 
@@ -26,7 +26,7 @@ A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 <by Galloway & Kuehner & Pawliger>\n\n")
 ```
 
-Above are the first few lines of cmu.adv, a file which probably still exists on the CMU afs server. Apparently, a similar attempt at writing a CMU text adventure was made in 1986, in some arcane, lisp-like language.
+Above are the first few lines of CMU.ADV, a file which probably still exists on the CMU afs server. Apparently, a similar attempt at writing a CMU text adventure was made in 1986, in some arcane, lisp-like language.
 
 This is a repository for the soon-to-be coolest text adventure on campus! *CMU.ADV* is written in TADS3, and compiles to a *.t3 format, readable by the [frob][] interpreter.
 
@@ -74,7 +74,7 @@ Todo (Original):
 - ~~need "hidden" things that only appear after a search.~~
 - ~~throw things into other rooms.~~
 - ~~get/drop all~~
-- weight/volume limits for things.
+- ~~weight/volume limits for things.~~
 - jolt cola (silly)
 
 - ~~need read verb (property readable?)~~
@@ -102,13 +102,13 @@ Todo (Original):
 - hideous sculpture behind warner holding a clue
 - pitt student
 - o's?
-- steam tunnels
+- ~~steam tunnels~~
 - clue in tower atop HH, hard to get to.
 - physical plant abuse - manure?
 - check `traditions' in freshman word.
 - Get paint thinner and strip fence - must be night - add timed events?  Each - entry loop
 - increments a timer? and find clue.
-	--I will implement timed events Real Soon Now [ccg]
+	--~~I will implement timed events Real Soon Now [ccg]~~
 - get a tool from buggy builders in exchange for a midget?
 - go to cluster, log in and play this game recursively?
 
@@ -128,7 +128,7 @@ Todo (Original):
 - doherty ceramic labs
 - glycol spray and explosions in ucc
 - banner letters useful
-- RAIN
+- ~~RAIN~~
 - stuff in CFA
 	--Working on Descriptions (sorry I couldn't get to it later)  [SGW]
 - spring carnival?
@@ -148,11 +148,11 @@ Todo (Original):
 
 
 LICENSE
-=======
+-------
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Ben Scott <bescott@andrew.cmu.edu>
+Copyright (c) 2016 Ben Scott <bescott@andrew.cmu.edu>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

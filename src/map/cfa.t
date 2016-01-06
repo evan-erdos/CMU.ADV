@@ -20,7 +20,9 @@ cfa_park : FakeConnector
 
 cfa_field : OutdoorRoom
 'CFA (Lawn)' 'the field'
-"This is the lawn in front of CFA. The grass here is well-groomed, except for some strange indentaions in the ground. " {
+"""
+This is the lawn in front of CFA. The grass here is well-groomed, except for some strange indentaions in the ground.
+""" {
     north = cut_south;
     northeast = cfa_lot;
     east = cfa_plaza;
@@ -38,7 +40,9 @@ cfa_field : OutdoorRoom
 
 cfa_plaza : OutdoorRoom
 'plaza' 'College of Fine Arts (Plaza)'
-"Half-finished, vandalized statues and people with blue hair are strong indications that this must be - no, not Central Park, but the CFA plaza. CFA is to the east and open areas lie around you. " {
+"""
+Half-finished, vandalized statues and people with blue hair are strong indications that this must be - no, not Central Park, but the CFA plaza. CFA is to the east and open areas lie around you.
+""" {
     north = cfa_lot;
     east = cfa_entrance;
     south = cfa_park;

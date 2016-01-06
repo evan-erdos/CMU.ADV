@@ -36,7 +36,7 @@
 #define clear inputManager.getKey(null,null); cls()
 
 
-/** `clear` : **`macro`**
+/** `next` : **`macro`**
  *
  * Waits for the user to press any key before continuing to
  * print text to the output.
@@ -46,14 +46,14 @@
 
 /** `Thing` : **`template`**
  *
- * Reorganizes the usual `Thing` `template`
+ * Reorganizes the usual `Thing` `template`.
  **/
 Thing template 'name' @location? "desc";
 
 
 /** `Person` : **`template`**
  *
- * Reorganizes the usual `Person` `template`
+ * Reorganizes the usual `Person` `template`.
  **/
 Person template 'name' @location? "desc";
 
@@ -63,14 +63,14 @@ Person template 'name' @location? "desc";
  * This alters the `Room` `template` to not use the positional
  * name, e.g., what prints when it says "east, to the room".
  **/
-Room template 'roomName' "desc"? 'destName'? 'name'?;
+Room template 'roomName' 'destName'? 'name'? "desc"?;
 
 
 /** `ActorState` : **`template`**
  *
  * Allows the `stateDesc` to be specified in the template.
  **/
-ActorState template @location? "stateDesc";
+ActorState template @location? "stateDesc" "specialDesc"?;
 
 
 #endif /* MACROS_H */
