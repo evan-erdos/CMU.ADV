@@ -13,7 +13,7 @@ versionInfo : GameID {
     original_byline = 'by Galloway & Kuehner & Pawlinger';
     authorEmail = 'bescott@andrew.cmu.edu';
     genre = 'Adventure';
-    version = 'v2.0.3';
+    version = 'v2.0.4';
     firstPublished = '1986 (2016)';
     IFID = 'TADS3CMU-ADV3-77C6-042E-278CEDED4BDC';
 

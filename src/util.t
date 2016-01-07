@@ -58,7 +58,7 @@ modify statusLine {
 }
 
 
-enum male, female;
+enum Male, Female;
 
 
 class Ambiance : RandomFiringScript, ShuffledEventList {

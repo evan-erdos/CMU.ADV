@@ -4,7 +4,7 @@ CMU.ADV
 
 A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 
-[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)[![version](https://img.shields.io/badge/version-2.0.2-blue.svg)](https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2)
+[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)[![version](https://img.shields.io/badge/version-2.0.4-blue.svg?style=plastic)](https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2)
 
 ---
 

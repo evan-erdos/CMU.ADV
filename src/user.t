@@ -39,7 +39,7 @@ user : BagOfHolding, Mortal {
     name = 'Paul Erdos';
     firstname = 'Paul';
     lastname = 'Erdos';
-    gender = male;
+    gender = Male;
     vocabWords = 'me/self/<<name>>';
     location = the_cut;
     issueCommandsSynchronously = true;
@@ -53,9 +53,30 @@ user : BagOfHolding, Mortal {
         /* inventoryListener: actorInventoryListener */
     }
 
+    firstNames = [
+        ['Robert', Male],   ['Roberta', Female],
+        ['Harold', Male],   ['Carol', Female],
+        ['Jessie', Male],   ['Jessica', Female],
+        ['Reginald', Male], ['Regina', Female],
+        ['Leonard', Male],  ['Leah', Female],
+        ['Jerry', Male],    ['Jenny', Female],
+        ['Thomas', Male],   ['Tina', Female],
+        ['Alex', Male],     ['Alex', Female]];
+
+    lastNames = [
+        'Watson', 'Wilson', 'King', 'Seinfeld',
+        'the Marauder', 'the Baby Crusher',
+        'Faulkner', 'Card', 'Clark', 'Skywalker',
+        'Joyce', 'Rivera', 'Fitzgerald', 'Huxley',
+        'Thompson', 'Poe', 'Vogel', 'Hoenikker',
+        'Austen', 'Wilde', 'Tolstoy', 'Pynchon',
+        'Kafka', 'Bradbury', 'Dickinson', 'Plath',
+        'Salinger', 'Lysander', 'Orwell', 'Eliot',
+        'Goethe', 'Lindgren', 'Roethke', 'Asimov'];
+
+
     init() {
         " "; user.setName();
-        " "; user.setGender();
         "\b\nName: <<user.name>>, <<user.printGender()>>";
         clear;
     }
@@ -66,8 +87,7 @@ user : BagOfHolding, Mortal {
         user.makePosture(lying);
     }
 
-    engender(male_text,female_text) {
-        return (user.gender==male)?(male_text):(female_text); }
+    engender(m,f) { return (user.gender==Male)?(m):(f); }
 
     setName() {
         local cmd;
@@ -78,10 +98,16 @@ user : BagOfHolding, Mortal {
             if (cmd=='') {
                 if (i<1) "Go ahead, pick a name for yourself. ";
                 else if (i<2) {
-                    "No name, huh? You're a 'no-name' kind of guy, huh? Fine. You're the little mermaid now. ";
-                    user.name = 'The Little Mermaid';
-                    user.firstname = 'The Little';
-                    user.lastname = 'Mermaid';
+                    """
+                    No name, huh? You're a "no-name" kind of guy, huh? Fine. I'll do the legwork.
+
+                    You might not appreciate this, but a programmer somewhere just groaned.
+                    """;
+                    local n = rand(firstNames.length-1);
+                    user.firstname = firstNames[n][1];
+                    user.gender = firstNames[n][2];
+                    user.lastname = lastNames[rand(lastNames.length-1)];
+                    user.name = '<<user.firstname>> <<user.lastname>>';
                     break;
                 }
             }
@@ -101,7 +127,7 @@ user : BagOfHolding, Mortal {
                 "A real name please.";
             else if (rexSearch(util.obscenities,cmd))
                 "So, common decency, too. Call me particular.";
-            else { user.name = cmd; break; }
+            else { user.name = cmd; " "; user.setGender(); }
         }
     }
 
@@ -128,20 +154,20 @@ user : BagOfHolding, Mortal {
                 } else if (i<2) {
                     local b = ((rand(3)%2)==0);
                     "What, no gender? I guess that's ok. Get ready to be a <<(b)?'':'wo'>>man. ";
-                    user.gender = (b)?male:female; break;
+                    user.gender = (b)?Male:Female; break;
                 }
             }
             if (i>5) { "Have it your way."; i/=0; }
             else if (i>4)
                 "I will do something nasty if you don't quit it.";
             else if (i>3) "Can we get to the point, here?";
-            else if (rexMatch('b|boy|m|male|man|masculine',cmd.toLower())) { user.gender = male; break; }
-            else if (rexMatch('f|fe|female|feminine|g|girl|lady',cmd.toLower())) { user.gender = female; break; }
+            else if (rexMatch('b|boy|m|male|man|masculine',cmd.toLower())) { user.gender = Male; break; }
+            else if (rexMatch('f|fe|female|feminine|g|girl|lady',cmd.toLower())) { user.gender = Female; break; }
             else "Gender isn't black and white, I get it, and there's nothing wrong with that, but just... like.. if you had to choose...";
         }
     }
 
-    printGender() { return (user.gender==male)?'Male':'Female'; }
+    printGender() { return (user.gender==Male)?'Male':'Female'; }
 
     commitCrime(n) { /* n is severity of crime */
         user.crimes+=n; // as it is, you can't ever repent
@@ -155,5 +181,4 @@ user : BagOfHolding, Mortal {
         """;
     }
 }
-
 
