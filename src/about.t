@@ -14,7 +14,7 @@ versionInfo : GameID {
     authorEmail = 'bescott@andrew.cmu.edu';
     genre = 'Adventure';
     version = 'v2.0.3';
-    firstPublished = '1986 (2015)';
+    firstPublished = '1986 (2016)';
     IFID = 'TADS3CMU-ADV3-77C6-042E-278CEDED4BDC';
 
     scoreRankTable = [
@@ -47,14 +47,16 @@ versionInfo : GameID {
 
     about() {
         """
-        <center><p><b><u>
+        <p><b><u>
         ; <<versionInfo.name.toUpper()>></u></b>
         ; <<versionInfo.tagline>>
-        ; <<'&lt;'+versionInfo.original_byline+'&gt;'>>
         ;
+        ; &lt;<<versionInfo.original_byline>>&gt;
         </p><p>
+        <center>
         <<versionInfo.byline>>, <<versionInfo.authorEmail>>
         Release <<versionInfo.version>>, <<versionInfo.firstPublished>></p>
+        </center>
         """;
     } /* about */
 } /* versionInfo */
