@@ -84,8 +84,8 @@ startup : InitObject {
         bannerClear(1);
 #endif
         versionInfo.intro();
-        clear;
 #ifndef TADS_INCLUDE_NET
+        clear;
         local spacer = bannerCreate(
             null, BannerFirst,
             statuslineBanner.handle_,

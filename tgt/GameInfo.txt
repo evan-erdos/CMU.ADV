@@ -3,8 +3,8 @@ Name: CMU.ADV
 Byline: by Ben Scott
 AuthorEmail: bescott@andrew.cmu.edu
 Version: v2.0.3
-ReleaseDate: 2016-01-06
-FirstPublished: 1986 (2015)
+ReleaseDate: 2016-01-07
+FirstPublished: 1986 (2016)
 Language: en-US
 LicenseType: Freeware
 CopyingRules: Nominal cost only; compilations allowed
