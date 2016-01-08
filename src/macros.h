@@ -44,33 +44,11 @@
 #define next inputManager.getKey(null,null)
 
 
-/** `Thing` : **`template`**
- *
- * Reorganizes the usual `Thing` `template`.
- **/
-Thing template 'name' @location? "desc";
-
-
-/** `Person` : **`template`**
- *
- * Reorganizes the usual `Person` `template`.
- **/
-Person template 'name' @location? "desc";
-
-
-/** `Room` : **`template`**
- *
- * This alters the `Room` `template` to not use the positional
- * name, e.g., what prints when it says "east, to the room".
- **/
-Room template 'roomName' 'destName'? 'name'? "desc"?;
-
-
 /** `ActorState` : **`template`**
  *
  * Allows the `stateDesc` to be specified in the template.
  **/
-ActorState template @location? "stateDesc" "specialDesc"?;
+ActorState template @location? "stateDesc"?;
 
 
 #endif /* MACROS_H */

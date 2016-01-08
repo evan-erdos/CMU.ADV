@@ -25,11 +25,9 @@ This cop is mean and ugly; he's the Clint Eastwood of the academic world. You'd 
     }
 }
 
-+ officer_init : ActorState
-"He means business. "
-"""
-A campus police officer is here, eyeing you suspiciously.
-""" {
++ officer_init : ActorState "He means business. " {
+
+    specialDesc = "A campus police officer is here, eyeing you suspiciously.";
     noResponse = "You try to reason with him. He's having no part of it. ";
     isInitState = true;
 }

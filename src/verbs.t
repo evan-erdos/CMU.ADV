@@ -21,7 +21,7 @@ DefineTAction(HideIn);
 DefineTAction(Purloin);
 DefineIAction(FiatLux) execAction {
     if (gPlayerChar.brightness==0) {
-        "You\'re pretty bright. ";
+        "You're pretty bright. ";
         gPlayerChar.brightness = 3;
     } else {
         "You feel dimmer. ";
