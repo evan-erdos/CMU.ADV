@@ -12,7 +12,7 @@
  * one of the starting rooms.
  **/
 backpack : BagOfHolding, StretchyContainer
-'back/backpack/pack/sack/bag'
+'(my) back/backpack/pack/sack/bag'
 'backpack' @root
 """
 You've had this pack for awhile. It's somewhat old, but it still carries everything you need to go out adventuring.
@@ -30,7 +30,7 @@ You've had this pack for awhile. It's somewhat old, but it still carries everyth
  * be situated near the start of the game.
  **/
 keyring : Keyring
-'key*keys/ring/keyring'
+'(metal) ring/key/keyring*keys rings'
 'keyring' @root
 """
 Your keyring is kindof barren. It's old enough that it's not as hard to separate it to put keys on, though. So, you've got that going for you, which is nice.
@@ -42,7 +42,7 @@ Your keyring is kindof barren. It's old enough that it's not as hard to separate
  * This is the main `Lamp` for the `user`.
  **/
 flashlight : Flashlight
-'flash/flashlight/light/lamp/lantern/bulb/light/li'
+'(metal) flash/flashlight/light/lamp/lantern/light/li'
 'flashlight' @root
 """
 Your flashlight is thin, and made from a very heavy metal. You would have a hard time breaking it, but the batteries don't last that long.
@@ -65,7 +65,7 @@ The leaflet is quite short, and has a tear along the top edge. It reads "... the
 
 
 futuristic_leaflet : Thing
-'(small) note/email'
+'(small) note/email*emails'
 'futuristic leaflet' @root
 """
 It reads:
@@ -80,14 +80,14 @@ You think you can see tears on the bottom, but those could just as easily be fro
 
 
 newspaper : Readable, Thing
-'news/paper/tartan/newspaper'
+'news/paper/tartan/newspaper*newspapers'
 'issue of <i>The Tartan</i>' @dh_entrance
 """
 It's what passes for a newspaper at this school.
 """ {
     initSpecialDesc = "A newspaper lies discarded on the ground.";
     readDesc {
-        Events.initTypewriter('Holy Shit!',23);
+        //Events.initTypewriter('Holy Cow!',23);
         """
         The headline reads:
 
@@ -99,7 +99,9 @@ It's what passes for a newspaper at this school.
         """;
         clear;
         """
-        That was YOUR graduation. And you don't remember any of it! Dazedly you check the date on the paper -- sure enough, two days after graduation. You must have slept completely through it!  You didn't graduate, and you didn't get your diploma, and now you're not going to get that new Porsche from MegaMissles, Inc., either.  Without a diploma, they'll never hire you, no matter what that recruiter said.
+        <br>
+        That was <b>your<b> graduation. And you don't remember any of it!
+        Dazedly you check the date on the paper -- sure enough, two days after graduation. You must have slept completely through it! You didn't graduate, and you didn't get your diploma, and now you're not going to get that new Porsche from MegaMissles, Inc., either. Without a diploma, they'll never hire you, no matter what that recruiter said.
         <b>You're dead meat.</b>
         """;
         newspaper.achievement.awardPointsOnce();
@@ -110,7 +112,7 @@ It's what passes for a newspaper at this school.
 
 
 tape_recorder : Thing
-'(tape) deck/recorder/device/tape'
+'(tape) tape/deck/recorder/device'
 'a small tape recorder (off)' @interviewer_desk
 """
 You found this tape recorder after pilfering it from the desk of an admissions interviewer.
@@ -125,7 +127,7 @@ You found this tape recorder after pilfering it from the desk of an admissions i
 
 
 student_tears : Thing
-'(small) tears/vial'
+'(small) tear/vial/vial of tears*tears'
 'vial of student tears' @ghc_rashid
 """
 A vial of 15-251 students' tears.

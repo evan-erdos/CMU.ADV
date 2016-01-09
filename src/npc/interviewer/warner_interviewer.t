@@ -8,7 +8,8 @@
 
 
 warner_interviewer : Person
-'interviewer' 'Harried Interviewer' @interview_room
+'(harried) staff/interviewer/employee'
+'Harried Interviewer' @interview_room
 """
 He's not a very old man, but you can see signs of a cover-up in his hair and grooming. This job has aged him slightly, but he's still supposed to look young and vibrant to attract students.
 """ {
