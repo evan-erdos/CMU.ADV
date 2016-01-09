@@ -31,18 +31,25 @@ He looks baffled at your presence but seems to be too confused about his own sch
     giveImpression(n) { interest += n; }
 
     decideAdmittance(n) {
-        if (n>99) achievement_blackmail.awardPointsOnce();
-        else if (n<5) achievement_denied.awardPointsOnce();
-        else achievement_admitted.awardPointsOnce();
+        if (n>50) achievement_blackmail.awardPointsOnce();
+        else if (n>5) achievement_admitted.awardPointsOnce();
+        else if (n<-50) achievement_failed.awardPointsOnce();
+        else achievement_denied.awardPointsOnce();
         interest = 0;
     }
 
     /* To be awarded at the completion of the interview */
-    achievement_admitted : Achievement { +3 "taking an admissions interview as a student... oops." }
+    achievement_admitted : Achievement {
+        +3 "taking an admissions interview as a student... oops." }
 
-    achievement_denied : Achievement { +(-3) "failing an admissions interview as a student." }
+    achievement_denied : Achievement {
+        +(-3) "failing an admissions interview as a student." }
 
-    achievement_blackmail : Achievement { +20 "blackmailing an admissions interviewer into admitting you, even though you're already a student." }
+    achievement_blackmail : Achievement {
+        +20 "blackmailing an admissions interviewer into admitting you, even though you're already a student." }
+
+    achievement_failed : Achievement {
+        +(-20) "trying to blackmail an admissions interviewer, and failing!" }
 }
 
 + interviewerTalking : InConversationState
@@ -174,7 +181,7 @@ The interviewer seems mildly amused by your response. He flounders for a bit, th
 """;
 
 ++ SpecialTopic 'CIT'
-'cit|engineering|ece|mech\s*e'
+'cit|engineering|ece|mech%s*e'
 """
 You're in it for the engineering, of course! You love resistors, or bridges, or civil people or something. Or civil people on jammed bridges.
 "I want to be an engineer. My father and his father before him were engineers, and since birth, I've known that engineering was my calling. Plus, I hear you guys have a great engineering program. Out of curiosity, why does it take four years to learn how to operate a machine that can only speed up and slow down along a track?"
@@ -185,7 +192,7 @@ The interviewer steeples his fingers and looks down his nose at you. "It's a fin
 """;
 
 ++ SpecialTopic 'Drama'
-'(school\s+of)?\s+drama'
+'(school%s+of)?%s+drama'
 """
 Okay, taking a quick break from narrating to say, <b>what are you doing in the CClub text adventure</b>? But. Anyway.
 
@@ -200,7 +207,7 @@ Oh come on, the answer is obvious.
 """;
 
 ++ SpecialTopic 'Tepper'
-'tepper|business|social(izing)?|suit(s|\s+wearing)?'
+'tepper|business|social(izing)?|suit(s|%s+wearing)?'
 """
 Agh, how could he possibly think that you would willingly associate with those socially-blind androids?!
 
@@ -214,7 +221,7 @@ The interviewer nods sagely. "Ah, yes. Here to make... <i>connections</i>." He c
 """;
 
 ++ SpecialTopic 'Dietrich'
-'dietrich|humanities|wasting\s+time(\s+and money)?'
+'dietrich|humanities|wasting%s+time(%s+and money)?'
 """
 What do they even do in there? You don't really know, but decide to take a potshot and claim you're applying here anyway.
 
@@ -235,7 +242,7 @@ Thankfully, your question seems to have diverted the interviewer's interest in y
 """;
 
 ++ SpecialTopic 'MCS'
-'mcs|mellon|(the\s+)?science(s)?|math(ematics)?'
+'mcs|mellon|(the%s+)?science(s)?|math(ematics)?'
 """
 Beakers, flasks (containing alcohol, or otherwise), and equations are your thing. You live for biology/chemistry/physics/math/jesuschristhowmanymajorsareinthisonecollege.
 
@@ -247,7 +254,7 @@ The interviewer looks at you blankly, and slowly writes "MCS" in large block let
 """;
 
 ++ SpecialTopic 'CFA'
-'(college\s+of\s+fine\s+)?art(s)?'
+'(college%s+of%s+fine%s+)?art(s)?'
 """
 "Warhooooool!" you yell madly as a sort of interview war-cry.
 The interviewer lets out a small squeak and scrambles backwards. His chair tips over, dumping him unceremoniously on his side. As he clambers back up and rights his chair, you hear him mutter, "Oh joy, another crazy art person."
@@ -300,7 +307,7 @@ Honestly not sure what to make of that.
 """;
 
 ++ SpecialTopic 'Biology'
-'bio(logy|logical\s+science(s)?)?'
+'bio(logy|logical%s+science(s)?)?'
 """
 "The quickest way to my heart is through biology... and through my stomach and intestines!" You give a cheesy grin.
 
@@ -314,7 +321,7 @@ The interviewer groans.
 """;
 
 ++ SpecialTopic 'Chemistry'
-'chem(istry|ical\s+science(s)?)?'
+'chem(istry|ical%s+science(s)?)?'
 """
 "I'm thinking about majoring in chemistry," you say. "I enjoy acids and bases and learning about bonds and things! As my chem teacher used to say, 'If you're not part of the problem, you're part of the precipitate.' Wait, you think you screwed that one up. Crap. The interviewer doesn't seem to notice, though.
 
@@ -331,7 +338,7 @@ The interviewer must not realize that you can see almost everything he's writing
 """;
 
 ++ SpecialTopic 'Physics'
-'physic(s|al\s+science(s)?)'
+'physic(s|al%s+science(s)?)'
 """
 You have a deep love of spherical cows and frictionless surfaces. In a perfect world, you've always believed there would be no thermal energy loss or drag force.
 
@@ -378,7 +385,7 @@ No, seriously, just make something up if you really don't have any experience in
 'You have a life, trust me. Pick an extracurricular!'];
 
 ++ SpecialTopic 'computer club'
-'(program(ming)?\s+)?comput(er|ing)(\s+club)?'
+'(program(ming)?%s+)?comput(er|ing)(%s+club)?'
 """
 <b>(Heh, you suck-up.)</b>
 "I'm in computer club," you declare proudly.
@@ -428,7 +435,7 @@ You begin to nod, but the interviewer goes right on ahead.
 ; // (I'm really biased.)
 
 ++ SpecialTopic 'bridge'
-'(contract\s+)?bridge(\s+club)?'
+'(contract%s+)?bridge(%s+club)?'
 """
 American Contract Bridge. Ah, the game of intellectuals.
 
@@ -452,7 +459,7 @@ The interviewer flails his hands briefly across his desk before hastily yanking 
 
 // fseidel, do you want to take this one? --jocelynh
 ++ SpecialTopic 'robotics'
-'FIRST|FRC|robotics(\s+club)?'
+'FIRST|FRC|robotics(%s+club)?'
 """
 "WOw LOOk roBOts!1!" you exclaim.
 
@@ -475,7 +482,7 @@ The interviewer continues, "So I can see that you seem very multi-cultural, and 
 """;
 
 ++ SpecialTopic 'sports'
-'sports|excerci([zs])e|(foot|basket|base)ball|soccer|tennis|track|golf|badminton|lacrosse|rugby|(field\s+)?hockey'
+'sports|excerci([zs])e|(foot|basket|base)ball|soccer|tennis|track|golf|badminton|lacrosse|rugby|(field%s+)?hockey'
 """
 You pride yourself in sports, or at least you'll pretend to. Flexing your not-particularly-defined biceps, you declare, "I love sports! I love watching all the tournaments, from the Superbowl to the World Cup to the US Open. In fact, I'm so devoted to sports that I've practiced enough to become the captain of my school's... *mumble* ...team, carrying us to the championship for the past two years in a row."
 
@@ -530,7 +537,7 @@ The interviewer looks pleased at your intellectual and literary curiosity. He wa
 
 
 ++ SpecialTopic 'play video games'
-'(play\s+)?(video\s+)?gam(es|ing)'
+'(play%s+)?(video%s+)?gam(es|ing)'
 """
 "I sometimes play video gam-"
 "You're a stupid, slacking, no-good teenager!" the interviewer yells, very suddenly. He sits back in his seat with a cross-eyed look for a few seconds, and his head tilts to the side. Then, he continues on like nothing happened.
@@ -546,7 +553,7 @@ You're not sure what to make of that.
 
 
 ++ SpecialTopic 'watch TV'
-'(watch\s+)?(tv|Netflix|shows|movies)'
+'(watch%s+)?(tv|Netflix|shows|movies)'
 """
 You decide to intentionally screw with the interviewer.
 
@@ -564,7 +571,7 @@ What?
 
 
 ++ SpecialTopic 'solitaire'
-'(play\s+)?solitaire|cards'
+'(play%s+)?solitaire|cards'
 """
 You really can't think of anything that might be done alone, and in the heat of the moment, you say "I play a lot of Solitaire?"
 
@@ -597,7 +604,7 @@ The interviewer sheds a single tear, gives you a warm smile, and says "Yes... ye
 """;
 
 ++ SpecialTopic 'ranking'
-'(school\s+)?rank(ing)?'
+'(school%s+)?rank(ing)?'
 """
 "I want to know more than everyone else. When I walk into a room, I want to be smarter than everyone there, and that's what CMU is to me."
 
@@ -622,7 +629,7 @@ The interviewer says, "Yeah, we have those here."
 """;
 
 ++ SpecialTopic 'bagpipes'
-'(bag)?pipes|(the\s+)?(kiltie\s+)?band'
+'(bag)?pipes|(the%s+)?(kiltie%s+)?band'
 """
 "I like bagpipes."
 
@@ -635,8 +642,6 @@ The interviewer looks out the door, and decides there's nobody in earshot.
 
 He begins, quietly, "If you... somehow get in... could you convince the bagpipes teacher to hold bagpipe practice somewhere that isn't right outside my window? I could... you know... pull a string or two."
 <br>
-This seems like bribery. You could bribe this person right now into guaranteeing your admission. Well, your second admisison.
-
 He looks at you, waiting for an answer.
 
 <.convnode bagpipe bribery>
@@ -656,6 +661,9 @@ The interviewer is giving you a serious look, waiting for an answer to his quest
 The interviewer sits back in his seat, and says "You sure would. You sure would."
 
 <b>You just bribed an admissions interviewer, and you're already an admitted student.</b>
+
+<<warner_interviewer.giveImpression(10)>>
+<.convnode decision>
 """;
 
 ++ NoTopic, SuggestedNoTopic
@@ -664,10 +672,13 @@ The interviewer sits back in his seat, and says "You sure would. You sure would.
 
 The interviewer sits up quickly and says, "Well, now, that's just, it was... really more of an idle curiosity, and... So, anyways, I think this interview is done, don't you?!"
 He seems overeager to get through this now.
+
+<<warner_interviewer.giveImpression(-10)>>
+<.convnode decision>
 """;
 
 ++ SpecialTopic 'blackmail him'
-'blackmail(\s+(him|the\s+interviewer))?'
+'blackmail(%s+(him|the%s+interviewer))?'
 """
 "No, I won't, they can bagpipe wherever they please."
 
@@ -675,6 +686,9 @@ The interviewer begins to speak, but you interrupt him.
 
 "-- I wonder what would happen if Dick Cyert caught wind of this?"
 <br>
+The interviewer becomes visibly angry.
+<<if tape_recorder.location==gPlayerChar>>
+However, once he notices his tape recorder isn't where he left it, you pull it out of your coat. At this moment, you realize you never turned it on, but he doesn't know that.
 The interviewers eyes get very wide, and he starts to sweat.
 <br>
 "That wouldn't be very good for you, would it be?"
@@ -686,8 +700,23 @@ The interviewer shakes his head.
 The interviewer nods his head vigorously.
 <br>
 "Well then," you say as you stand up, "I think we're finished here."
+<br>
+He whimpers.
 
 <.reveal interviewer-intimidation>
+<.convnode decision>
+<<else>>
+"What are you trying to pull here?!" he yells.
+<br>
+You shrug.
+<br>
+"You... you have no proof!" he says, desperately.
+<br>
+He's right, you don't. At this moment, you notice a tape recorder, right in front of you, on his desk.
+
+<b>Man, what a missed opportunity.<\b>
+
+<<warner_interviewer.giveImpression(-100)>>
 <.convnode decision>
 """;
 
@@ -696,28 +725,21 @@ The interviewer nods his head vigorously.
 
 + ConvNode 'decision';
 
-++ SpecialTopic 'finish up' ['finish', 'finish up', 'done']
+++ SpecialTopic 'conclude the interview'
+'end|conclude|finish'
 """
-The interview seems to have come to its natural conclusion, and you begin to fidget, as one does near the end of a conversation.
-
 "Well, I think I know enough about you to make my decision now, thanks so much for your time." says the interviewer.
 
-<<(warner_interviewer.interest>4)
-    ?'<.convnode admitted>'
-    :'<.convnode denied>'>>
-""";
-
-+ ConvNode 'admitted';
-
-++ SpecialTopic 'get exited' ['cheer','get exited','yay']
-"""
+<<if (warner_interviewer.interest>4)>>
 You catch a look at the interviewer's page again, he's got lots of things circled, and, for whatever reason, has drawn little hearts at the bottom of the page. You're pretty sure you've made it.
-
+<<else>>
+You see the interviewer's notes, and there's much more profanity than you expected to see. You're pretty sure you just failed the admittance interview.
+<<end>>
 <<warner_interviewer.decideAdmittance(warner_interviewer.interest)>>
 """;
 
 ++ SpecialTopic 'stare him down'
-'(stare\s+him\s+down)|(blackmail(\s+him)?)'
+'(stare%s+him%s+down)|(blackmail(%s+him)?)'
 """
 You look straight through him, burning his soul with your eyes.
 <br>
@@ -725,23 +747,15 @@ You look straight through him, burning his soul with your eyes.
 <br>
 The interviewer looks like he's about to throw up. He shakes his head no.
 <br>
-You walk to the door, slowly, and then turn to him, saying,
+You walk to the door, slowly, and then turn to him and say,
 "Good. I would hate to be disappointed."
 <br>
-He lets out a small yelp.
+He lets out a small yelp as you leave the room.
 
 <<warner_interviewer.decideAdmittance(100)>>
+<<gPlayerChar.scriptedTravelTo(warner_second_floor)>>
 """ isActive = (gRevealed('interviewer-intimidation'));
 
-
-+ ConvNode 'denied';
-
-++ SpecialTopic 'be sad' ['be sad', 'cry']
-"""
-You see the interviewer's notes, and there's much more profanity than you expected to see. You're pretty sure you just failed the admittance interview.
-
-<<warner_interviewer.decideAdmittance(warner_interviewer.interest)>>
-""";
 
 warner_interviewer_list : ShuffledEventList, RandomFiringScript
 ['''
