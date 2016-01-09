@@ -1,10 +1,16 @@
 /* Ben Scott * bescott@andrew.cmu.edu * 2015-09-19 * Macros */
 
+
+#ifndef MACROS_H
+#define MACROS_H
+
+
 /** `null` : **`macro`**
  *
  * Because we ain't no Lispers here
  **/
 #define null nil
+
 
 /** `print()` : **`macro`**
  *
@@ -12,11 +18,13 @@
  **/
 #define print say
 
+
 /** `println()` : **`macro`**
  *
  * Same as print, adds a newline
  **/
 #define println(s) (say('\n'+(s)))
+
 
 /** `clear` : **`macro`**
  *
@@ -27,38 +35,21 @@
  **/
 #define clear inputManager.getKey(null,null); cls()
 
-/** `clear` : **`macro`**
+
+/** `next` : **`macro`**
  *
  * Waits for the user to press any key before continuing to
  * print text to the output.
  **/
 #define next inputManager.getKey(null,null)
 
-/** `SUDO` : **`macro`**
+
+/** `ActorState` : **`template`**
  *
- * Adds some special verbs for debugging purposes.
+ * Allows the `stateDesc` to be specified in the template.
  **/
-#define SUDO
-
-/** `Thing` : **`template`**
- *
- * Reorganizes the usual `Thing` `template`
- **/
-Thing template 'name' @location? "desc";
-
-/** `Person` : **`template`**
- *
- * Reorganizes the usual `Person` `template`
- **/
-Person template 'name' @location? "desc";
-
-/** `Room` : **`template`**
- *
- * This alters the `Room` `template` to not use the positional
- * name, e.g., what prints when it says "east, to the room".
- **/
-Room template 'roomName' "desc"? 'destName'? 'name'?;
+ActorState template @location? "stateDesc"?;
 
 
-
+#endif /* MACROS_H */
 

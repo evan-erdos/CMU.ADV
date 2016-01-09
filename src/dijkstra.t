@@ -1,90 +1,83 @@
-/* Ben Scott * bescott@andrew.cmu.edu * 2015-09-26 * Dijkstra */
+/* Ben Scott * bescott@andrew.cmu.edu * 2015-12-30 * Dijkstra */
 
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
+
 
 /** `BasePathFinder` : **`object`**
  *
- * The basic path finder class. This implements Dijkstra's algorithm to
- * find the shortest path from one node to another in a graph.  This base
- * implementation doesn't make any assumptions about the nature of the
- * underlying graph; each subclass must override one method to provide
- * the concrete graph implementation.
+ * Basic pathfinder, implements Dijkstra's algorithm to find
+ * the shortest path between nodes in a graph. Implementation
+ * shouldn't make any assumptions about the nature of the
+ * underlying graph; and inheritors must override a method to
+ * provide a concrete graph implementation.
  **/
 class BasePathFinder : object {
 
-    /** `findPath` : **`function`**
+
+    /** `findPath()` : **`Node[]`**
      *
-     * Find the best path from 'fromNode' to 'toNode', which are nodes in
-     * the underlying graph.  We'll return a vector consisting of graph
-     * nodes, in order, giving the shortest path between the nodes.  Note
-     * that 'fromNode' and 'toNode' are included in the returned vector.
-     *
-     * If the two nodes 'fromNode' and 'toNode' aren't connected in the
-     * graph, we'll simply return null.
+     * Find the best path between `fromNode` and `toNode`,
+     * which are nodes in the graph. Returns a vector of graph
+     * nodes, in order, yielding the shortest path between the
+     * nodes. Note that `fromNode` and `toNode` are included in
+     * the returned vector. If the two nodes aren't connected
+     * in the graph, we'll simply return `null`.
      **/
     findPath(fromNode, toNode) {
         local i;
         local len;
         local cur;
-        local workingList;
-        local doneList;
+        local list;
+        local final;
         local toEntry;
         local ret;
 
         /* start with set containing the initial node */
-        workingList = new Vector(32);
-        workingList.append(new PathFinderNode(fromNode));
+        list = new Vector(32);
+        list.append(new PathFinderNode(fromNode));
 
-        /**
-         * Work through the list. For each item in the list, add all of
-         * the items adjacent to that item to the end of the list. Keep
-         * visiting new elements until we've visited everything in the
-         * list once.
-         *
-         * We'll only add an element to the list if it's not already in
-         * the list.  This guarantees that the loop will converge (since
-         * the number of items in the graph must be finite).
-         **/
-        for (i=1;i<=workingList.length();++i) {
-            /* add each adjacent item to the working list */
-            forEachAdjacent(workingList[i].graphNode,new function(adj, dist) {
-                /**
-                 * add the adjacent node only if it's not already in the
-                 * working list
-                 **/
-                if (workingList.indexWhich({x: x.graphNode == adj}) == null)
-                    workingList.append(new PathFinderNode(adj));
+        /* For each node in the list, add all adjacent nodes to
+         * the end of the list. Keep visiting new nodes until
+         * everything has been visited once. Only add a node if
+         * it's not already in the list to ensure that the loop
+         * converges (since the size of the graph is finite). */
+        for (i=1;i<=list.length();++i) {
+            /* add each adjacent node to the working list */
+            forEachAdjacent(list[i].graphNode,
+                            new function(adj,dist) {
+                /* add the adjacent node only if it's not
+                 * already in the working list */
+                if (list.indexWhich({x: x.graphNode==adj})==null)
+                    list.append(new PathFinderNode(adj));
             });
         }
 
-        /**
-         * if the destination isn't in the working list, then there's no
-         * hope of finding a path to it
-         **/
-        if (workingList.indexWhich({x: x.graphNode == toNode}) == null)
-            return null;
+        /* if the destination isn't in the working list, then
+         * there exists no path to it. */
+        if (list.indexWhich({x: x.graphNode == toNode}) == null) return null;
 
-        /* start with an empty "done" list */
-        doneList = new Vector(32);
+        /* start with an empty list */
+        final = new Vector(32);
 
-        /* we know the distance from the starting element to itself is zero */
-        cur = workingList[1];
+        /* (node==node) => dist(node,node)==0 */
+        cur = list[1];
         cur.bestDist = 0;
         cur.predNode = null;
 
         /* keep going while we have unresolved nodes */
-        while (workingList.length() != 0) {
+        while (list.length()!=0) {
             local minIdx;
             local minDist;
 
-            /* find the working list element with the shortest distance */
+            /* find the nearest node */
             minDist = null;
             minIdx = null;
-            for (i = 1, len = workingList.length() ; i <= len ; ++i) {
-                /* if this is the best so far, remember it */
-                cur = workingList[i];
+            for (i=1,len=list.length();i<=len;++i) {
+                /* store current nearest */
+                cur = list[i];
                 if (cur.bestDist != null
                     && (minDist == null || cur.bestDist < minDist)) {
                     /* this is the best so far */
@@ -93,204 +86,143 @@ class BasePathFinder : object {
                 }
             }
 
-            /* move the best one to the 'done' list */
-            cur = workingList[minIdx];
-            doneList.append(cur = workingList[minIdx]);
-            workingList.removeElementAt(minIdx);
+            /* move the neaest one to the seen list */
+            cur = list[minIdx];
+            final.append(cur = list[minIdx]);
+            list.removeElementAt(minIdx);
 
-            /*
-             *   update the best distance for everything adjacent to the
-             *   one we just finished
-             */
+            /* update the best distance for all nodes adjacent
+             * to the one we just finished */
             forEachAdjacent(cur.graphNode, new function(adj, dist) {
                 local newDist;
                 local entry;
 
-                /**
-                 * Find the working list entry from the adjacent room.
-                 * If there's no working list entry, there's nothing we
-                 * need to do here, since we must already be finished
-                 * with it.
-                 **/
-                entry = workingList.valWhich({x: x.graphNode == adj});
-                if (entry == null)
-                    return;
+                /* Find the node of the adjacent room. If it
+                 * doesn't exist, return. */
+                entry = list.valWhich({x: x.graphNode==adj});
+                if (entry==null) return;
 
-                /**
-                 * calculate the new distance to the adjacent room, if
-                 * we were to take a path from the room we just finished
-                 * - this is simply the path distance to the
-                 * just-finished room plus the distance from that room
-                 * to the adjacent room (i.e., 'dist')
-                 **/
+                /* append the new distance to the adjacent room
+                 * to the current room. */
                 newDist = cur.bestDist + dist;
 
-                /**
-                 * If this is better than the best estimate for the
-                 * adjacent room so far, assume we'll use this path.
-                 * Note that if the best estimate so far is null, it
-                 * means we haven't found any path to the adjacent node
-                 * yet, so this new distance is definitely the best so far.
-                 **/
-                if (entry.bestDist == null
-                    || newDist < entry.bestDist)
-                {
-                    /* it's the best so far - remember it */
+                /* null means no path has been found yet */
+                if (entry.bestDist==null || newDist<entry.bestDist) {
                     entry.bestDist = newDist;
                     entry.predNode = cur;
                 }
             });
         }
 
-        /*
-         *   We've exhausted the working list, so we know the best path to
-         *   every node.  Now all that's left is to generate the list of
-         *   nodes that takes us from here to there.
-         *
-         *   The information we have in the 'done' list is in reverse
-         *   order, because it tells us the predecessor for each node.
-         *   So, first find out how long the path is by traversing the
-         *   predecessor list from the ending point to the starting point.
-         *   Note that the predecessor of the starting element is null, so
-         *   we can simply keep going until we reach a null predecessor.
-         */
-        toEntry = doneList.valWhich({x: x.graphNode == toNode});
-        for (cur = toEntry, len = 0 ; cur != null ;
-             cur = cur.predNode, ++len) ;
-
+        /* Once the working list is empty, the list of nodes
+         * between the start and end need be generated. Now the
+         * nodes are iterated through in reverse order until a
+         * null is found (the prior node is always null for the
+         * starting node, so it acts as a sentinel. */
+        toEntry = final.valWhich({x: x.graphNode == toNode});
+        for (cur=toEntry,len=0;cur!=null;cur=cur.predNode,++len);
         /* create the vector that represents the path */
         ret = new Vector(len);
 
-        /*
-         *   Traverse the predecessor list again, filling in the vector.
-         *   Since the predecessor list gives us the path in the reverse
-         *   of the order we want, fill in the vector from the last
-         *   element backwards, so that the vector ends up in the order we
-         *   want.  In the return vector, store the nodes from the
-         *   underlying graph (rather than our internal tracking entries).
-         */
-        for (cur = toEntry, i = len ; cur != null ; cur = cur.predNode, --i)
+        /* Traverse again to fill in the vector. */
+        for (cur=toEntry,i=len;cur!=null;cur=cur.predNode,--i)
             ret[i] = cur.graphNode;
 
-        /* that's it - return the path */
+        /* return the path */
         return ret;
     }
 
-    /*
-     *   Iterate over everything adjacent to the given node in the
-     *   underlying graph.  This routine must simply invoke the given
-     *   callback function once for each graph node adjacent to the given
-     *   graph node.
+
+    /** `forEachAdjacent()` : **`function`**
      *
-     *   The callback takes two arguments: the adjacent node, and the
-     *   distance from 'node' to the adjacent node.  Note that the distance
-     *   must be a positive number, as Dijkstra's algorithm depends on
-     *   positive distances.  If the graph isn't weighted by distance,
-     *   simply use 1 for all distances.
+     * Iterates over each node adjacent to the given node in
+     * the graph by invoking the given callback function for
+     * each adjacent graph node. It takes two arguments: the
+     * adjacent node, and the distance between them.
      *
-     *   This method isn't implemented in the base class, since we don't
-     *   make any assumptions about the underlying graph.  Subclasses must
-     *   provide concrete implementations of this routine to define the
-     *   underlying graph.
-     */
-    forEachAdjacent(node, func) { /* subclasses must override */ }
+     * - `require` : `weight(edge)>0 for all adjacent nodes`
+     **/
+    forEachAdjacent(node, func) { /* virtual */ }
 }
 
-/*
- *   A node entry for the path finder - this encapsulates the node in the
- *   underlying graph, along with the "label" information in the algorithm.
- *   Note that this is NOT a node in the underlying graph; rather, this is
- *   an internal data structure that we use in the path finder to keep
- *   track of the underlying nodes and their status in the work queue.
- */
-class PathFinderNode : object {
-    construct(node) { graphNode = node; } /* remember the underlying node */
 
-    graphNode = null; /* the underlying node in the graph */
-    /* The best estimate of the shortest distance from the starting
-     * point.  We use null to represent infinity here. */
-    bestDist = null;  /* the best-path predecessor for this path element */
+/** `PathFinderNode` : **`class`**
+ *
+ * Encapsulates the node in the underlying graph, along with
+ * additional information for the algorithm.
+ **/
+class PathFinderNode : object {
+    construct(node) { graphNode = node; }
+    graphNode = null; /* the underlying node */
+    /* the best-path predecessor for this node */
+    bestDist = null;
     predNode = null;
 }
 
-/*   Room path finder.  This is a concrete implementation of the path
- *   finder that finds a path from one Room to another in the game-world
- *   map.
+
+/** `roomPathFinder` : **`BasePathFinder`**
  *
- *   This implementation traverses rooms based on the actual connections in
- *   the game map.  Note that this isn't appropriate for all purposes,
- *   since it doesn't take into account what the actor knows about the game
- *   map.  This "omniscient" implementation is suitable for situations
- *   where the actor's knowledge isn't relevant and we just want the actual
- *   best path between the locations. */
+ * A concrete implementation which finds a path between two
+ * `Room`s. Traverses rooms based on any `RoomConnector`s which
+ * may be present in the map. Not appropriate for all purposes,
+ * as it doesn't account for `Actor` knowledge. This omniscient
+ * implementation is only suitable in cases where the `Actor`'s
+ * knowledge isn't relevant.
+ **/
 roomPathFinder : BasePathFinder {
-    /* find the path for a given actor from one room to another */
     findPath(actor, fromLoc, toLoc) {
-        /* remember the actor */
         actor_ = actor;
-        /* run the normal algorithm */
+        /* return whatever the base implementation does */
         return inherited(fromLoc, toLoc);
     }
 
-    /* iterate over the nodes adjacent in the underlying graph to the
-     * given node */
     forEachAdjacent(loc, func) {
-        /* run through the directions, and add the apparent destination
-         * for each one */
+        /* run through directions, add their destinations */
         foreach (local dir in Direction.allDirections) {
-            local conn;
+            local c;
             local dest;
-            /* if there's a connector, and it has an apparent
-             *   destination, then the apparent destination is the
-             *   adjacent node */
-            if ((conn = loc.getTravelConnector(dir, actor_)) != null
-            && (dest = getDestination(loc, dir, conn)) != null
-            && includeRoom(dest)) {
-                /* This one seems to go somewhere - process the
-                 * destination.  The standard room map has no concept of
-                 * distance, so use equal weightings of 1 for all
-                 * inter-room distances. */
+            if ((c = loc.getTravelConnector(dir,actor_))!=null
+            && (dest = getDestination(loc,dir,c))!=null
+            && includeRoom(dest))
                 (func)(dest, 1);
-            }
         }
     }
 
-    /*   Get the location adjacent to the given location, for the purposes
-     *   of finding the path.  By default, we return the actual
-     *   destination, but subclasses might want to use other algorithms.
-     *   For example, if a subclass's goal is to make an NPC find its own
-     *   way from one location to another, then it should use the APPARENT
-     *   destination, from the NPC's perspective, rather than the actual
-     *   destination, since we'd want to construct the path based on the
-     *   NPC's knowledge of the map. */
-    getDestination(loc, dir, conn) {
-        /* return the actual destination for the connector */
-        return conn.getDestination(loc, actor_);
-    }
 
-    /*   For easier customization, this method allows the map that we
-     *   search to be filtered so that it only includes a particular
-     *   subset of the map.  This returns true if a given room is to be
-     *   included in the search, null if not.  By default, we include all
-     *   rooms.  Note that this is only called to begin with for rooms
-     *   that have apparent connections to the starting room, so there's
-     *   no need to filter out areas of the map that aren't connected at
-     *   all to the starting search location.
-     */
+    /** `getDestination()` : **`int`**
+     *
+     * Get the adjacent location to the given one, to find a
+     * path. By default, it returns the destination, but
+     * inheritors might want to use other algorithms, e.g., if
+     * an inheritor's goal is to make an NPC find its own path
+     * then it should use the *apparent* destination, from the
+     * NPC's perspective, rather than the actual one.
+     **/
+    getDestination(loc, dir, conn) {
+        return conn.getDestination(loc, actor_); }
+
+
+    /** `includeRoom()` : **`function`**
+     *
+     * Allows the graph to be filtered such that only a subset
+     * of the map is included. All `Room`s are included by
+     * default, but `Room`s which are not initially connected
+     * to the starting location are not included.
+     **/
     includeRoom(loc) { return true; }
     /* the actor who's finding the path */
     actor_ = null
 }
 
-/* An NPC goal-seeking path finder.  This is a subclass of the basic room
- * path finder that */
+
+/** `npcRoomPathFinder` : **`roomPathFinder`**
+ *
+ * An NPC Pathfinder which takes into account the "apparent"
+ * goal, based on `Actor` knowledge.
+ **/
 npcRoomPathFinder : roomPathFinder {
-    /*   Get the destination.  Unlike the base class implementation, we
-     *   take into the NPC's knowledge of the map by only using connector
-     *   destinations that are APPARENT to the NPC. */
+
     getDestination(loc, dir, conn) {
-        /* return the apparent destination of the connector */
-        return conn.getApparentDestination(loc, actor_);
-    }
+        return conn.getApparentDestination(loc, actor_); }
 }
 

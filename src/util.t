@@ -3,30 +3,41 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
 
-/* begin mods */
+
+/* begin modifications */
 
 // Passage template -> masterObject 'vocabWords' 'name' @location? "desc"?
 // Door template 'name' @room1 @room2;
 
-// Room template [room_list] "desc"?;
-// alternate format, includes up / down, etc.
-// [northwest, north, northeast] // [[NW,  U,  N,  NE],
-// [west,    'roomName',   east] //  [W,  IN, OUT, E ],
-// [southwest, south, southeast] //  [SW, D,   S,  SE]]
+//Room template [rooms] "desc"?;
+//alternate format, includes up / down, etc.
+//[northwest, north, northeast] //[[NW,  U,  N,  NE],
+//[west,    'roomName',   east] // [W,  IN, OUT, E ],
+//[southwest, south, southeast]; // [SW, D,   S,  SE]]
 
 modify Goal goalState = OpenGoal;
+
 
 modify YellAction {
     execAction() { mainReport('You bark as loud as you can. '); }
 }
+
 
 modify Thing {
     dobjFor(BarkAt) {
         verify() {
             illogical('{The dobj/he} {is} not something you can bark at. '); }
     }
+
+    dobjFor(Purloin) {
+        verify() {
+            illogical('{you/he} can\'t steal {that dobj/him}! ');
+        }
+    }
 }
+
 
 modify Actor {
     makeProper() {
@@ -38,6 +49,7 @@ modify Actor {
     }
 }
 
+
 modify statusLine {
     showStatusRight() {
         "<<user.name>> - <<versionInfo.name>> - ";
@@ -45,15 +57,19 @@ modify statusLine {
     }
 }
 
-enum male, female;
 
-class Ambience : RandomFiringScript, ShuffledEventList {
+enum Male, Female;
+
+
+class Ambiance : RandomFiringScript, ShuffledEventList {
     eventPercent = 50;
 }
 
-Ambience template [eventList];
 
-/* end mods */
+Ambiance template [eventList];
+
+/* end modifications */
+
 
 
 /* begin events */
@@ -124,8 +140,6 @@ Events : object {
 //combinedSpecialDesc : ListGroupSorted {
 //  compareGroupItems(a,b) { return (a.listOrder-b.listOrder);} }
 
-
-
 util : object {
 
     capitalize(s) {
@@ -134,8 +148,8 @@ util : object {
     }
 
     censor : StringPreParser {
-        doParsing(str, which) {
-            if (rexMatch(util.obscenities.toLower(),str)!=null) {
+        doParsing(s, which) {
+            if (rexMatch(util.obscenities,s.toLower())!=null) {
                 util.offenses+=1;
                 if (util.offenses>8) {
                     "Come back when you've classed it up a bit.";
@@ -149,13 +163,14 @@ util : object {
                 else if (util.offenses>1) "Knock it off.";
                 else if (util.offenses>0) "Be careful.";
                 return null;
-            } return str;
+            } return s;
         }
     }
 
-    suppressOutput : OutputFilter { filterText(tgt,src) { return ' '; } }
+    suppressOutput : OutputFilter {
+        filterText(tgt,src) { return ' '; } }
 
-    obscenities = '%bfuck|shit|ass|penis|pussy|shit|damn|vagina|tit|boob|felch|cunt|blumpkin|clit|cum|semen%b';
+    obscenities = '%b([^a-eg-z0-9][^a-tv-z0-9][^abd-z0-9][^a-jl-z0-9])|([^a-rt-z0-9][^a-gi-z0-9][^a-hj-z0-9][^a-su-z0-9])%b'; // straightforward? no, but it keeps the repo classy.
     offenses = 0;
 }
 
