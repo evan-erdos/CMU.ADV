@@ -39,8 +39,8 @@ warner_hall : Room
 """
 This is Warner Hall, home of the enigmatic application process. The very air reeks of bureaucracy. You might want to exit, or, if you're feeling adventurous, you could wander upstairs...
 """ {
-	up = warner_second_floor;
-	out = warner_entrance;
+    up = warner_second_floor;
+    out = warner_entrance;
 }
 
 
@@ -49,9 +49,9 @@ warner_second_floor : Room
 """
 It's warm and cozy in here, and you can hear some murmuring emanating from a room to the west. Someone seems to be shuffling papers in an interviewer office to the east.
 """ {
-	east = interview_room;
-	west = interview_in_progress;
- 	down = warner_hall;
+    east = interview_room;
+    west = interview_in_progress;
+    down = warner_hall;
 }
 
 
@@ -60,9 +60,28 @@ interview_room : Room
 """
 The interviewers office is sparse, populated only by a few leather chairs and his desk, which is lined with a row of shiny baubles, all of which seem to have some form of CMU iconography plastered across them in some way or another.
 """ {
-	out = warner_second_floor;
+    out asExit(west);
+    west = warner_second_floor;
 }
 
++ interviewer_desk : Fixture, Platform
+'desk/table/office' 'Office Desk'
+"""
+The interviewer's desk is cluttered with all manner of office supplies.
+""";
+
+++ tape_recorder : Thing
+'(tape) deck/recorder/device/tape'
+'a small tape recorder (off)'
+"""
+You found this tape recorder after stealing it from the desk of an admissions interviewer.
+""" {
+    initSpecialDesc {
+        """
+        The tape recorder is submerged in a bunch of papers. You don't think the interviewer would notice you if you were to take it.
+        """;
+    }
+}
 
 interview_in_progress : FakeConnector
 """
@@ -74,7 +93,7 @@ Oh dear, you seem to have walked into someone's interview! The kindly, nonplusse
 <<or>>
 "I love Carnegie Mellon because of the premier academic experiences, prestigious programs, and varied and esteemed extracurriculars, such as the KGB, that it offers!"
 <<or>>
-"I excel at all sports, and have recently won tennis, soccer, flag football, foosball, Calvinball, hopscotch, parkour, <i>Jai alai</i>, and hitball tournaments!"
+"I excel at all sports, and have recently won tennis, soccer, flag football, foosball, Calvinball, hopscotch, parkour, <i>Jai alai</i>, and hitball tournaments!"<.reveal eavesdropped-sports>
 <<or>>
 "I've gone through as many hardships as the human heart and mind can bear, since my grandmother died last year, my grandfather died two years ago, my other grandmother died three years ago, my other grandfather died four years ago, all of my cousins died five years ago, and most tragic of all, my goldfish died at age twenty a mere six years ago. I had to bury them all."
 <<or>>

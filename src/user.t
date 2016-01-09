@@ -103,10 +103,10 @@ user : BagOfHolding, Mortal {
 
                     You might not appreciate this, but a programmer somewhere just groaned.
                     """;
-                    local n = rand(firstNames.length-1);
+                    local n = 1+rand(firstNames.length-1);
                     user.firstname = firstNames[n][1];
                     user.gender = firstNames[n][2];
-                    user.lastname = lastNames[rand(lastNames.length-1)];
+                    user.lastname = lastNames[1+rand(lastNames.length-1)];
                     user.name = '<<user.firstname>> <<user.lastname>>';
                     break;
                 }
