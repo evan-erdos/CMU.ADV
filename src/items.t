@@ -108,6 +108,22 @@ It's what passes for a newspaper at this school.
     achievement : Achievement { +5 "being dumb enough to miss your graduation, but smart enough to read the newspaper to find out about it! " };
 }
 
+
+tape_recorder : Thing
+'(tape) deck/recorder/device/tape'
+'a small tape recorder (off)' @interviewer_desk
+"""
+You found this tape recorder after pilfering it from the desk of an admissions interviewer.
+""" {
+    initSpecialDesc {
+        """
+        The tape recorder is submerged in a bunch of papers. You don't think the interviewer would notice you if you were to take it.
+        """;
+    }
+}
+
+
+
 student_tears : Thing
 '(small) tears/vial'
 'vial of student tears' @ghc_rashid

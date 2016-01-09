@@ -70,19 +70,6 @@ The interviewers office is sparse, populated only by a few leather chairs and hi
 The interviewer's desk is cluttered with all manner of office supplies.
 """;
 
-++ tape_recorder : Thing
-'(tape) deck/recorder/device/tape'
-'a small tape recorder (off)'
-"""
-You found this tape recorder after stealing it from the desk of an admissions interviewer.
-""" {
-    initSpecialDesc {
-        """
-        The tape recorder is submerged in a bunch of papers. You don't think the interviewer would notice you if you were to take it.
-        """;
-    }
-}
-
 interview_in_progress : FakeConnector
 """
 Oh dear, you seem to have walked into someone's interview! The kindly, nonplussed interviewer asks if you're lost while the startled interviewee turns to you and instinctively blurts out
