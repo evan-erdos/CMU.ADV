@@ -31,7 +31,8 @@
  * Clears the screen after waiting for any user input. These
  * enforce good practices, and also simplify code a bit. There
  * are web / otherwise more generally safe methods of clearing
- * and getting input, waiting for input, etc.
+ * and getting input, waiting for input, etc. Should not be
+ * used in single-statements, as this is not one statement.
  **/
 #define clear inputManager.getKey(null,null); cls()
 
@@ -42,6 +43,15 @@
  * print text to the output.
  **/
 #define next inputManager.getKey(null,null)
+
+
+/** `ConvNode` : **`template`**
+ *
+ * Allows the `@location` to be specified in the template, as
+ * it cannot otherwise be separated from its `ActorState` in
+ * the source code.
+ **/
+//ConvNode template 'name' @location;
 
 
 /** `ActorState` : **`template`**

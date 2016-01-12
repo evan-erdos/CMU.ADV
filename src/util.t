@@ -89,7 +89,6 @@ Events : object {
         init(s, delay) {
             if (daemonTypewriter==null) {
                 inputTypewriter = s;
-                print('adsfasdfasdf');
                 daemonTypewriter = new RealTimeDaemon(
                     self,&advanceTypewriter,delay);
             }

@@ -7,14 +7,14 @@
 
 
 cmu_officer : Readable, Person
-'police/officer/cop'
+'(ugly) police/officer/cop/polezzi/pig'
 'Campus Officer' @the_cut
 """
 This cop is mean and ugly; he's the Clint Eastwood of the academic world. You'd better not mess with him.
 """ {
     isProperNoun = true;
     isHim = true;
-    readDesc = "The cop has <b>mean<\b> written all over him. ";
+    readDesc = "The cop has <b>mean<\b> written all over him.";
 
     harass(actor) { Events.init_limbo(); }
 
@@ -40,7 +40,9 @@ This cop is mean and ugly; he's the Clint Eastwood of the academic world. You'd 
 
 ++ officer_passive : AgendaItem {
     isReady = true;
-    invokeItem = [{: officer_agenda.resetItem(), isDone = true }];
+    invokeItem = [{:
+        officer_agenda.resetItem(),
+        isDone = true }];
 }
 
 +++ officer_agenda_list : ShuffledEventList

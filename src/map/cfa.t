@@ -31,7 +31,7 @@ This is the lawn in front of CFA. The grass here is well-groomed, except for som
 }
 
 + hedge : Fixture
-'hedge/shrub*shrubs/shrubbery/gap' 'hedges'
+'(cut) shrubbery/gap/hedge/shrub*shrubs plants' 'hedges'
 "They're shrubs. " {
     initSpecialDesc = "The shrubs at the east end have been cleverly arranged to spell <b>C-M-U</b>, only someone seems to have ripped out the <b>U</b>, leaving a big gap in the hedge.";
     specialDesc = "There seems to be something in the gap where the <b>U</b> was -- it looks like a bottle of Liquid Paper.";

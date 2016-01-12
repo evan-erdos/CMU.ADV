@@ -1,5 +1,6 @@
 /* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2015-11-24 * interviewer */
 /* Ford Seidel * fseidel@andrew.cmu.edu * 2015-11-25 * CIT text */
+/* Ben Scott * fseidel@andrew.cmu.edu * 2016-01-09 * ConvNodes */
 
 #include <adv3.h>
 #include <en_us.h>
@@ -7,106 +8,97 @@
 #pragma newline_spacing(preserve)
 
 
-warner_interviewer : Person
-'interviewer' 'Harried Interviewer' @interview_room
-"""
-He looks baffled at your presence but seems to be too confused about his own schedule to chase you out of the interview room. He's offered you an interview, so what are you waiting for?
-""" {
-    isHim = true;
-    globalParamName = 'interviewer';
-    interest = 0; // interest in "prospective" student
-
-    initSpecialDesc {
-        isInInitState = null;
-        """
-        The interviewer in the room jumps and drops some papers as you enter, then waves you in while surreptitiously sliding the fallen sheaf under his desk with his foot.
-        "You must be... uh... Well, are you here for an interview?" He trails off and scratches his head.
-
-        Maybe you should leave before confusing him even more.
-        """;
-    }
-
-    specialDesc { warner_interviewer_list.doScript(); }
-
-    giveImpression(n) { interest += n; }
-
-    decideAdmittance(n) {
-        if (n>50) achievement_blackmail.awardPointsOnce();
-        else if (n>5) achievement_admitted.awardPointsOnce();
-        else if (n<-50) achievement_failed.awardPointsOnce();
-        else achievement_denied.awardPointsOnce();
-        interest = 0;
-    }
-
-    /* To be awarded at the completion of the interview */
-    achievement_admitted : Achievement {
-        +3 "taking an admissions interview as a student... oops." }
-
-    achievement_denied : Achievement {
-        +(-3) "failing an admissions interview as a student." }
-
-    achievement_blackmail : Achievement {
-        +20 "blackmailing an admissions interviewer into admitting you, even though you're already a student." }
-
-    achievement_failed : Achievement {
-        +(-20) "trying to blackmail an admissions interviewer, and failing!" }
+interviewerTalking : InConversationState @warner_interviewer {
+    specialDesc =
+    """
+    He looks baffled at your presence but seems to be too confused about his own schedule to chase you out of the interview room.
+    <br>
+    He's offered you an interview, so what are you waiting for?
+    """;
 }
 
-+ interviewerTalking : InConversationState
-    specialDesc = "The interviewer looks at you expectantly. ";
++ interviewerReady : ConversationReadyState {
+    isInitState = true;
+    specialDesc { warner_interviewer_list.doScript(); }
+}
 
-++ interview_state : ConversationReadyState
-    isInitState = true
-    commonDesc = 'shuffling papers on his desk.'
-    specialDesc = 'The interviewer is <<commonDesc>>'
-    stateDesc = 'He is <<commonDesc>>';
-
-+++ HelloTopic, StopEventList
-['''
-"I'm here for my interview!" you announce.
-"Ah, very good," he replies, looking relieved that you seem to know what you're doing.
-"Why don't we get started?"
-
-Perhaps you should tell him a little about yourself.
-''','''
-"You're back." the interviewer notes. "Very unconventional, leaving in the middle of an interview. It shows that you're unique!"
-
-You turn your head to the side, utterly baffled, then the two of you continue the interview.
-''','''
-He just smiles at you.
-'''];
-
-++++ me : Topic, SuggestedTopic 'yourself/myself/me';
-
-
-+++ ByeTopic
+++ HelloTopic
 """
-"Thanks for the interview!" you say.
+"Hello!" you announce.
+<br>
+You startle him. He jumps and drops some papers as you approach his desk, then waves you in while surreptitiously sliding the fallen sheaf under his desk with his foot.
+<br>
+"You must be..." He begins, but then trails off and scratches his head.
+<br>
+"uh... you're... already? For the interview?"
 
-"Best of luck to you in your college process, I'm sure you'll be fine!" the interviewer replies, scribbling madly on a notepad. "Thanks for coming by and considering Carnegie Mellon."
+<<warner_interviewer.setKnowsAbout(gPlayerChar)>>
+<.convnode interview>
 """;
 
-+++ ImpByeTopic
-"""
-The interviewer turns back to his desk while awkwardly avoiding looking at you.
-""";
-
-++ DefaultAskTopic, ShuffledEventList
++ DefaultAskTopic, ShuffledEventList
 ['''
 He doesn't seem to be certain about anything, but gives you a puzzled but reassuring nod.
 ''','''
 He doesn't seem to know what you're talking about, but in an effort to look professional he puts a finger to his chin and then doodles on his notepad.
 '''];
 
-++ DefaultTellTopic, ShuffledEventList
++ DefaultTellTopic, ShuffledEventList
 ['''
 He listens carefully and says, "Hmmm, yes."
 You're pretty sure he has no idea what you're talking about.
 '''];
 
-// Tell the interviewer about yourself (e.g. "tell him about me")
-++ TellTopic, ShuffledEventList @me
-['''
++ ByeTopic
+"""
+"Thanks for the interview!" you say.
+
+"Best of luck to you in your collegea process, I'm sure you'll be fine!" the interviewer replies, scribbling madly on a notepad. "Thanks for coming by and considering Carnegie Mellon."
+""";
+
++ ImpByeTopic
+"""
+You up and leave, and the interviewer turns back to his desk, awkwardly avoiding eye contact.
+""";
+
+
+/*******************<Interview>*********************/
+
++ ConvNode 'interview';
+
+++ YesTopic, SuggestedYesTopic
+"""
+"Yes, uh, *cough* yes, I'm... that's, I'm your... I'm that person, yes."
+<br>
+The interviewer gives you a momentary, skeptical look, and decides you are in fact the prospective student he's supposed to be seeing now.
+<br>
+"I'm here for my interview!" you announce.
+
+"...very good," he replies, confused, but relieved that you seem to know what you're doing.
+
+"Why don't you tell me something about yourself?"
+
+<.convnode personality>
+""";
+
+++ NoTopic, SuggestedNoTopic
+"""
+"Oh, no, I'm already a student! I'm just looking around!" you say.
+<br>
+"...so, why are you... here?" the interviewer angrily intones.
+<br>
+"You know, sir, that's a great point, so I'll just be on my way now, sorry to bother!" You shrink back out of the room.
+<<warner_interviewer.setCurState(interviewerAngry)>>
+<<gPlayerChar.scriptedTravelTo(warner_second_floor)>>
+""";
+
+
+/*****************<Personality>*********************/
+
++ ConvNode 'personality'; /* begin personality */
+
+++ TellTopic, SuggestedTellTopic 'me|(my|your)?self'
+"""
 You're already a student here, but you're starting to find this whole situation rather amusing.
 
 "I'm a Pittsburgh native who has been interested in Carnegie Mellon for years! I practically live on campus already, I'm here so often." ...Well, technically, you're not lying. So far, so good. The interviewer still seems enthusiastic but expectant, so you think hard for something generic to say so that your cover doesn't get blown.
@@ -116,14 +108,11 @@ You're already a student here, but you're starting to find this whole situation 
 The interviewer's face lights up. "Oh, you know about <b>Cobot</b>?" He seems interested in hearing more.
 
 <.convnode cobot>
-''']['''
-You have already told the interviewer a bit about yourself, so you figure you should try talking to him about something else. He probably won't kick you out.
+""";
 
-<.convnode cobot>
-''']
-    name = 'yourself';
 
-// Start of interview conversation node.
+/********************<Cobot>************************/
+
 + ConvNode 'cobot';
 
 ++ DefaultAnyTopic
@@ -146,6 +135,9 @@ The interviewer nods, seemingly impressed by your knowledge of GHC happenings.
 <<warner_interviewer.giveImpression(1)>>
 <.convnode major>
 """;
+
+
+/********************<Major>************************/
 
 + ConvNode 'major';
 
@@ -297,13 +289,16 @@ He coughs. "Back on (Tartan)Tra(c)k. Given that you seem to have a solid acting 
 ++ SpecialTopic 'Math'
 'math(s|ematics)?'
 """
-You ask the interviewer, "Did I see Paul Erdos wandering around outside Hunt? I thought he was dead."
+You ask the interviewer, "Did I see Paul Erdős wandering around outside Hunt? I thought he--"
 
-The interviewer coughs loudly to interrupt you, and sits up in his seat.
-"-NO. Uh, no. You didn't... that isn't... it's not...
-No. you didn't."
+The interviewer coughs loudly to interrupt you, and sits up in his seat, saying "-- NO. Uh, no. You didn't... that isn't... it's not..."
+<br>
+He slows down and says, "No. You... didn't."
 
-Honestly not sure what to make of that.
+Genuinely confused by his response, you begin to ask him about it. However, he now seems very eager to wrap things up.
+
+<<warner_interviewer.setCurState(interviewerAfraid)>>
+<.convnode decision>
 """;
 
 ++ SpecialTopic 'Biology'
@@ -379,10 +374,21 @@ No, seriously, just make something up if you really don't have any experience in
 
 <<warner_interviewer.giveImpression(-1)>>
 <.convstay>
-''',
-'Please?',
-'Seriously, just pick anything. Responses are gonna start looping soon.', // meta
-'You have a life, trust me. Pick an extracurricular!'];
+''','''
+Please?
+
+<<warner_interviewer.giveImpression(-1)>>
+<.convstay>
+''','''
+Seriously, just pick anything. Responses are gonna start looping soon.
+
+<<warner_interviewer.giveImpression(-1)>>
+<.convstay>
+''','''
+You have a life, trust me. Pick an extracurricular!
+<<warner_interviewer.giveImpression(-1)>>
+<.convstay>
+'''];
 
 ++ SpecialTopic 'computer club'
 '(program(ming)?%s+)?comput(er|ing)(%s+club)?'
@@ -553,7 +559,7 @@ You're not sure what to make of that.
 
 
 ++ SpecialTopic 'watch TV'
-'(watch%s+)?(tv|Netflix|shows|movies)'
+'(watch%s+)?(([Tt][Vv])|([nN])etflix|shows|movies)'
 """
 You decide to intentionally screw with the interviewer.
 
@@ -686,12 +692,14 @@ The interviewer begins to speak, but you interrupt him.
 
 "-- I wonder what would happen if Dick Cyert caught wind of this?"
 <br>
-The interviewer becomes visibly angry.
 <<if tape_recorder.location==gPlayerChar>>
-However, once he notices his tape recorder isn't where he left it, you pull it out of your coat. At this moment, you realize you never turned it on, but he doesn't know that.
+The interviewer becomes quite cross with you. He stands up, about to tell you off, but then he notices his tape recorder isn't where he left it, and his jaw drops.
+<br>
+You put on your most devilish smile, and slowly pull it out of your coat. At this moment, you realize you never actually turned it on. He probably won't notice.
+<br>
 The interviewers eyes get very wide, and he starts to sweat.
 <br>
-"That wouldn't be very good for you, would it be?"
+"That wouldn't be very good for you, hmm?"
 <br>
 The interviewer shakes his head.
 <br>
@@ -712,10 +720,13 @@ You shrug.
 <br>
 "You... you have no proof!" he says, desperately.
 <br>
-He's right, you don't. At this moment, you notice a tape recorder, right in front of you, on his desk.
+The problem is, he's right: you don't.
+You ou notice a tape recorder, <b>right in front of you</b>, on his desk.
 
 <b>Man, what a missed opportunity.<\b>
 
+
+<<warner_interviewer.setCurState(interviewerAngry)>>
 <<warner_interviewer.giveImpression(-100)>>
 <.convnode decision>
 """;
@@ -726,7 +737,7 @@ He's right, you don't. At this moment, you notice a tape recorder, right in fron
 + ConvNode 'decision';
 
 ++ SpecialTopic 'conclude the interview'
-'end|conclude|finish'
+'(end|conclude|finish|done|leave|exit)(%s+the%s+interview)?'
 """
 "Well, I think I know enough about you to make my decision now, thanks so much for your time." says the interviewer.
 
@@ -753,21 +764,8 @@ You walk to the door, slowly, and then turn to him and say,
 He lets out a small yelp as you leave the room.
 
 <<warner_interviewer.decideAdmittance(100)>>
+<<warner_interviewer.setCurState(interviewerAfraid)>>
 <<gPlayerChar.scriptedTravelTo(warner_second_floor)>>
 """ isActive = (gRevealed('interviewer-intimidation'));
 
 
-warner_interviewer_list : ShuffledEventList, RandomFiringScript
-['''
-The interviewer bumbles around his office, slipping a few times on the papers under his desk, and scratches his head a bit.
-''','''
-The interviewer now appears to have found what his previous head-scratching efforts didn't yield.
-''','''
-The interviewer begins stapling a big stack of papers.
-''','''
-You squirm a bit as you watch the interviewer narrowly avoid stapling his thumb to some poor student's application.
-''']
-['The interviewer continues stapling.']
-eventPercent = 80;
-
-//<.convnode decision>

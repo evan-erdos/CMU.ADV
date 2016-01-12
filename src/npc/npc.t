@@ -53,7 +53,7 @@ She sits quietly in a stiff wooden chair. She is deathly pale, and you know what
     globalParamName = 'emily';
 }
 
-+ NPCWorn '(white|summer) frock/dress/housedress' 'dress'
++ NPCWorn '(summer) white frock/dress/housedress' 'dress'
 """
 It's a very clean, very white housedress.
 """ {
@@ -62,7 +62,7 @@ It's a very clean, very white housedress.
 
 
 paul_erdos : Person
-'paul/paul erdos/erdos'
+'paul/paul erdos/erdos/math guy'
 'Paul Erdos' @hh_entrance
 """
 He looks slightly thinner than he did the last time you saw him, and his hair is all over. You know he gives it a perfunctory comb now and then, but not to the exclusion of his math. He's recently begun to roll his eyes at you when you ask him how many seconds have passed since you were born, but he still begrudgingly tells you, and gives a half-smile.

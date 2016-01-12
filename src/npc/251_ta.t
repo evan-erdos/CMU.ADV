@@ -8,7 +8,7 @@
 
 // Eventually she'll want those student tears.
 sad_251_ta : Person
-'ta/teaching assistant/sad ta'
+'sad ta/teaching assistant/staff'
 '<b>Sad TA</b>' @ghc_citadel_commons
 """
 A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge of an overcrowded table. Everyone seems to be ignoring her.

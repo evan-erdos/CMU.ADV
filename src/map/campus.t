@@ -7,7 +7,7 @@
 
 
 fence : MultiLoc, Fixture, Readable
-'The Fence' 'the Fence'
+'(painted) wall/paint/fence*fences' 'The Fence'
 """
 You can see the fence from here, covered with thousands of layers of paint. It looks a bit rickety, but it always has. You're reasonably confident that the paint will hold it up for at least another seven years.
 """ {
@@ -133,7 +133,7 @@ You're on a walkway, running north and south. Warner hall lies to the west, and 
 }
 
 + cut_flowers : Decoration
-'(pretty) flowers/plants' 'some flowers'
+'(pretty) flower/plant*flowers plants' 'some flowers'
 """
 Aren't they beautiful?
 """;
@@ -163,7 +163,7 @@ You are on a walkway which continues to the north and south. To the west lies th
 }
 
 + cut_grating_0 : SecretDoor -> cut_grating_1
-'grating' 'the hatch'
+'(metal) grate/grating' 'the hatch'
 """
 It's your standard, corrugated hatch, it leads up to the main viewing platform.
 """;
@@ -180,7 +180,7 @@ You are at the south end of a walkway leading north. To the west is the stately 
 }
 
 + root_door_1 : AutoClosingDoor -> root_door_0
-'door/doors/portal/porthole/exit' 'door'
+'(wooden) portal/porthole/exit/door*doors' 'door'
 """
 The door to your dormitory shimmers like a vision before you.
 """ {
@@ -280,7 +280,9 @@ Some clouds come and go.
 ''','''
 A <<one of>>freshman<<or>>sophomore<<or>>junior<<at random>> passes you, and you overhear him saying "<<one of>>112<<or>>122<<or>>213<<at random>> is <<one of>><b>harrrddd-duh</b><<or>>like, totally below me, br0h<<or>>a course here<<at random>>."
 ''','''
-A <<user.engender('gaggle of freshmen girls giggle at you','bunch of sophomore boys put their noses deeper into textbooks')>> as they walk by.
+A <<user.engender(
+    'gaggle of freshmen girls giggle at you',
+    'bunch of sophomore boys put their noses deeper into textbooks')>> as they walk by.
 ''','''
 The grass twirls in the breeze.
 ''','''

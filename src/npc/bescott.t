@@ -36,7 +36,7 @@
  *
  **/
 ben_scott : Person
-'ben/scott/bescott/ben scott/cool kid'
+'(cool) ben/scott/bescott/ben scott/guy'
 '<b>Ben Scott</b>' @ghc_9_window
 """
 He wears an obnoxious, neon shirt, and looks at you expectantly when you approach him. He knows that he's more clever than you are, but he's, frankly, too kind to admit it. Even if he did, you'd probably agree: He's pretty clever.
