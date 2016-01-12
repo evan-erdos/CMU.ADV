@@ -267,7 +267,7 @@ The interviewer seems dissatisfied with your response. Did you mean <b><i>Pippin
 
 <<warner_interviewer.giveImpression(-1)>>
 <.convstay>
-"""; //<<(warner_interviewer.interest--)>>
+""";
 
 ++ SpecialTopic 'say Pippin' ['Pippin']
 """
@@ -424,16 +424,25 @@ The interviewer is given pause by this, but quickly hides his disappointment.
 """;
 
 // The only correct answer is... --jocelynh
-++ SpecialTopic 'stage crew'
+++ SpecialTopic 'technical theatre'
 'stage|light(ing)?|sound|tech|crew'
 """
-"I'm not flamboyant enough to be an actor, so I do stage crew."
+/* "I'm not flamboyant enough to be an actor, so I do stage crew."
 
 "Oh, my cousin used to do that. Said it's great."
 
 You begin to nod, but the interviewer goes right on ahead.
 
-"What else do you do, you know, for fun?"
+"What else do you do, you know, for fun?" */
+// Aw heck no, bescott! It's all about creeping around in the shadows.
+
+The smell of sawdust as a power drill slots TORX screws into 2x4s, the muted swish of tormentor curtains, the powerful hum of rows of lights, and the crackle of telex as you follow cues... Ahh, yes. Behind-the-scenes theatre is what you <b>live</b> for.
+
+"I'm not a huge fan of the spotlight but I do love theatre, so I've always been a theatre tech at heart. You know, my senior year, I stage managed and taught aspiring new techies the ropes!" Can't hurt to throw some leadership in, huh?
+
+The interviewer raises his eyebrows and nods. "Then you'll love our student theatre group, Scotch 'n Soda! We have a wonderful theatre program as well, but Scotch is quite a group. They're always looking for new techies to take under their wing."
+
+He flips to a new page in his notepad. "Good, good. Tech experience, and you know how to deal with divas. Now, what do you do in your own time?"
 
 <<warner_interviewer.giveImpression(1)>>
 <.convnode sparetime>
