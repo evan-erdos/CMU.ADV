@@ -112,7 +112,7 @@ user : BagOfHolding, Mortal {
                     user.gender = firstNames[n][2];
                     user.lastname = lastNames[1+rand(lastNames.length-1)];
                     user.name = '<<user.firstname>> <<user.lastname>>';
-                    break;
+                    return;
                 }
             }
 
@@ -131,7 +131,11 @@ user : BagOfHolding, Mortal {
                 "A real name please.";
             else if (rexSearch(util.obscenities,cmd))
                 "So, common decency, too. Call me particular.";
-            else { user.name = cmd; " "; user.setGender(); }
+            else {
+                user.name = cmd; " ";
+                user.setGender();
+                return;
+            }
         }
     }
 
@@ -158,7 +162,7 @@ user : BagOfHolding, Mortal {
                 } else if (i<2) {
                     local b = ((rand(3)%2)==0);
                     "What, no gender? I guess that's ok. Get ready to be a <<(b)?'':'wo'>>man. ";
-                    user.gender = (b)?Male:Female; break;
+                    user.gender = (b)?Male:Female; return;
                 }
             }
             if (i>5) { "Have it your way."; i/=0; }
