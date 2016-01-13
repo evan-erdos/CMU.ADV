@@ -10,11 +10,11 @@
 
 interviewerTalking : InConversationState @warner_interviewer {
     specialDesc =
-    """
-    He looks baffled at your presence but seems to be too confused about his own schedule to chase you out of the interview room.
-    <br>
-    He's offered you an interview, so what are you waiting for?
-    """;
+	    """
+	    He looks baffled at your presence but seems to be too confused about his own schedule to chase you out of the interview room.
+	    <br>
+	    He's offered you an interview, so what are you waiting for?
+	    """;
 }
 
 + interviewerReady : ConversationReadyState {
@@ -148,8 +148,8 @@ What school do you want to tell him you're "applying" to?
 <.convstay>
 """;
 
-++ YesTopic, SuggestedYesTopic
 /* I'm not biased, nope not at all --jocelynh */
+++ YesTopic, SuggestedYesTopic
 """
 Of course you are! CS is only the absolute coolest major there is. You enthusiastically tell him, "I love computer science! I've been in love with Graph Theory since I was a toddler and my mom told me to find the nearest shopping cart. After implementing a quick shortest path algorithm in my head (Dijkstra for efficient parallelization, of course), I was absolutely smitten."
 

@@ -8,9 +8,9 @@
 
 interviewerAngry : ActorState @warner_interviewer {
     specialDesc =
-    """
-    The interviewer glares at you. He doesn't seem to like you anymore.
-    """;
+        """
+        The interviewer glares at you. He doesn't seem to like you anymore.
+        """;
 }
 
 + DefaultAnyTopic
@@ -29,12 +29,11 @@ interviewerAfraid : ActorState @warner_interviewer
 """
 He also now appears to be twitching a bit.
 """ {
-    specialDesc {
+    specialDesc =
         """
         You've frightened the living daylights out of this poor man, but he's still trying to go about his work.
         <<warner_interviewer_list.doScript()>>.
         """;
-    }
 }
 
 + DefaultAnyTopic

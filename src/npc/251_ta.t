@@ -18,14 +18,17 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 }
 
 + taTalking : InConversationState
-	specialDesc = "She is looking around the Citadel Commons, and occasionally glances at you.";
+	specialDesc =
+		"""
+		She is looking around the Citadel Commons, and occasionally glances at you.
+		""";
 
 ++ ta_ready : ConversationReadyState {
 	isInitState = true;
 	commonDesc =
-	'''
-	staring at her laptop and sighing. You can see that she's just looking at her students' grades and nothing else.
-	''';
+		'''
+		staring at her laptop and sighing. You can see that she's just looking at her students' grades and nothing else.
+		''';
 	specialDesc = 'The dejected 251-TA is <<commonDesc>>';
 	stateDesc = 'She is <<commonDesc>>';
 }

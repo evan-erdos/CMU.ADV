@@ -6,14 +6,6 @@
 #pragma newline_spacing(preserve)
 
 
-RoomConnector template @room1 @room2 "desc"?;
-
-
-class CampusOutdoorRoom : OutdoorRoom {
-    atmosphereList = campus_atmosphere;
-}
-
-
 root : Room
 'dorm' 'your dorm room'
 """

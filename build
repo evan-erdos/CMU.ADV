@@ -79,6 +79,9 @@ function about {
 #
 # Constructs two `*.t3m` files for building the t3make.
 function make {
+  mkdir obj
+  mkdir obj/web
+  mkdir obj/cmd
   echo -e "${HEADER}\n${MAKE_FLAGS}" > $MAKE_WEB
   echo -e "${HEADER}\n${MAKE_FLAGS}" > $MAKE_CMD
 

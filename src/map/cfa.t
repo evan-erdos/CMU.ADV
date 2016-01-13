@@ -6,8 +6,19 @@
 #pragma newline_spacing(preserve)
 
 
-cfa_entrance : FakeConnector
-"It's CFA! Why would you ever even... I mean jeez, really?! " { }
+cfa : Area 'College of Fine Arts' 'CFA'
+"""
+This is the college of fine arts, where all the art students have their studios. It smells of unworked clay and paints.
+""";
+
+cfa_atrium : AreaRoom -> cfa 'Atrium'
+"""
+This building opens with a grand atrium, sporting a Renaissance-style painted ceiling, and you can see some nice moulding work on the walls of the hallway to the east.
+""" {
+    east = cfa_hallway;
+}
+
+cfa_hallway : FakeConnector "You can't go here yet!";
 
 
 cfa_lot : FakeConnector
@@ -19,7 +30,7 @@ cfa_park : FakeConnector
 
 
 cfa_field : OutdoorRoom
-'CFA (Lawn)' 'the field'
+'College of Fine Arts (Lawn)' 'the field'
 """
 This is the lawn in front of CFA. The grass here is well-groomed, except for some strange indentaions in the ground.
 """ {
@@ -39,7 +50,7 @@ This is the lawn in front of CFA. The grass here is well-groomed, except for som
 
 
 cfa_plaza : OutdoorRoom
-'plaza' 'College of Fine Arts (Plaza)'
+'College of Fine Arts (Plaza)' 'the plaza'
 """
 Half-finished, vandalized statues and people with blue hair are strong indications that this must be - no, not Central Park, but the CFA plaza. CFA is to the east and open areas lie around you.
 """ {

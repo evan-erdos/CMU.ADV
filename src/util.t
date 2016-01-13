@@ -17,8 +17,9 @@
 //[west,    'roomName',   east] // [W,  IN, OUT, E ],
 //[southwest, south, southeast]; // [SW, D,   S,  SE]]
 
-modify Goal goalState = OpenGoal;
-
+modify Goal {
+    setGoalState(state) { goalState = state; }
+}
 
 modify YellAction {
     execAction() { mainReport('You bark as loud as you can. '); }
@@ -59,6 +60,11 @@ modify statusLine {
 
 
 enum Male, Female;
+
+
+class StaticGoal : Goal {
+    goalState = OpenGoal;
+}
 
 
 class Ambiance : RandomFiringScript, ShuffledEventList {
@@ -138,6 +144,21 @@ Events : object {
 
 //combinedSpecialDesc : ListGroupSorted {
 //  compareGroupItems(a,b) { return (a.listOrder-b.listOrder);} }
+
+
+
+combat : object {
+
+    cmp_hit(p0,p1) { return (p0.swing>p1.dodge)?(1):(0); }
+
+    attack (person0,person1?) {
+        if (!person1) {
+            person1 = person0;
+            person0 = user;
+        } person1.Harm(cmp_hit(person0,person1)*person0.attackDamage());
+    }
+}
+
 
 util : object {
 
