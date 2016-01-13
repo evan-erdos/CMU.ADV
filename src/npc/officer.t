@@ -14,21 +14,29 @@ This cop is mean and ugly; he's the Clint Eastwood of the academic world. You'd 
 """ {
     isProperNoun = true;
     isHim = true;
-    readDesc = "The cop has <b>mean<\b> written all over him.";
+    readDesc =
+        """
+        The cop has <b>mean<\b> written all over him.
+        """;
 
     harass(actor) { Events.init_limbo(); }
 
-    uselessToAttackMsg {
+    uselessToAttackMsg =
         """
         Trying anything funny with this fellow seems like a terrible idea. You might have woken up on the ground in the middle of campus, but you're not <b>that</b> foolhardy.
         """;
-    }
 }
 
 + officer_init : ActorState "He means business. " {
 
-    specialDesc = "A campus police officer is here, eyeing you suspiciously.";
-    noResponse = "You try to reason with him. He's having no part of it. ";
+    specialDesc =
+        """
+        A campus police officer is here, eyeing you suspiciously.
+        """;
+    noResponse =
+        """
+        You try to reason with him. He's having no part of it.
+        """;
     isInitState = true;
 }
 

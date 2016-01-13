@@ -33,7 +33,6 @@
  * - `isBetterThanYou` : **`bool`**
  *     Just an example of how properties can be attached to any
  *     `object`, i.e., just via declaration.
- *
  **/
 ben_scott : Person
 '(cool) ben/scott/bescott/ben scott/guy'
@@ -53,7 +52,6 @@ He wears an obnoxious, neon shirt, and looks at you expectantly when you approac
     }
 
     specialDesc { ben_scott_list.doScript(); } // with room
-    /* This is a template also. */
     achievement : Achievement {
         /* An exorbitant number of points, but I'm worth it. */
         +64 "finding the infamous Ben Scott. " }

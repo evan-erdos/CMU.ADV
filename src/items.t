@@ -17,7 +17,10 @@ backpack : BagOfHolding, StretchyContainer
 """
 You've had this pack for awhile. It's somewhat old, but it still carries everything you need to go out adventuring.
 """ {
-    initSpecialDesc = "Your tattered backpack is here. You typically don't leave home without it. ";
+    initSpecialDesc =
+        """
+        Your tattered backpack is here. You typically don't leave home without it.
+        """;
     bulkCapacity = 3000;
     minBulk = 1;
     //affinityFor(obj) { return obj.ofKind(Tablet) ? 200 : inherited(obj); }
@@ -34,7 +37,7 @@ keyring : Keyring
 'keyring' @root
 """
 Your keyring is kindof barren. It's old enough that it's not as hard to separate it to put keys on, though. So, you've got that going for you, which is nice.
-""" { }
+""";
 
 
 /** `flashlight` : **`Flashlight`**
@@ -42,7 +45,7 @@ Your keyring is kindof barren. It's old enough that it's not as hard to separate
  * This is the main `Lamp` for the `user`.
  **/
 flashlight : Flashlight
-'(metal) flash/flashlight/light/lamp/lantern/light/li'
+'(metal) flash/flashlight/light/li'
 'flashlight' @root
 """
 Your flashlight is thin, and made from a very heavy metal. You would have a hard time breaking it, but the batteries don't last that long.
@@ -59,8 +62,14 @@ leaflet : Thing
 """
 The leaflet is quite short, and has a tear along the top edge. It reads "... the most amazing territory ever seen by mortals. No computer should be without one!" At the end is what looks like a serial number, <tt>69105</tt>. Typical.
 """ {
-    initSpecialDesc = "There's a leaflet here, held down by a rock. An edge flutters in the breeze.";
-    initDesc = "It's just a small piece of paper. You have no idea how it hasn't blown away yet.";
+    initSpecialDesc =
+        """
+        There's a leaflet here, held down by a rock. An edge flutters in the breeze.
+        """;
+    initDesc =
+        """
+        It's just a small piece of paper. You have no idea how it hasn't blown away yet.
+        """;
 }
 
 
@@ -74,8 +83,14 @@ It reads:
 
 You think you can see tears on the bottom, but those could just as easily be from the rain.
 """ {
-    initSpecialDesc = "There's a really well printed note on the ground here. The resolution is like nothing you've ever seen come out of your dot-matrix printers.";
-    initDesc = "It's just a note. You wonder why it hasn't blown away yet.";
+    initSpecialDesc =
+        """
+        There's a really well printed note on the ground here. The resolution is like nothing you've ever seen come out of your dot-matrix printers.
+        """;
+    initDesc =
+        """
+        It's just a note. You wonder why it hasn't blown away yet.
+        """;
 }
 
 
@@ -117,11 +132,10 @@ tape_recorder : Thing
 """
 You found this tape recorder after pilfering it from the desk of an admissions interviewer.
 """ {
-    initSpecialDesc {
+    initSpecialDesc =
         """
         The tape recorder is submerged in a bunch of papers. You don't think the interviewer would notice you if you were to take it.
         """;
-    }
 }
 
 
@@ -133,20 +147,28 @@ student_tears : Thing
 A vial of 15-251 students' tears.
 """ {
     initSpecialDesc =
-    """
-    The faces of the students in the back row glisten with tears. You are not sure whether they are tears of joy at the beauty of cellular automata and Turing Machines, or tears of suffering at the all-nighters they no doubt had to pull to finish their homework.
-    """;
+        """
+        The faces of the students in the back row glisten with tears. You are not sure whether they are tears of joy at the beauty of cellular automata and Turing Machines, or tears of suffering at the all-nighters they no doubt had to pull to finish their homework.
+        """;
 
     initDesc =
-    """
-    You could probably harvest the students' tears. They're starting to pool at the base of the seats.
-    """;
+        """
+        You could probably harvest the students' tears. They're starting to pool at the base of the seats.
+        """;
 }
 
 
-
-
-
+ghc_flamingo : Distant, Thing
+'(inflatable) pink bird/famingo*flamingoes'
+'inflatable flamingo' @ghc_helix_4
+"""
+It's an inflatable flamingo.
+""" {
+    initSpecialDesc =
+        """
+        Through an office window, you can see a pink inflatable flamingo.
+        """;
+}
 
 
 

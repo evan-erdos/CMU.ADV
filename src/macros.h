@@ -61,5 +61,21 @@
 ActorState template @location? "stateDesc"?;
 
 
+/** `Area` : **`template`**
+ *
+ * Uses custom parameters under the hood to allow the class to
+ * insert shared data into **`AreaRoom`**s.
+ **/
+Area template 'areaName' 'destName'? [eventList]? "sharedDesc"?;
+
+
+/** `AreaRoom` : **`template`**
+ *
+ * Uses custom parameters under the hood to allow the class to
+ * insert shared data into **`AreaRoom`**s.
+ **/
+AreaRoom template -> masterArea 'areaRoomName' "areaDesc"?;
+
+
 #endif /* MACROS_H */
 

@@ -6,30 +6,21 @@
 #pragma newline_spacing(preserve)
 
 
-SteamRoom template 'under';
-
-class SteamRoom : Room {
-    desc =
-    """
-    You're in a very dangerous situation. You're wandering through active steam tunnels. You have a hard time differentiating directions, and there's quite a smell in the air.
-    """;
-    under = '';
-    roomName = 'Steam Tunnels (Under <<under>>)';
-    atmosphereList : Ambiance {
-        ['''
-        You feel a <<one of>>slight<<or>>gentle<<at random>> wind from somewhere <<one of>>behind<<or>>to your left<<or>>to your right<<or>>in front of you<<at random>>.
-        ''','''
-        You hear a rumbling noise come from somewhere.
-        ''','''
-        Something made a splashing noise, but you can't tell what.
-        ''','''
-        A weird sound echoes in from an unknown direction.
-        ''','''
-        You hear the faint sound of footsteps coming from somewhere above.
-        ''']
-        eventPercent = 20;
-    }
-}
+steam_tunnels : Area 'Steam Tunnels'
+['''
+You feel a <<one of>>slight<<or>>gentle<<at random>> wind from somewhere <<one of>>behind<<or>>to your left<<or>>to your right<<or>>in front of you<<at random>>.
+''','''
+You hear a rumbling noise come from somewhere.
+''','''
+Something made a splashing noise, but you can't tell what.
+''','''
+A weird sound echoes in from an unknown direction.
+''','''
+You hear the faint sound of footsteps coming from somewhere above.
+''']
+"""
+You're in a very dangerous situation. You're wandering through active steam tunnels. You have a hard time differentiating directions, and there's quite a smell in the air.
+""";
 
 
 steam : Vaporous, MultiLoc
@@ -83,21 +74,30 @@ steam_tunnels_back : TravelMessage -> steam_tunnels_end
 "WOw! GOIn baCK huH>!/#";
 
 
-steam_tunnels_0 : SteamRoom 'Forbes Ave.' {
+steam_tunnels_0 : AreaRoom -> steam_tunnels 'Forbes Ave.'
+"""
+Overhead, you can hear the quiet rumbling of engines, and the rolling of rubber tires over asphault.
+""" {
     north = steam_tunnels_3;
     east = steam_tunnels_end;
     south = steam_tunnels_1;
     west = steam_tunnels_end;
 }
 
-steam_tunnels_1 : SteamRoom 'Warner Hall' {
+steam_tunnels_1 : AreaRoom -> steam_tunnels 'Warner Hall'
+"""
+You're closer to the surface here. Every now and then, you can hear the faint pitter-patter of someone walking down a vinyl-floored corridor.
+""" {
     north = steam_tunnels_0;
     east = steam_tunnels_end;
     south = steam_tunnels_2;
     west = steam_tunnels_end;
 }
 
-steam_tunnels_2 : SteamRoom 'the Cut' {
+steam_tunnels_2 : AreaRoom -> steam_tunnels 'the Cut'
+"""
+You can't hear much from above, but you imagine you're somewhere under the campus lawn.
+""" {
     north = steam_tunnels_1;
     east = steam_tunnels_end;
     south = steam_tunnels_end;
@@ -112,11 +112,11 @@ A metal grating is set in the roof here, as well.
     isLocked = true;
 }
 
-steam_tunnels_3 : SteamRoom 'E Tower' {
+steam_tunnels_3 : AreaRoom -> steam_tunnels 'E Tower' {
     north = steam_tunnels_1;
 }
 
-steam_tunnels_4 : SteamRoom 'Doherty Hall' {
+steam_tunnels_4 : AreaRoom -> steam_tunnels 'Doherty Hall' {
     east = steam_tunnels_2;
 }
 

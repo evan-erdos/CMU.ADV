@@ -41,7 +41,11 @@ user : BagOfHolding, Mortal {
     lastname = 'Erdos';
     gender = Male;
     vocabWords = 'me/self/<<name>>';
+#ifndef __DEBUG
     location = the_cut;
+#else
+    location = ghc_9_entrance;
+#endif
     issueCommandsSynchronously = true;
     bulk = 10;
     isCriminal = null;
