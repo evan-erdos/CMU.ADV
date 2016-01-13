@@ -488,9 +488,11 @@ The interviewer flails his hands briefly across his desk before hastily yanking 
 ++ SpecialTopic 'anime club'
 'anime|japanese|wee(a)?b(oo)?'
 """
-"私はアニメが大好きです~~~!" you... exclaim?
+"私はアニメが大好きです~~~!" you squeal. "I watch 鋼の錬金術師, ヘタリア, シュタインズ・ゲート, ..." you start to blather, and the interviewer hurriedly cuts you off before you start sprouting cat ears or something.
 
-The interviewer continues, "So I can see that you seem very multi-cultural, and we like diversity here! Tell me a little about what you do in your alone time."
+"So I can see that you seem very multi-cultural, and we like diversity here! I can see that you are familiar with pop culture and current events in other countries. Now, why don't you tell me a little about what you do in your alone time?"
+
+He seems rather interested in quickly forgetting about your bizarre outburst.
 
 <<warner_interviewer.giveImpression(1)>>
 <.convnode sparetime>
