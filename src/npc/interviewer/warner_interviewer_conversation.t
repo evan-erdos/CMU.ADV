@@ -424,18 +424,11 @@ The interviewer is given pause by this, but quickly hides his disappointment.
 """;
 
 // The only correct answer is... --jocelynh
+// Aw heck no, bescott! It's all about creeping around in the shadows.
+// (I'm really biased.)
 ++ SpecialTopic 'technical theatre'
 'stage|light(ing)?|sound|tech|crew'
 """
-/* "I'm not flamboyant enough to be an actor, so I do stage crew."
-
-"Oh, my cousin used to do that. Said it's great."
-
-You begin to nod, but the interviewer goes right on ahead.
-
-"What else do you do, you know, for fun?" */
-// Aw heck no, bescott! It's all about creeping around in the shadows.
-
 The smell of sawdust as a power drill slots TORX screws into 2x4s, the muted swish of tormentor curtains, the powerful hum of rows of lights, and the crackle of telex as you follow cues... Ahh, yes. Behind-the-scenes theatre is what you <b>live</b> for.
 
 "I'm not a huge fan of the spotlight but I do love theatre, so I've always been a theatre tech at heart. You know, my senior year, I stage managed and taught aspiring new techies the ropes!" Can't hurt to throw some leadership in, huh?
@@ -446,8 +439,7 @@ He flips to a new page in his notepad. "Good, good. Tech experience, and you kno
 
 <<warner_interviewer.giveImpression(1)>>
 <.convnode sparetime>
-"""
-; // (I'm really biased.)
+""";
 
 ++ SpecialTopic 'bridge'
 '(contract%s+)?bridge(%s+club)?'
@@ -732,7 +724,7 @@ You shrug.
 "You... you have no proof!" he says, desperately.
 <br>
 The problem is, he's right: you don't.
-You ou notice a tape recorder, <b>right in front of you</b>, on his desk.
+You notice a tape recorder, <b>right in front of you</b>, on his desk.
 
 <b>Man, what a missed opportunity.<\b>
 
