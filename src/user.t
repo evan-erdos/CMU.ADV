@@ -44,7 +44,7 @@ user : BagOfHolding, Mortal {
 #ifndef __DEBUG
     location = the_cut;
 #else
-    location = ghc_9_entrance;
+    location = wh_entrance;
 #endif
     issueCommandsSynchronously = true;
     bulk = 10;
