@@ -724,7 +724,7 @@ You shrug.
 "You... you have no proof!" he says, desperately.
 <br>
 The problem is, he's right: you don't.
-You ou notice a tape recorder, <b>right in front of you</b>, on his desk.
+You notice a tape recorder, <b>right in front of you</b>, on his desk.
 
 <b>Man, what a missed opportunity.<\b>
 

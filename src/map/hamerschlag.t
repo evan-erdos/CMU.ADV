@@ -6,12 +6,12 @@
 #pragma newline_spacing(preserve)
 
 
-hammerschlag : Area 'Hammerschlag Hall' 'Hammerschlag'
+hamerschlag : Area 'Hammerschlag Hall' 'Hammerschlag'
 """
 You're in Hammerschlag Hall, the tower of engineering power.
 """;
 
-hh_entrance : AreaRoom -> hammerschlag 'Entrance'
+hh_entrance : AreaRoom -> hamerschlag 'Entrance'
 """
 Before you is a corridor leading west to the stairway that winds its way up inside the former smokestack of the building.
 A small staircase leads up here to the second floor,
@@ -21,7 +21,7 @@ and the double doors of the entrance are east.
     up = hh_2_lounge;
 }
 
-hh_1_hall : AreaRoom -> hammerschlag 'Main Hall'
+hh_1_hall : AreaRoom -> hamerschlag 'Main Hall'
 """
 You are in a short hall that leads east-west down the center of Hammerschlag. Locked office doors line the hall to the north and south. There are bulletin boards between every two doors, it seems, crammed with posters for IEEE meetings, ads for vacation trips to Europe, and class announcements.
 """ {
@@ -34,7 +34,7 @@ You are in a short hall that leads east-west down the center of Hammerschlag. Lo
 "Leave it alone. It's not important.";
 
 
-hh_1_stairs : AreaRoom -> hammerschlag 'Stairwell'
+hh_1_stairs : AreaRoom -> hamerschlag 'Stairwell'
 """
 You are standing near the stairwell that leads up and down into the core of the building. An ancient IBM clock is set into the wall. Glass doors lead north and south into laboratory corridors, and the entrance hall goes east from here.
 The elevator is also here, but a sign hanging on the button announces that it is currently out of order.
