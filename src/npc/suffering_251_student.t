@@ -13,6 +13,8 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 """ {
 	isHim = true;
 	globalParamName = "251 student";
+
+	contactedTA = false;
 }
 
 + student_Talking : InConversationState
@@ -21,7 +23,7 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 		The student seems to have given up on taking notes, and is now looking back towards the entrance at you.
 		""";
 
-++ student_ready : ActorState {
+++ student_ready : ConversationReadyState {
 	isInitState = true;
 	commonDesc =
 		'''
@@ -30,3 +32,23 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 	specialDesc = 'The suffering student is <<commonDesc>>';
 	stateDesc = 'He is <<commonDesc>>';
 }
+
++++ HelloTopic, ShuffledEventList
+	['''
+	The quietly suffering student is either having a seizure or is just sobbing and shaking madly. You decide to check up on him, and ask, "Are you alright?"
+
+	The student looks up at you blearily, and hiccups a few times. His pencil drops from his hand.
+	''']['''
+	You decide to check up on him again.
+
+	"Hey, you're still here," you comment. You really need to work on your reassuring skills.
+
+	"I'm still here," comes the dejected reply.
+	'''];
+
++++ ByeTopic
+	"""
+	"Good luck with 251," you say. He nods sadly and picks his notebook back up.
+	""";
+
+//+ ConvNode '';
