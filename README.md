@@ -4,7 +4,7 @@ CMU.ADV
 
 A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 
-[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)
+[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)[![version](https://img.shields.io/badge/version-2.0.4-blue.svg?style=plastic)](https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2)
 
 ---
 
@@ -26,14 +26,27 @@ A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 <by Galloway & Kuehner & Pawliger>\n\n")
 ```
 
-Above are the first few lines of cmu.adv, a file which probably still exists on the CMU afs server. Apparently, a similar attempt at writing a CMU text adventure was made in 1986, in some arcane, lisp-like language.
+Above are the first few lines of CMU.ADV, a file which probably still exists on the CMU afs server. Apparently, a similar attempt at writing a CMU text adventure was made in 1986, in some arcane, lisp-like language.
 
-This is a repository for the soon-to-be coolest text adventure on campus! *CMU.ADV* is written in TADS3, and compiles to a *.t3 format, readable by the [frob](https://github.com/realnc/frobtads "FrobTADS") interpreter.
+This is a repository for the soon-to-be coolest text adventure on campus! *CMU.ADV* is written in TADS3, and compiles to a *.t3 format, readable by the [frob][] interpreter.
 
 ---
 You can play this online! Click the image below!
 [![cmu_adv](https://cloud.githubusercontent.com/assets/6759009/9998540/992f043c-605f-11e5-8adc-c47a9f166ded.png)](http://gs.tads.io/?storyfile=http://www.andrew.cmu.edu/user/bescott/cmu.adv/cmu_adv.t3)
 ---
+
+## Compiling your own! ##
+
+First, you will need [FrobTads][] if you're on any unix system, and while there is some special thing for windows, perhaps sometimes try not using windows, or get a
+
+[frob]: <https://github.com/realnc/frobtads>
+[FrobTads]: <http://www.tads.org/tads3.htm#>
+
+---
+
+
+
+
 
 Todo:
 - ~~Add to map~~
@@ -61,7 +74,7 @@ Todo (Original):
 - ~~need "hidden" things that only appear after a search.~~
 - ~~throw things into other rooms.~~
 - ~~get/drop all~~
-- weight/volume limits for things.
+- ~~weight/volume limits for things.~~
 - jolt cola (silly)
 
 - ~~need read verb (property readable?)~~
@@ -89,13 +102,13 @@ Todo (Original):
 - hideous sculpture behind warner holding a clue
 - pitt student
 - o's?
-- steam tunnels
+- ~~steam tunnels~~
 - clue in tower atop HH, hard to get to.
 - physical plant abuse - manure?
 - check `traditions' in freshman word.
 - Get paint thinner and strip fence - must be night - add timed events?  Each - entry loop
 - increments a timer? and find clue.
-	--I will implement timed events Real Soon Now [ccg]
+	--~~I will implement timed events Real Soon Now [ccg]~~
 - get a tool from buggy builders in exchange for a midget?
 - go to cluster, log in and play this game recursively?
 
@@ -115,7 +128,7 @@ Todo (Original):
 - doherty ceramic labs
 - glycol spray and explosions in ucc
 - banner letters useful
-- RAIN
+- ~~RAIN~~
 - stuff in CFA
 	--Working on Descriptions (sorry I couldn't get to it later)  [SGW]
 - spring carnival?
@@ -129,3 +142,34 @@ Todo (Original):
 - ladder in ph closet - method climb passes move up to actor
 - Banner by skibo.  Tie to ladder, still can walk away.  Should confirm.
 - The banner is tied to the ladder.  Also, if banner dropped and say tie banner says don't know which banner
+
+
+---
+
+
+LICENSE
+-------
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Ben Scott <bescott@andrew.cmu.edu>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+

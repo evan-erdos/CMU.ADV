@@ -3,31 +3,47 @@
 #include <adv3.h>
 #include <en_us.h>
 #include "macros.h"
+#pragma newline_spacing(preserve)
 
-gameMain : GameMainDef { // impugn
+
+/** `gameMain` : **`GameMainDef`**
+ *
+ * This is a special class which TADS3 relies on to start the
+ * game. It deals with all manner of startup and title-related
+ * functions, and sets up some global variables to be used by
+ * the TADS3 framework. Such variables include:
+ *
+ * - `initialPlayerChar` : **`Actor`**
+ *     Whose body to start out the game in. This can be rebound
+ *     to another instance of `Actor`, which means you can jump
+ *     between different people during the game.
+ *
+ * - `scoreRankTable` : **`<int,string>[]`**
+ *     Numbers mapped to strings, which are the "ranks" that
+ *     a player can achieve, e.g., what they are considered at
+ *     a given value `n` would be the string at `n`, rounded
+ *     down to the nearest value. Points are typically awarded
+ *     by the `Achievement` class.
+ *
+ * - `maxScore` : **`int`**
+ *     optional maximum, if undefined, the limit is calculated
+ *     to be the sum of the points from all `Achievement`s.
+ **/
+gameMain : GameMainDef {
     initialPlayerChar = user;
-    scoreRankTable = [
-        [0,  'a dumb freshman'],
-        [10, 'a basic sophomore'],
-        [15, 'a dumb corgi (this is a holdover from a different game, don\'t mind this, just get some more points, you\'ll stop being a dog)'],
-        [20, 'such a good boy, yes you *ARE*! (yeah, no, just one more)'],
-        [32, 'a silly senior'],
-        [63, 'a bachelor of something or, uh, sure why not I... I don\'t know.'],
-        [82, 'a PH.D, you\'z got that fancy title now, dockta. '],
-        [99, 'a coked-out professor']];
+    scoreRankTable = versionInfo.scoreRankTable;
     maxScore = null;
 
     newGame() {
-        intro.prolog();
-        clear;
-        startup(); cls();
+        startup.init();
+        begin(); cls();
         user.init();
         Events.init();
         runGame(true);
     } /* newGame */
 
-    startup() {
-        versionInfo.titleScreen();
+    begin() {
+        versionInfo.title();
         for (;;) {
             local cmd;
             local kw;
@@ -53,28 +69,53 @@ gameMain : GameMainDef { // impugn
                 }
             } else return 1;
         }
-    } /* startup */
+    } /* begin */
 } /* gameMain */
 
-#ifdef SUDO
 
-DefineIAction(FiatLux)
-    execAction {
-        if (gPlayerChar.brightness==0) {
-            "You\'re pretty bright. ";
-            gPlayerChar.brightness = 3;
-        } else {
-            "You feel dimmer. ";
-            gPlayerChar.brightness = 0;
-        }
-    }
-;
+/** `startup` : **`InitObject`**
+ *
+ * Called by `gameMain` to deal with the opening sequence.
+ **/
+startup : InitObject {
 
-
-VerbRule(FiatLux) 'fiat' 'lux' : FiatLuxAction {
-    verbPhrase = 'make/making light'
-}
-;
+    init() {
+#ifndef TADS_INCLUDE_NET
+        bannerClear(1);
 #endif
+        versionInfo.intro();
+#ifndef TADS_INCLUDE_NET
+        clear;
+        local spacer = bannerCreate(
+            null, BannerFirst,
+            statuslineBanner.handle_,
+            BannerTypeTextGrid,
+            BannerAlignTop,10,
+            BannerSizePercent,
+            BannerStyleBorder);
+        local title = bannerCreate(
+            null, BannerLast,
+            statuslineBanner.handle_,
+            BannerTypeTextGrid,
+            BannerAlignTop, 16,
+            BannerSizePercent,
+            BannerStyleBorder);
+        bannerSetTextColor(
+            title,ColorBlue,ColorTransparent);
+        bannerSetScreenColor(title,ColorStatusBg);
+        bannerSay(title,
+        '\b          <<versionInfo.name>>       \b');
+        clear;
+        bannerDelete(spacer);
+        bannerDelete(title);
+#else
+        versionInfo.showAbout();
+        clear;
+#endif
+    }
+}
+
+
+
 
 

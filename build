@@ -1,0 +1,179 @@
+#!/bin/bash
+#
+# Ben Scott <bescott@andrew.cmu.edu> 2016-01-01
+#
+# CMU.ADV
+
+# name of the project, and the output files
+NAME="cmu_adv"
+
+# flags to be sent directly to the compiler
+FLAGS=""
+
+# tell the compiler to print a bunch of nonsense
+VERBOSE="-v -w1"
+
+# optional debug flag
+DEBUG="-d"
+
+# a comment to be put at the head of the makefiles
+HEADER="# ${NAME} - TADS 3 Build File"
+
+# flags shared between web and cmd builds
+MAKE_FLAGS="
+-DLANGUAGE=en_us
+-DMESSAGESTYLE=neu
+-nobanner"
+
+# filename for chararray makefile
+MAKE_CMD="obj/cmd/${NAME}_cmd.t3m"
+
+# filename for web makefile
+MAKE_WEB="obj/web/${NAME}_web.t3m"
+
+# flags for building to the command line
+CMD_FLAGS="
+-Fy ../cmd -Fo ../cmd
+-I ../../src/
+-o ../../tgt/${NAME}_cmd.t3
+-lib system
+-lib adv3/adv3"
+
+# flags for building to the web
+WEB_FLAGS="
+-D TADS_INCLUDE_NET
+-Fy ../web -Fo ../web
+-I ../../src/
+-o ../../tgt/${NAME}_web.t3
+-lib system
+-lib adv3/adv3web
+-lib webui
+-source tadsnet"
+
+
+# `usage`
+#
+# Displays the usage syntax and flags.
+function usage {
+  echo "usage: . build [-bcdhqrw]"
+}
+
+
+# `about`
+#
+# When the user does something dumb, display this help text.
+function about {
+  usage
+  echo "options:
+    -b, --build    clean, compile and run
+    -c, --clean    clean build files
+    -d, --debug    compile debug version
+    -h, --help     displays this help text
+    -q, --qtads    runs the build via QTADS.
+    -r, --run      runs the console build
+    -w, --web      runs the web build"
+}
+
+
+# `make`
+#
+# Constructs two `*.t3m` files for building the t3make.
+function make {
+  mkdir -p obj/web
+  mkdir -p obj/cmd
+  echo -e "${HEADER}\n${MAKE_FLAGS}" > $MAKE_WEB
+  echo -e "${HEADER}\n${MAKE_FLAGS}" > $MAKE_CMD
+
+  for dir in $(find ./src -type d); do
+    echo "-Fs ../.${dir}" >> $MAKE_WEB
+    echo "-Fs ../.${dir}" >> $MAKE_CMD
+  done
+
+  echo "${WEB_FLAGS}" >> $MAKE_WEB
+  echo "${CMD_FLAGS}" >> $MAKE_CMD
+
+  for file in $(find ./src -name '*.t'); do
+    echo "-source ${file##*/}" >> $MAKE_WEB
+    echo "-source ${file##*/}" >> $MAKE_CMD
+  done
+}
+
+
+# `clean`
+#
+# Explicitly deletes all the object files in `obj/` and deletes
+# the `*.t3` executables from `tgt/`.
+function clean {
+  t3make -clean -f $MAKE_WEB
+  t3make -clean -f $MAKE_CMD
+}
+
+
+# `build`
+#
+# When the `-b` is explicitly specified, it first calls `clean`
+# and then this function, which first constructs the `*.t3m`
+# makefiles, compiles the project, and then runs it.
+function build {
+  make
+  t3make $FLAGS -f $MAKE_WEB &&
+  t3make $FLAGS -f $MAKE_CMD
+}
+
+
+# `debug`
+#
+# sets flags for a debug build
+function debug {
+  FLAGS="$DEBUG $VERBOSE $FLAGS"
+  build
+  run
+}
+
+
+# `run`
+#
+# Uses frob to run the command line version.
+function run {
+  frob tgt/${NAME}_cmd.t3
+}
+
+
+# `web`
+#
+# Uses frob to run the web build.
+function web {
+  frob -N 44 tgt/${NAME}_web.t3
+}
+
+
+# `qtads`
+#
+# Attempts to use QTads to run the game.
+function qtads {
+  open -a QTads tgt/${NAME}_cmd.t3
+}
+
+
+if [ $# -gt 0 ]; then
+while [ "$1" != "" ]; do
+  case $1 in
+    -b | --build )  clean
+                    build
+                    run;;
+    -d | --debug )  debug;;
+    -c | --clean )  clean;;
+    -h | --help  )  about;;
+    -r | --run   )  build
+                    run;;
+    -w | --web   )  build
+                    web;;
+    -q | --qtads )  build
+                    qtads;;
+    *            )  usage;;
+  esac
+  shift
+done
+else
+  build && run
+fi
