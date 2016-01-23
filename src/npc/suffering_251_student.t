@@ -13,8 +13,6 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 """ {
 	isHim = true;
 	globalParamName = "251 student";
-
-	contactedTA = false;
 }
 
 + student_Talking : InConversationState
@@ -37,7 +35,7 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 	['''
 	The quietly suffering student is either having a seizure or is just sobbing and shaking madly. You decide to check up on him, and ask, "Are you alright?"
 
-	The student looks up at you blearily, and hiccups a few times. His pencil drops from his hand.
+	The student looks up at you blearily, and hiccups a few times. His pencil drops from his hand, and he takes a few seconds to pick it up.
 	''']['''
 	You decide to check up on him again.
 
@@ -60,22 +58,30 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 
 //*************<Relevant to the TA>******************
 
-++ AskTopic 'office hours'
-	topicResponse()
-	{
-	""" // Indenting these seems to add an extra tab into the dialogue.
-	Would you by any chance know how office hours work this semester?" you inquire.
-	""";
+++ AskTopic 'schedule'
+"""
+	"Would you by any chance know how office hours work this semester?" you inquire.
 
-		local obj = new OHSchedule;
-		obj.moveInto(me); // Currently does not work; need to figure out how/why.
-	}
-;
+	"Yeah," he replies, "I have a schedule. The TAs choose a time slot and they're all marked down on here." He looks down at his OH schedule and shrugs. "I've looked at this thing so much that I've memorized it already."
+
+	Hmm. Maybe he'll give it to you if you ask nicely...<.convnode schedule>
+""";
+
++ ConvNode 'schedule';
+
+++ AskForTopic 'schedule'
+	topicResponse()
+	{ // Need to be a better response
+	"""
+	"Sure, take it."
+	""";
+	oh_schedule.moveInto(gPlayerChar);
+	};
 
 + oh_schedule : Readable, Thing
 'schedule' 'office hours schedule'
 """
-	It's a schedule of 15-251 office hours for this semester.
+	It's a schedule of 15-251 office hours for this semester. You could probably read it if you squinted.
 """ {
     initSpecialDesc = "The suffering student clutches a heavily marked 251 schedule in his hand.";
     readDesc {

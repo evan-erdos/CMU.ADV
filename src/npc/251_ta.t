@@ -5,8 +5,6 @@
 #include "macros.h"
 #pragma newline_spacing(preserve)
 
-
-// Eventually she'll want those student tears.
 sad_251_ta : Person
 'sad ta/teaching assistant/staff'
 '<b>Sad TA</b>' @ghc_citadel_commons
