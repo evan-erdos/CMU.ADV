@@ -13,6 +13,13 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 """ {
     isHer = true;
     globalParamName = 'sad 251 TA';
+
+	giveAchievement() {
+		achievement_informed.awardPointsOnce();
+	}
+
+	achievement_informed : Achievement {
+		+1 "telling a 251 TA why her office hours weren't getting any attention." }
 }
 
 + ta_Talking : InConversationState
@@ -73,4 +80,43 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 	The TA's sniffling subsides gradually.
 	'''];
 
+/******************<Giving Schedule>*********************/
 
++ GiveTopic [oh_schedule]
+	topicResponse()
+	{
+	"""
+	You approach the TA cautiously, holding the office hours schedule at arms length like the flimsy paper shield that it is. This is a rather delicate matter you're about to bring up.
+
+	"I think I have an idea as to why your students don't come to office hours," you say.
+
+	She looks up despondently. "What?" she croaks.
+
+	You hand her the slightly crumpled schedule and trace your finger over to the current office hour slot.	"See? Right... here. This is you, right?"
+
+	The TA nods in affirmation.
+
+	"Yeah, your entire office hour lies within the time allotted for lecture."
+
+	For a moment, the TA stares at the paper, her expression growing less dejcted but more mortified.
+
+	"Oh, god. I have to change this! This is so embarrassing..." She glances up at you. "Thanks for telling me. The professors must think I'm completely incompetent!"
+	""";
+	oh_schedule.moveInto(getActor);
+	sad_251_ta.setCurState(taMortified);
+	sad_251_ta.giveAchievement();
+};
+
+/******************<Post-Schedule>*********************/
+
++ taMortified : ActorState {
+	specialDesc =
+		"""
+		The formerly sad 251 TA seems to be frantically composing emails to the professors, presumably to change her office hours.
+		""";
+}
+
+++ DefaultAnyTopic
+"""
+The TA now seems to busy trying to change her office hours to pay attention to you.
+""";

@@ -6,7 +6,6 @@
 #include "macros.h"
 #pragma newline_spacing(preserve)
 
-
 warner_interviewer : Person
 '(harried) staff/interviewer/employee'
 'Harried Interviewer' @interview_room
@@ -29,7 +28,7 @@ He's not a very old man, but you can see signs of a cover-up in his hair and gro
 
     decideAdmittance(n) {
         if (n>50) achievement_blackmail.awardPointsOnce();
-        else if (n>5) achievement_admitted.awardPointsOnce();
+        else if (n>4) achievement_admitted.awardPointsOnce();
         else if (n<-50) achievement_failed.awardPointsOnce();
         else achievement_denied.awardPointsOnce();
         interest = 0;
