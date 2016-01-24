@@ -77,6 +77,8 @@ The tables down here are packed, mostly with international students chattering a
 ghc_rashid : AreaRoom -> ghc 'Rashid Auditorium'
 """
 The biggest lecture hall in the GHC. You seem to have walked in on a 15-251 lecture, which you remember crying through a lot of. Sure enough, some freshmen in the back row are weeping quietly whilst diligently copying down some cellular automata.
+
+An especially sad student cries silently by himself.
 """ {
     out = ghc_4_common_area;
 }

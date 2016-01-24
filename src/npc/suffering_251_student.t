@@ -13,6 +13,8 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 """ {
 	isHim = true;
 	globalParamName = "251 student";
+
+	contactedTA = false;
 }
 
 + student_Talking : InConversationState
@@ -35,20 +37,13 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 	['''
 	The quietly suffering student is either having a seizure or is just sobbing and shaking madly. You decide to check up on him, and ask, "Are you alright?"
 
-	The student looks up at you blearily, and hiccups a few times. His pencil drops from his hand, and he takes a few seconds to pick it up.
+	The student looks up at you blearily, and hiccups a few times. His pencil drops from his hand.
 	''']['''
 	You decide to check up on him again.
 
 	"Hey, you're still here," you comment. You really need to work on your reassuring skills.
 
 	"I'm still here," comes the dejected reply.
-	''',
-	'''
-	The suffering student seems to have started crying again, and you hand him a tissue, which he takes gratefully. You picked it up on a random table outside and was going to throw it away, but he doesn't need to know that.
-
-	"Are you doing okay?" you ask.
-
-	"No," he replies truthfully.
 	'''];
 
 +++ ByeTopic

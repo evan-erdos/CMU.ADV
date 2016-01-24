@@ -1,4 +1,4 @@
-/* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2015-11-24 * interviewer */
+/* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2015-11-24 * 251 TA */
 
 #include <adv3.h>
 #include <en_us.h>
@@ -15,7 +15,7 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
     globalParamName = 'sad 251 TA';
 }
 
-+ taTalking : InConversationState
++ ta_Talking : InConversationState
 	specialDesc =
 		"""
 		She is looking around the Citadel Commons, and occasionally glances at you.
@@ -31,6 +31,8 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 	stateDesc = 'She is <<commonDesc>>';
 }
 
+/******************<Talk Topics>*********************/
+
 +++ HelloTopic, ShuffledEventList
 	['''
 	As a model concerned citizen, you decide to approach the TA.
@@ -41,7 +43,7 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 
 	This sounds intriguing. You've never heard of anyone not caring about 251 before; perhaps you could inquire further.
 	''']['''
-	She looks up hopefully, then sighs when she sees it's just you again.
+	She looks up hopefully, then sighs when she sees it's just you again, and not one of her students.
 	'''];
 
 +++ ByeTopic
@@ -49,8 +51,8 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 	You decide not to bother her further, and back away. She immediately goes back to staring at her students' grades.
 	""";
 
-++ AskTopic 'students'
-	"""
+++ AskTopic, ShuffledEventList 'students'
+	['''
 	You inch closer. "What do you mean, your students don't care about your course?"
 	She gestures towards a yellow Office Hours sign half-buried under papers from other people at the table.
 
@@ -59,6 +61,16 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 	After some halfhearted protest about seeing students' grades, you lean in for a brief glance.
 
 	Indeed, they're pretty bad, but on the whole they seem par for the course. You tell her so, to which she responds "Hmph! There's no proof of that. And they don't even show up to Office Hours for help."
-	""";
+	''']['''
+	"What did you say about your students not liking you or something?"
+
+	She looks horrified--"Wait, they don't come to office hours because they don't like me?!" Her eyes well up with tears.
+
+	Oops. Now look what you've done.
+
+	"No, no! I didn't say that, I'm sure you're a wonderful person and they all like you just fine..." You wave your arms placatingly, and accidentally clip a freshman on the ear.
+
+	The TA's sniffling subsides gradually.
+	'''];
 
 
