@@ -50,6 +50,8 @@ It's the fifth floor common area. It's where the plebians who can't get to the u
 ghc_citadel_commons : AreaRoom -> ghc 'Citadel Commons'
 """
 It's crowded here as always, and people are chattering about everything from graph theory to frogs. Eyeballing the crowd, you estimate that about fifteen different classes are holding TA Office Hours here at once, or everyone is here for 112. You'd be hard-pressed to find anywhere to sit.
+
+A sad-looking TA sits at an especially crowded table, where everyone is ignoring her.
 """ {
     west = ghc_5_entrance;
 }

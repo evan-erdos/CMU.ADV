@@ -73,4 +73,12 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 	The TA's sniffling subsides gradually.
 	'''];
 
++ GiveTopic [oh_schedule]
+	topicResponse()
+	{
+	"""
+	placeholder
+	""";
+	oh_schedule.moveInto(getActor);
+};
 
