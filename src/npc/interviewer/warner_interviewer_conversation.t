@@ -424,16 +424,15 @@ The interviewer is given pause by this, but quickly hides his disappointment.
 """;
 
 // The only correct answer is... --jocelynh
-// Aw heck no, bescott! It's all about creeping around in the shadows.
 // (I'm really biased.)
 ++ SpecialTopic 'technical theatre'
 'stage|light(ing)?|sound|tech|crew'
 """
 The smell of sawdust as a power drill slots TORX screws into 2x4s, the muted swish of tormentor curtains, the powerful hum of rows of lights, and the crackle of telex as you follow cues... Ahh, yes. Behind-the-scenes theatre is what you <b>live</b> for.
 
-"I'm not a huge fan of the spotlight but I do love theatre, so I've always been a theatre tech at heart. You know, my senior year, I stage managed and taught aspiring new techies the ropes!" Can't hurt to throw some leadership in, huh?
+"I'm not a huge fan of the spotlight but I do love theatre, so I've always been a theatre tech at heart. You know, my senior year, I stage managed and taught aspiring new techies the ropes!" Can't hurt to throw some leadership in, right?
 
-The interviewer raises his eyebrows and nods. "Then you'll love our student theatre group, Scotch 'n Soda! We have a wonderful theatre program as well, but Scotch is quite a group. They're always looking for new techies to take under their wing."
+The interviewer raises his eyebrows and nods. "Then you'll love our student theatre group, Scotch 'n Soda! We have a wonderful theatre program as well, but Scotch is quite a group and really popular on campus. They're always looking for new techies to take under their wing."
 
 He flips to a new page in his notepad. "Good, good. Tech experience, and you know how to deal with divas. Now, what do you do in your own time?"
 
@@ -591,10 +590,6 @@ The interviewer gives you a long, disdainful look. You can tell from that stare 
 <<warner_interviewer.giveImpression(-1)>>
 <.convnode interest>
 """;
-
-
-// Help me out here --jocelynh
-
 
 /*******************<CMU Interest>*******************/
 

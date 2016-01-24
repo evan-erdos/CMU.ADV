@@ -87,7 +87,11 @@ A particularly mournful student sniffles at the very back of the auditorium. His
     initSpecialDesc = "The suffering student clutches a heavily marked 251 schedule in his hand.";
     readDesc {
         """
-        It lists all of the 251 TAs' office hour times and locations. Looking closer, you can see that one of the TAs has office hours during lectures... Good planning, guys. Someone should probably show this to a 251 authority figure.
+        It lists all of the 251 TAs' office hour times and locations.
+
+        The <b>suffering student</b> seems to have annotated everything, with a scale from one to 10 of how helpful each TA is, and on what topics, and on queue lengths.
+
+        Looking closer, you can see that he's marked one of the TAs has office hours as during lecture... Good planning, guys. Someone should probably show this to a 251 authority figure.
         """;
     }
 }
