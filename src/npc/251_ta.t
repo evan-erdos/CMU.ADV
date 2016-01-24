@@ -13,6 +13,13 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 """ {
     isHer = true;
     globalParamName = 'sad 251 TA';
+
+	giveAchievement() {
+		achievement_informed.awardPointsOnce();
+	}
+
+	achievement_informed : Achievement {
+		+1 "telling a 251 TA why her office hours weren't getting any attention." }
 }
 
 + ta_Talking : InConversationState
@@ -96,9 +103,20 @@ A dejected-looking TA wearing her 15-251 sweatshirt sits mournfully at the edge 
 	"Oh, god. I have to change this! This is so embarrassing..." She glances up at you. "Thanks for telling me. The professors must think I'm completely incompetent!"
 	""";
 	oh_schedule.moveInto(getActor);
+	sad_251_ta.setCurState(taMortified);
+	sad_251_ta.giveAchievement();
 };
-
-// ActorState after the schedule is given
 
 /******************<Post-Schedule>*********************/
 
++ taMortified : ActorState {
+	specialDesc =
+		"""
+		The formerly sad 251 TA seems to be frantically composing emails to the professors, presumably to change her office hours.
+		""";
+}
+
+++ DefaultAnyTopic
+"""
+The TA now seems to busy trying to change her office hours to pay attention to you.
+""";

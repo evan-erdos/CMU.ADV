@@ -6,7 +6,6 @@
 #include "macros.h"
 #pragma newline_spacing(preserve)
 
-
 warner_interviewer : Person
 '(harried) staff/interviewer/employee'
 'Harried Interviewer' @interview_room
