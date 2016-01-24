@@ -215,7 +215,7 @@ A projector nearly directly under you is playing some student-created clip of a 
 
 ghc_helix_3 : AreaRoom -> ghc_helix '3rd Floor'
 """
-You are at the bottom of the Helix.
+You are at the bottom of the Helix. Peering over the railing gives you a nice view of Tazza d'Oro and its corresponding tables, which are completely occupied by students or crumbs, or both.
 """ {
     up = ghc_helix_overlook;
     west = ghc_3_entrance;
