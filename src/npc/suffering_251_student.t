@@ -13,8 +13,6 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 """ {
 	isHim = true;
 	globalParamName = "251 student";
-
-	contactedTA = false;
 }
 
 + student_Talking : InConversationState
@@ -49,6 +47,19 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 +++ ByeTopic
 	"""
 	"Good luck with 251," you say. He nods sadly and picks his notebook back up.
+	""";
+
+++ AskTopic '251'
+	"""
+	You wonder how the class has changed since you've taken it. By the alternating horrified and completely lost looks on the faces of the students attending lecture, it doesn't really seem to have. (And, of course, there's that one kid in the front answering every question and raising his hand at every other sentence out of the professor's mouth.)
+
+	After observing the class for a moment, you turn back to the <b>suffering student</b>. "So... how's 15-251 treating you guys this semester?"
+
+	The <b>suffering student</b> grimaces and hands you his notebook. A syllabus carefully taped onto the first page lists all the familiar topics: Turing Machines, RSA, Markov Chains, and computational intractability, among other things.
+
+	Flipping through the notebook, you see grade and curve computations scribbled in the margins of proofs, along with hastily scratched out and rewritten NP reductions.
+
+	You nod sympathetically and hand the notes back.
 	""";
 
 //*************<Relevant to the TA>******************
