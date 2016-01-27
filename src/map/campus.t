@@ -232,6 +232,41 @@ The door to your dormitory shimmers like a vision before you.
     reportAutoClose { "You close the door behind you, and suddenly you're near Baker Hall... "; };
 }
 
+//******************<The Mall>*******************
+
+mall_east : OutdoorRoom, AreaRoom -> campus
+'The Mall (East)'
+"""
+You stand at the top of the gently-sloping lawn to your west, at the end of which lies Hamerschlag Hall. To your north, east, and south is the Cut walkway, which runs north and south from Forbes to Frew St. To your west lies the middle of the Mall.
+""" {
+    north = cut_walkway_1;
+    east = cut_walkway_2;
+    south = cut_walkway_3;
+    west = mall_mid;
+}
+
+mall_mid : OutdoorRoom, AreaRoom -> campus
+'The Mall'
+"""
+This is the middle of the mall. To your north lies an oft-ignored entrance to Doherty, and to your south is a side entrance to Baker. The westmost side of the Mall lies to your west, and the eastmost side lies to your east.
+""" {
+    //north = ...
+    //south = ...
+    east = mall_east;
+    west = mall_west;
+}
+
+mall_west : OutdoorRoom, AreaRoom -> campus
+'The Mall (West)'
+"""
+You are at the end of the mall, in the shadow of Hamerschlag Hall. The Fence is obscured by the upwards-sloping lawn to the east.
+""" {
+    north = wh_entrance;
+    east = mall_mid;
+}
+
+//******************<Pausch Bridge>*******************
+
 pausch_bridge_entrance : OutdoorRoom, AreaRoom -> campus
 'The Pausch Bridge (near Purnell)'
 """
@@ -289,9 +324,6 @@ kiltie_front : FakeConnector
 
 maggie_courts : FakeConnector
 "If there's one thing you're not, it's 'in the mood for tennis'";
-
-mall_east : FakeConnector
-"You don't want to go to the East Lawn! ";
 
 frew_st_east : FakeConnector
 "You look at Frew St., and decide that ultimately, it's just not worth it. ";
