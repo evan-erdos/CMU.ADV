@@ -37,7 +37,7 @@ You're just inside the entrance. Two elevators are before you, and hallways run 
 
 wh_5000_stairs : AreaRoom -> wean '5000 Area, Near Stairs'
 """
-You're in the slightly cramped area in between the stairs and the bathrooms on the fifth floor. Several students are banging their fists on the tired and weary printer, which staunchy refuses to spit out their documents.
+You're in the slightly cramped area in between the stairs and the bathrooms on the fifth floor. An old printer sits in a corner.
 
 The 5200 corridor is to your west, and the 5300 corridor lies to your east. To your south lies the elevator and entrance area.
 """ {
@@ -48,20 +48,30 @@ The 5200 corridor is to your west, and the 5300 corridor lies to your east. To y
 + Printer : Fixture
 '(Wean) printer' 'printer'
 """
-Mostly reliable but sometimes finicky.
+It's a rather standard printer. It's mostly reliable but sometimes finicky in the afternoon, after a long day of abuse.
 """{
 	specialDesc { printer_list.doScript(); }
 
 	printer_list : Ambiance {
 	['''
-	doopadoop test
+	Several students are banging their fists on the tired and weary printer, which staunchly refuses to spit out their documents.
+	''','''
+	The printer whirrs happily to life, then quiets down.
+	''','''
+	A line begins to build behind someone printing what looks like the entirety of a textbook.
+	''','''
+	A freshman fumbles with his student ID at the printer.
+	''','''
+	The printer spits out some papers labeled "[CONFIDENTIAL]" and covered in professional-looking text. A man in a suit snaps them up quickly.
+	''','''
+	A<<one of>> weary sophomore<<or>> jumpy freshman<<or>> harried junior<<or>>n old professor<<at random>> steps over to the printer and grabs some papers seemingly at random.l
 	''']
 	}
 };
 
 la_prima : AreaRoom -> wean '5000 Area, La Prima'
 """
-You're just inside the entrance. A long, snaking line of people waiting to buy an assortment of baked goods and caffeine products from La Prima (home of weird carbonated coffee) blocks half of the hallway. You'd consider waiting in line, but the weird Experimental music is driving you nuts. ("GWEEERARARARGHHHHHH" *instrumental screeching* "WAAAAARARRARGH")
+You're just inside the entrance of Wean. A long, snaking line of people waiting to buy an assortment of baked goods and caffeine products from La Prima (home of weird carbonated coffee) blocks half of the hallway. You'd consider waiting in line, but the weird Experimental music is driving you nuts. ("GWEEERARARARGHHHHHH" *instrumental screeching* "WAAAAARARRARGH")
 
 The elevators lie to your west, and the WEH 5400 corridor lies to your east.
 """ {
@@ -81,7 +91,7 @@ The elevators lie to your west, and the WEH 5400 corridor lies to your east.
 	}
 
 ++ melee : Thing
-'melee/pastry' 'melee'
+'melee (pastry)' 'melee'
 """
 A delicious pocket of fluffy pastry and Nutella.
 """;
@@ -90,6 +100,28 @@ A delicious pocket of fluffy pastry and Nutella.
 'frizz/coffee/carbonated coffee' 'cup of frizz coffee'
 """
 A cup of bizarre carbonated coffee that stocks rarely and sells out quickly.
+""";
+
+++ danish : Thing
+'danish (pastry)' 'danish'
+"""
+A sweet pastry filled with delicious jam.
+""";
+
+++ la_prima_tea : Thing
+'(la prima) tea' 'cup of La Prima tea'
+"""
+A piping hot cup of tea from La Prima. Be careful!
+""";
+
+++ biscotti : Thing
+'biscotti' 'biscotti'
+"""
+""";
+
+++ chocolate_scone : Thing
+'(chocolate) scone' 'scone'
+"""
 """;
 
 //*****<5th Floor Corridors>*****

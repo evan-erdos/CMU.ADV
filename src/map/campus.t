@@ -38,6 +38,12 @@ The grass twirls in the breeze.
 It gets a bit darker as some clouds pass overhead. <<one of>>Pinpricks of tiny raindrops surprise you for a short while.<<or>><<at random>>
 ''','''
 You hear chirping somewhere.
+''','''
+A swarm of angry protesters march by, shouting something that sounds like "Bagpipe manchoir!"
+''','''
+A student jogs by in a suit and brandishing a resume, muttering a long string of corporate buzzwords.
+''','''
+A <<one of>>snappily-dressed lady<<or>>scruffy guy<<or>>elderly woman<<at random>> marches by you with a <<one of>>German shepherd<<or>>scotty dog<<or>>malamute<<or>>husky<<or>>cat on a leash<<or>>misbehaving maltese<<at random>> in tow.
 ''',
 {: print(uniqueEvents.doScript()) }]
 """
@@ -117,6 +123,8 @@ You are at the intersection of Forbes and Morewood. To the north is Forbes Avenu
     north = forbes_morewood;
     south = cut_north;
 }
+
+//******************<The Cut>*******************
 
 cut_north : OutdoorRoom, AreaRoom -> campus
 'The Cut (North)'
