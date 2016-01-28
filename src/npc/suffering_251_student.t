@@ -85,7 +85,7 @@ A particularly mournful student sniffles at the very back of the auditorium. His
 
 	You point to the slightly crumpled office hours schedule. "Hey, would you mind if I took that?"
 
-	The suffering student shrugs and hands you the schedule. "Sure, go ahead."
+	The suffering student shrugs and hands you the schedule. "Sure, go ahead."<.convnode postschedule>
 	""";
 	oh_schedule.moveInto(gPlayerChar);
 	};
@@ -106,3 +106,23 @@ A particularly mournful student sniffles at the very back of the auditorium. His
         """;
     }
 }
+
+//***************<Post Schedule>******************
+
++ ConvNode 'postschedule';
+
+++ SpecialTopic 'scare him' 'scare him'
+	"""
+	You are a horrible person and want to scare the wits out of this already-frazzled student.
+
+	"<b>Boo!</b>" you holler in his ear.
+
+	The <b>suffering student</b> lets out a yelp and topples out of his seat, then bursts into tears on the ground.
+
+	You notice that the class has gone silent and the professor is staring at you. A few uncomfortable seconds pass, and he continues lecturing. The student takes a bit longer to recover, then clambers back into his seat, picking up his fallen materials dejectedly.
+	""";
+
+++ SpecialTopic 'comfort him' 'comfort him'
+	"""
+	Are you kidding? There's no comforting an underclassman faced with 251.
+	""";

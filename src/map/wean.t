@@ -80,50 +80,6 @@ The elevators lie to your west, and the WEH 5400 corridor lies to your east.
 	west = wh_5000_elev;
 }
 
-// Might move this to separate file later depending on what happens with her.
-+ la_prima_employee : Person
-	'la prima employee/cashier' '<b>La Prima Employee</b>'
-	"""
-	A cheerful La Prima employee bustles around trilling out customers' orders to her underlings, who scramble to make coffee.
-	""" {
-		isHer = true;
-		globalParamName = "la prima employee";
-	}
-
-++ melee : Thing
-'melee (pastry)' 'melee'
-"""
-A delicious pocket of fluffy pastry and Nutella.
-""";
-
-++ frizz_coffee : Thing
-'frizz/coffee/carbonated coffee' 'cup of frizz coffee'
-"""
-A cup of bizarre carbonated coffee that stocks rarely and sells out quickly.
-""";
-
-++ danish : Thing
-'danish (pastry)' 'danish'
-"""
-A sweet pastry filled with delicious jam.
-""";
-
-++ la_prima_tea : Thing
-'(la prima) tea' 'cup of La Prima tea'
-"""
-A piping hot cup of tea from La Prima. Be careful!
-""";
-
-++ biscotti : Thing
-'biscotti' 'biscotti'
-"""
-""";
-
-++ chocolate_scone : Thing
-'(chocolate) scone' 'scone'
-"""
-""";
-
 //*****<5th Floor Corridors>*****
 
 wh_5100 : FakeConnector
