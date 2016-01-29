@@ -8,13 +8,33 @@
 //****************<La Prima Line>**********************
 
 la_prima_line : Person
-'line' 'La Prima line' @la_prima
+'line/underclassman' 'La Prima line' @la_prima
 """
-It's a line of people waiting sleepily for their coffee. An underclassman stands near the front, staring, uncomprehending, at homework.
+There's a line of people waiting sleepily for their coffee. An underclassman stands near the front, staring, uncomprehending, at homework.
 """ {
 	isPlural = true;
 	globalParamName = "la prima line";
 }
+
++ first_talking : InConversationState
+	specialDesc = """
+		The line contineues to mosey forward. The pudgy freshman holding his homework is looking at you.
+		""";
+
+++ first_ready : ConversationReadyState {
+	isInitState = true;
+	specialDesc =
+		"""
+		The line inches forward a bit at a glacial pace. A pudgy freshman wearing a hat that says "PIZZA" stands near the front of the line seems to be having difficulty with his homework.
+		""";
+}
+
++++ HelloTopic
+	"""
+	You decide to approach the underclassman at the front of the line.
+	""";
+
+// A project for a slightly later time.
 
 //****************<La Prima Employee>**********************
 

@@ -43,6 +43,7 @@ The 5200 corridor is to your west, and the 5300 corridor lies to your east. To y
 """ {
 	east = wh_5300;
 	south = wh_5000_elev;
+	up = wh_7000_stairs;
 }
 
 + Printer : Fixture
@@ -64,7 +65,7 @@ It's a rather standard printer. It's mostly reliable but sometimes finicky in th
 	''','''
 	The printer spits out some papers labeled "[CONFIDENTIAL]" and covered in professional-looking text. A man in a suit snaps them up quickly.
 	''','''
-	A<<one of>> weary sophomore<<or>> jumpy freshman<<or>> harried junior<<or>>n old professor<<at random>> steps over to the printer and grabs some papers seemingly at random.l
+	A<<one of>> weary sophomore<<or>> jumpy freshman<<or>> harried junior<<or>>n old professor<<at random>> steps over to the printer and grabs some papers seemingly at random.
 	''']
 	}
 };
@@ -108,4 +109,23 @@ This is a place with lecture halls. Computer Club talks take place in one of the
 """ {
 	//east = ...
 	west = la_prima;
+}
+
+//******************<WEH 5th Floor>**********************
+
+wh_7000_stairs : AreaRoom -> wean '7000 Area, Near Stairs'
+"""
+You stand near the stairs on the seventh floor. It's rather quiet here, though you can hear the muted sounds of a lecture going on in 7500. 
+""" {
+	west = dh_2_west;
+	south = wh_7000_elev;
+	down = wh_5000_stairs;
+}
+
+wh_7000_elev : AreaRoom -> wean '7000 Area, Near Elevator'
+"""
+You stand near the elevator on the seventh floor. It's rather quiet here, though you can hear the muted sounds of a lecture going on in 7500.
+""" {
+	west = dh_2_west;
+	north = wh_7000_stairs;
 }
