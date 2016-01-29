@@ -111,11 +111,11 @@ This is a place with lecture halls. Computer Club talks take place in one of the
 	west = la_prima;
 }
 
-//******************<WEH 5th Floor>**********************
+//******************<WEH 7th Floor>**********************
 
 wh_7000_stairs : AreaRoom -> wean '7000 Area, Near Stairs'
 """
-You stand near the stairs on the seventh floor. It's rather quiet here, though you can hear the muted sounds of a lecture going on in 7500. 
+You stand near the stairs on the seventh floor. To the south is an open area between the elevators and the Adamson Auditorium.
 """ {
 	west = dh_2_west;
 	south = wh_7000_elev;
@@ -124,8 +124,10 @@ You stand near the stairs on the seventh floor. It's rather quiet here, though y
 
 wh_7000_elev : AreaRoom -> wean '7000 Area, Near Elevator'
 """
-You stand near the elevator on the seventh floor. It's rather quiet here, though you can hear the muted sounds of a lecture going on in 7500.
+You stand near the elevator on the seventh floor. It's rather quiet here, though you can hear the muted sounds of a lecture going on in 7500 to the south, the famed turtle head of Wean. To your north lies the stairs that occupy the center of Wean.
 """ {
 	west = dh_2_west;
 	north = wh_7000_stairs;
 }
+
+//wh_7500 : AreaRoom
