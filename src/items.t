@@ -166,7 +166,7 @@ It's an inflatable flamingo.
 """ {
     initSpecialDesc =
         """
-        Through an office window, you can see a pink inflatable flamingo.
+        Through an office window, you can see a pink inflatable flamingo stuck to the glass. Its head seems to be peeling away slightly.
         """;
 }
 
