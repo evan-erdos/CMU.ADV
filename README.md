@@ -4,7 +4,7 @@ CMU.ADV
 
 A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 
-[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)[![version](https://img.shields.io/badge/version-2.0.4-blue.svg?style=plastic)](https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2)
+[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)[![version](https://img.shields.io/badge/version-2.1.0-blue.svg?style=plastic)](https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2)
 
 ---
 
@@ -32,12 +32,12 @@ This is a repository for the soon-to-be coolest text adventure on campus! *CMU.A
 
 ---
 You can play this online! Click the image below!
-[![cmu_adv](https://cloud.githubusercontent.com/assets/6759009/9998540/992f043c-605f-11e5-8adc-c47a9f166ded.png)](http://gs.tads.io/?storyfile=http://www.andrew.cmu.edu/user/bescott/cmu.adv/cmu_adv.t3)
+[![cmu_adv](https://cmu.box.com/shared/static/rgpnkjzfphx16m8lrn7so711z2p2fiym.gif)](http://gs.tads.io/?storyfile=http://www.andrew.cmu.edu/user/bescott/cmu.adv/cmu_adv.t3)
 ---
 
 ## Compiling your own! ##
 
-First, you will need [FrobTads][] if you're on any unix system, and while there is some special thing for windows, perhaps sometimes try not using windows, or get a
+First, you will need [FrobTads][] if you're on any unix system, and while there is some special thing for Windows, perhaps sometimes try not using Windows, or get a bash emulator.
 
 [frob]: <https://github.com/realnc/frobtads>
 [FrobTads]: <http://www.tads.org/tads3.htm#>
