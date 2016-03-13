@@ -1,12 +1,16 @@
 
-CMU.ADV
-=======
+CMU.ADV [![version]][release] [![mit]][license]
+===============================================
 
 A "Multi-User Dungeon" (if you think CMU is a dungeon...) Text Adventure!
 
-[![mit-license](http://img.shields.io/:license-MIT-blue.svg?style=plastic)](http://bescott.mit-license.org)[![version](https://img.shields.io/badge/version-2.1.0-blue.svg?style=plastic)](https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2)
 
 ---
+[mit]: <http://img.shields.io/:license-MIT-blue.svg?style=plastic>
+[license]: <http://bescott.mit-license.org>
+[version]: <https://img.shields.io/badge/version-2.1.0-blue.svg?style=plastic>
+[release]: <https://github.com/evan-erdos/CMU.ADV/releases/tag/v2.0.2>
+
 
 ```lisp
 ;CMU.ADV
@@ -39,16 +43,15 @@ You can play this online! Click the image below!
 
 First, you will need [FrobTads][] if you're on any unix system, and while there is some special thing for Windows, perhaps sometimes try not using Windows, or get a bash emulator.
 
+---
 [frob]: <https://github.com/realnc/frobtads>
 [FrobTads]: <http://www.tads.org/tads3.htm#>
 
----
 
 
 
 
-
-Todo:
+### Todo ###
 - ~~Add to map~~
 - do literally anthing
 
@@ -147,29 +150,7 @@ Todo (Original):
 ---
 
 
-LICENSE
--------
 
-The MIT License (MIT)
 
-Copyright (c) 2016 Ben Scott <bescott@andrew.cmu.edu>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 
 
