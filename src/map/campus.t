@@ -51,7 +51,7 @@ You can see the fence from here, covered with thousands of layers of paint. It l
 """ {
     locationList = [
         forbes_cut, cut_north, cut_south, the_cut,
-        cut_walkway_0, cut_walkway_1,
+        cut_walkway_0, cut_walkway_0_5, cut_walkway_1,
         cut_walkway_2, cut_walkway_3,
         dh_entrance, bh_entrance,
         hh_entrance, cfa_field];
@@ -173,7 +173,7 @@ You're on a walkway, running north and south. Warner hall lies to the west, and 
 """ {
     north = forbes_cut;
     east = the_cut;
-    south = cut_walkway_1;
+    south = cut_walkway_0_5;
     west = warner_entrance;
 }
 
@@ -183,12 +183,22 @@ You're on a walkway, running north and south. Warner hall lies to the west, and 
 Aren't they beautiful?
 """ isPlural = true;
 
+cut_walkway_0_5: OutdoorRoom, AreaRoom -> campus
+'Walkway (Near Pausch)'
+"""
+You are on a walkway running north and south. To your west is the majestic Randy Pausch Memorial Bridge that leads to Gates.
+""" {
+    north = cut_walkway_0;
+    south = cut_walkway_1;
+    west = pausch_bridge_entrance;
+}
+
 cut_walkway_1 : OutdoorRoom, AreaRoom -> campus
 'Walkway (Near Doherty)'
 """
 This is a walkway running north and south. The ornate stonework of the Doherty Hall entrance is west from here, and the fence is directly east.
 """ {
-    north = cut_walkway_0;
+    north = cut_walkway_0_5;
     east = cut_south;
     south = cut_walkway_2;
     southwest = cut_hill;
@@ -254,7 +264,7 @@ You're at the start of the Pausch Bridge. It's like nothing you've ever seen. <b
 pausch_bridge_1 : OutdoorRoom
 'The Pausch Bridge (Middle)' 'the Pausch Bridge'
 """
-You're in the middle of the Pausch Bridge. To the west is the part of the bridge that goes to the campus. To the east is the part of the bridge that goes to the Gates Hillman Center. At some point, you'd think some of this would sink in.
+You're in the middle of the Pausch Bridge. To the east is the part of the bridge that goes to the campus. To the west is the part of the bridge that goes to the Gates Hillman Center. At some point, you'd think some of this would sink in.
 """ {
     west = pausch_bridge_2;
     east = pausch_bridge_0;
