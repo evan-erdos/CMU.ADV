@@ -119,22 +119,32 @@ A sad-looking TA sits at an especially crowded table, where everyone is ignoring
 
 /**************<Floor 4>***************/
 
-ghc_4_entrance : AreaRoom -> ghc '4th Floor, Helix'
+ghc_4_helix_entrance : AreaRoom -> ghc '4th Floor, Helix'
 """
-You have wandered over to the area near the Helix on the fourth floor. There is not much here, except for some offices, classrooms that are a bit too small for the crowds that CS office hours tend to draw, and a bulletin board. A particularly interesting event called <b>Demosplash</b> is advertised, and you make a mental note to visit the site: <b>"www.demosplash.org"</b>. You can hear quiet murmuring from the common area to the east, and you briefly consider walking into the Helix.
+You have wandered over to the area near the Helix on the fourth floor. There are a few tables and weird cushiony sofa-things here, mostly occupied. Otherwise, this area is pretty boring. To the southeast is the svelte and curvy Gates 4 corridor, and this floor's entrance to the Helix is here.
 """ {
-    east = ghc_4_common_area;
+    southeast = ghc_4_corridor;
     in = ghc_helix_4;
+}
+
+ghc_4_corridor : AreaRoom -> ghc '4th Floor, Corridor'
+"""
+You're in the strangely tight corridor on Gates 4. There is not much here, except for some offices, classrooms that are a bit too small for the crowds that CS office hours tend to draw, and a bulletin board. A particularly interesting event called <b>Demosplash</b> is advertised, and you make a mental note to visit the site: <b>"www.demosplash.org"</b>. You can hear quiet murmuring from the common area to the north, and you briefly consider walking towards the Helix to the northwest.
+""" {
+    north = ghc_4_common_area;
+    // If Eckhardt's office doesn't move it'll be to the East.
+    northwest = ghc_4_helix_entrance;
+    // To the west is the 4th floor NSH entrance.
 }
 
 ghc_4_common_area : AreaRoom -> ghc '4th Floor, Common Area'
 """
-The tables down here are packed, mostly with international students chattering and chowing down on sketchy back-of-van Chinese food that some family sells out near the back entrance of Gates sometimes. You peer through the window of Rashid Auditorium to your north and see that a 15-251 lecture seems to be in progress. Ahh, the smell of burning CS (and non-CS) students. To your west lies the entrance to the Helix. There is an elevator here.
+The tables down here are packed, mostly with international students chattering and chowing down on sketchy back-of-van Chinese food that some family sells out near the back entrance of Gates sometimes. You peer through the window of Rashid Auditorium to your northeast and see that a 15-251 lecture seems to be in progress. Ahh, the smell of burning CS (and non-CS) students. To your south lies the weird Gates 4 corridor. There is an elevator here.
 """ {
-    north = ghc_rashid;
-    west = ghc_4_entrance;
+    // north should eventually go to Forbes and the Asian takeout cars
+    northeast = ghc_rashid;
+    south = ghc_4_corridor;
     in = ghc_4_elevator;
-    out = ghc_4_entrance;
 }
 
 ghc_rashid : AreaRoom -> ghc 'Rashid Auditorium'
@@ -266,7 +276,7 @@ From here, you can disembark from the Helix Wild Ride™, or go up or down.
 """ {
     up = ghc_helix_5;
     down = ghc_helix_overlook;
-    out = ghc_4_entrance;
+    out = ghc_4_helix_entrance;
 }
 
 ghc_helix_overlook : AreaRoom -> ghc_helix '3rd Floor Overlook'

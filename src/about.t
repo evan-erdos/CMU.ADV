@@ -9,9 +9,9 @@
 versionInfo : GameID {
     name = 'CMU.ADV';
     tagline = 'an adventure...';
-    byline = 'by Ben Scott';
+    byline = 'by Ben Scott & Jocelyn Huang';
     original_byline = 'by Galloway & Kuehner & Pawlinger';
-    authorEmail = 'bescott@andrew.cmu.edu';
+    authorEmail = 'bescott@andrew.cmu.edu; jocelynh@andrew.cmu.edu';
     genre = 'Adventure';
     version = 'v2.0.4';
     firstPublished = '1986 (2016)';

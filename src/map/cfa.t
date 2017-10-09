@@ -32,7 +32,7 @@ cfa_park : FakeConnector
 cfa_field : OutdoorRoom
 'College of Fine Arts (Lawn)' 'the field'
 """
-This is the lawn in front of CFA. The grass here is well-groomed, except for some strange indentaions in the ground.
+This is the lawn in front of CFA. The grass here is well-groomed, except for some strange indentations in the ground.
 """ {
     north = cut_south;
     northeast = cfa_lot;
