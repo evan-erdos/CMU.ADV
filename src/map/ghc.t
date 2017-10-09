@@ -1,5 +1,5 @@
 /* Ben Scott * bescott@andrew.cmu.edu * 2015-09-20 * GHC */
-/* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2015-11-21 * GHC */
+/* Jocelyn Huang * jocelynh@andrew.cmu.edu * 2017-10-07 * GHC */
 
 #include <adv3.h>
 #include <en_us.h>
@@ -12,6 +12,12 @@ ghc : Area 'The Gates Hillman Center'
 You hear a noise, just kidding. It's very quiet.
 ''','''
 You stop in place for a moment, turn <<one of>>180<<or>>135<<or>>90<<at random>> degrees, and find yourself facing the direction you wanted to be facing.
+''','''
+A gaggle of international students wander past, speaking in what you believe is probably <<one of>>Chinese<<or>>Hindi<<or>>Hebrew<<at random>>.
+''','''
+A student wanders past mumbling about <<one of>>graph theory<<or>>Dijkstra<<or>>the 213 queue<<or>>OS<<at random>>.
+''','''
+A scraggly and sleep-deprived master's student scampers by, muttering something about GHC being a crazy faculty experiment in testing the direction-finding abilities of students, and how he hasn't been able to find any exits in days. You briefly consider pointing out the stairwell with the exit to Pausch, but he's already gone. Oh, well.
 ''']
 """
 The layout of this building is unusual, as it was designed to have no right angles in the floor plan. You have a hard time keeping your bearings.
@@ -35,9 +41,64 @@ You find yourself in a corner alcove, arranged around a full-height window. What
     east = ghc_9_entrance;
 }
 
+/**************<Floor 8>***************/
+
+ghc_8_elevators: AreaRoom -> ghc '8th Floor (Elevators)'
+"""
+You're standing next to the elevators. There are a few flyers advertising various events on the bulletin board nearby.
+""" {
+    in = ghc_8_elevator;
+    north = ghc_8_north;
+    west = ghc_8_nw;
+}
+
++ ghc_8_flyers : Fixture
+'(felt) bulletin/board/flyers' 'bulletin board'
+"""
+A bulletin board next to the elevators. Taking a closer look, you notice a few flyers advertising some thesis defenses of ML PhD candidates. A few of them have titles that don't even look like they should be real words, and some of the others have titles that look as if a buzzword generator malfunctioned.
+""" {
+}
+
+ghc_8_north : FakeConnector
+"""
+""" {
+    visited = nil;
+    dobjFor(TravelVia)
+    {
+        action()
+        {
+            if (visited == nil) {
+                """
+                You scoot around some tables and absentmindedly walk towards the Hillman center, and smack into the window. The only entrances from Gates to Hillman are one the lower floors, dummy!
+                """;
+                achievement_hillman_fail.awardPointsOnce();
+                visited = true;
+            }
+            else {
+                """
+                The students sitting at the tables here giggle at you, having watched you try to walk into the window.
+                """;
+            }
+        }
+    }
+    achievement_hillman_fail : Achievement { +2 "being idiotic and trying to walk to Hillman from the 8th floor of Gates." }
+}
+
+ghc_8_nw : AreaRoom -> ghc '8th Floor (Northwest)'
+"""
+You've wandered over to the northwest corner of the 8th floor of Gates, home of Professor Sleator's office and a conference room that's always either locked or occupied by a staff meeting for some course or other. To your east lie the elevators.</b>
+
+<<one of>>You can barely make out someone saying something like "mumble mumblemumbmumble splay trees mumble" from Professor Sleator's office.<<or>>A group of 451 students pass by. One asks, "Do splay trees grow in the wild?" You scoff quietly, because the answer is obvious and left as an exercise to the reader.<<or>>Professor Sleator himself pops his head out of his office, startling some girl in a 213 hoodie just passing by. "Come grade with us! We're doing splay trees!" he calls out cheerfully. She apologizes and says something about applying to TA too late.<<or>>Professor Eckhardt strolls by with his usual following of OS devotees. "...And let me tell you, Professor Sleator didn't prove many theorems about spla trees, only splay trees!" You're sure it's very funny in context.<<at random>>
+""" {
+    east = ghc_8_elevators;
+    // There are those strange artsy stairs here. Maybe implement them.
+}
+
+//TODO(jocelynh): Implement Sleator's office and some splay tree fun
+
 /**************<Floor 5>***************/
 
-ghc_5_entrance : AreaRoom -> ghc '5th Floor'
+ghc_5_entrance : AreaRoom -> ghc '5th Floor Pausch Entrance'
 """
 It's the fifth floor common area. It's where the plebians who can't get to the upper floors sit. To your east lies the eternally overcrowded Citadel Commons. The elevator is here, and the Pausch Bridge leads out. The Helix is to your west, if you want to waste some time meandering down the spiral.
 """ {
@@ -58,22 +119,32 @@ A sad-looking TA sits at an especially crowded table, where everyone is ignoring
 
 /**************<Floor 4>***************/
 
-ghc_4_entrance : AreaRoom -> ghc '4th Floor, Helix'
+ghc_4_helix_entrance : AreaRoom -> ghc '4th Floor, Helix'
 """
-You have wandered over to the area near the Helix on the fourth floor. There is not much here, except for some offices, classrooms that are a bit too small for the crowds that CS office hours tend to draw, and a bulletin board. A particularly interesting event called <b>Demosplash</b> is advertised, and you make a mental note to visit the site: <b>"www.demosplash.org"</b>. You can hear quiet murmuring from the common area to the east, and you briefly consider walking into the Helix.
+You have wandered over to the area near the Helix on the fourth floor. There are a few tables and weird cushiony sofa-things here, mostly occupied. Otherwise, this area is pretty boring. To the southeast is the svelte and curvy Gates 4 corridor, and this floor's entrance to the Helix is here.
 """ {
-    east = ghc_4_common_area;
+    southeast = ghc_4_corridor;
     in = ghc_helix_4;
+}
+
+ghc_4_corridor : AreaRoom -> ghc '4th Floor, Corridor'
+"""
+You're in the strangely tight corridor on Gates 4. There is not much here, except for some offices, classrooms that are a bit too small for the crowds that CS office hours tend to draw, and a bulletin board. A particularly interesting event called <b>Demosplash</b> is advertised, and you make a mental note to visit the site: <b>"www.demosplash.org"</b>. You can hear quiet murmuring from the common area to the north, and you briefly consider walking towards the Helix to the northwest.
+""" {
+    north = ghc_4_common_area;
+    // If Eckhardt's office doesn't move it'll be to the East.
+    northwest = ghc_4_helix_entrance;
+    // To the west is the 4th floor NSH entrance.
 }
 
 ghc_4_common_area : AreaRoom -> ghc '4th Floor, Common Area'
 """
-The tables down here are packed, mostly with international students chattering and chowing down on sketchy back-of-van Chinese food that some family sells out near the back entrance of Gates sometimes. You peer through the window of Rashid Auditorium to your north and see that a 15-251 lecture seems to be in progress. Ahh, the smell of burning CS (and non-CS) students. To your west lies the entrance to the Helix. There is an elevator here.
+The tables down here are packed, mostly with international students chattering and chowing down on sketchy back-of-van Chinese food that some family sells out near the back entrance of Gates sometimes. You peer through the window of Rashid Auditorium to your northeast and see that a 15-251 lecture seems to be in progress. Ahh, the smell of burning CS (and non-CS) students. To your south lies the weird Gates 4 corridor. There is an elevator here.
 """ {
-    north = ghc_rashid;
-    west = ghc_4_entrance;
+    // north should eventually go to Forbes and the Asian takeout cars
+    northeast = ghc_rashid;
+    south = ghc_4_corridor;
     in = ghc_4_elevator;
-    out = ghc_4_entrance;
 }
 
 ghc_rashid : AreaRoom -> ghc 'Rashid Auditorium'
@@ -131,12 +202,18 @@ This is the GHC Elevator, with service to probably all the floors. It has never 
 
 ghc_9_elevator : AreaRoom -> ghc_elevator '9th Floor' {
     out = ghc_9_entrance;
+    down = ghc_8_elevator;
+}
+
+ghc_8_elevator: AreaRoom -> ghc_elevator '8th Floor' {
+    out = ghc_8_elevators;
+    up = ghc_9_elevator;
     down = ghc_5_elevator;
 }
 
 ghc_5_elevator : AreaRoom -> ghc_elevator '5th Floor' {
     out = ghc_5_entrance;
-    up = ghc_9_elevator;
+    up = ghc_8_elevator;
     down = ghc_4_elevator;
 }
 
@@ -176,6 +253,8 @@ Peering over the railing gives you a nice view of Tazza d'Oro and its correspond
 The smell of coffee and cookies tempts you from below.
 ''','''
 You can hear the occasional whirring of coffeemakers, emanating from below.
+''', '''
+You look over the railing, and spy a student idly browing Facebook while munching on an apple dumpling. Unnoticed, a dribble of delicious cinnamon-sugar drips down onto his laptop. You cringe a little.
 ''']
 """
 This is the Gates Helix. The smell of freshly brewed coffee and baked goods waft up from <i>Tazza d' Oro</i>, and when you look down over the wooden railing you can see students bustling around and making Paninis.
@@ -197,7 +276,7 @@ From here, you can disembark from the Helix Wild Ride™, or go up or down.
 """ {
     up = ghc_helix_5;
     down = ghc_helix_overlook;
-    out = ghc_4_entrance;
+    out = ghc_4_helix_entrance;
 }
 
 ghc_helix_overlook : AreaRoom -> ghc_helix '3rd Floor Overlook'
